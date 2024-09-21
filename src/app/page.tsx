@@ -1,16 +1,11 @@
-import ExampleButton from '~/core/components/common/example-button';
+import InformationItems from '~/core/components/common/home/infomation-items';
+import InitialBanner from '~/core/components/common/home/inital-banner';
 
 const HomePage = () => {
   return (
-    <main className='grid h-dvh w-full place-content-center'>
-      <div className='grid max-w-prose gap-4 p-5 text-center'>
-        <h1 className='font-mono text-3xl font-bold'>Plantilla Next.js</h1>
-        <p>
-          Esta es una plantilla para Next.js con TypeScript, Tailwind CSS,
-          Prettier, Husky y ESLint configurados.
-        </p>
-        <ExampleButton />
-      </div>
+    <main className='w-full'>
+      <InitialBanner />
+      <InformationItems />
     </main>
   );
 };

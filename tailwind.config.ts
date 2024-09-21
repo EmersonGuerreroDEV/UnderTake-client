@@ -104,6 +104,11 @@ const config = {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out'
+      },
+      backgroundImage: {
+        initialBanner: "url('/assets/images/banners/promotional.jpg')",
+        'custom-gradient':
+          'linear-gradient(0deg, rgba(255, 255, 255, 0.66) 85%, rgba(255, 255, 250, 0) 100%)'
       }
     }
   },
