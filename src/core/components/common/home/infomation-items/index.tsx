@@ -63,7 +63,7 @@ const InformationItems = () => {
     }
   ];
   return (
-    <div className='-mt-32 bg-custom-gradient pt-16'>
+    <div className='relative -mt-44 bg-custom-gradient pt-16'>
       <Wrapper>
         <Carousel
           plugins={[plugin.current]}
@@ -72,7 +72,7 @@ const InformationItems = () => {
           <CarouselContent>
             {InformationHome.map((item) => {
               return (
-                <CarouselItem key={item.title} className='basis-1/4'>
+                <CarouselItem key={item.title} className='basis-1/5'>
                   <Card className='mx-auto h-72 max-w-52'>
                     <CardHeader>
                       <CardTitle className='text-center'>

@@ -23,7 +23,7 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className={`fixed left-0 top-0 w-full transition-all duration-300 ease-in-out ${isScrolled ? ' h-20   shadow' : 'h-12 bg-transparent'}`}
+      className={`fixed left-0 top-0 z-50 w-full transition-all duration-300 ease-in-out ${isScrolled ? ' h-20   shadow' : 'h-12 bg-transparent'}`}
     >
       <div
         className={`h-12 transition-transform duration-500 ease-in-out ${showBanner ? 'translate-y-0' : '-translate-y-full'}`}
