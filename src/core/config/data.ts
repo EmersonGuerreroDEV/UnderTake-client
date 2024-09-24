@@ -69,3 +69,81 @@ export const offerProducts = [
     discount: '10%'
   }
 ];
+
+export const categories = [
+  {
+    id: 1,
+    nombre: 'Electrónica',
+    imagen: '/assets/images/products/phone.webp'
+  },
+  {
+    id: 2,
+    nombre: 'Ropa',
+    imagen: '/assets/images/products/phone.webp'
+  },
+  {
+    id: 3,
+    nombre: 'Hogar y Jardín',
+    imagen: '/assets/images/products/phone.webp'
+  },
+  {
+    id: 4,
+    nombre: 'Deportes',
+    imagen: '/assets/images/products/phone.webp'
+  },
+  {
+    id: 5,
+    nombre: 'Belleza',
+    imagen: '/assets/images/products/phone.webp'
+  },
+  {
+    id: 6,
+    nombre: 'Juguetes',
+    imagen: '/assets/images/products/phone.webp'
+  },
+  {
+    id: 7,
+    nombre: 'Libros',
+    imagen: '/assets/images/products/phone.webp'
+  },
+  {
+    id: 8,
+    nombre: 'Accesorios de Moda',
+    imagen: '/assets/images/products/phone.webp'
+  },
+  {
+    id: 9,
+    nombre: 'Calzado',
+    imagen: '/assets/images/products/phone.webp'
+  },
+  {
+    id: 10,
+    nombre: 'Salud y Bienestar',
+    imagen: '/assets/images/products/phone.webp'
+  },
+  {
+    id: 11,
+    nombre: 'Automóviles',
+    imagen: '/assets/images/products/phone.webp'
+  },
+  {
+    id: 12,
+    nombre: 'Música',
+    imagen: '/assets/images/products/phone.webp'
+  },
+  {
+    id: 13,
+    nombre: 'Fotografía',
+    imagen: '/assets/images/products/phone.webp'
+  },
+  {
+    id: 14,
+    nombre: 'Tecnología',
+    imagen: '/assets/images/products/phone.webp'
+  },
+  {
+    id: 15,
+    nombre: 'Fitness',
+    imagen: '/assets/images/products/phone.webp'
+  }
+];
