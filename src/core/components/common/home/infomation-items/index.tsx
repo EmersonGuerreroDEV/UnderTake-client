@@ -63,7 +63,7 @@ const InformationItems = () => {
     }
   ];
   return (
-    <div className='relative -mt-44 bg-custom-gradient pt-16'>
+    <div className='relative -mt-44 bg-custom-gradient pb-12 pt-16'>
       <Wrapper>
         <Carousel
           plugins={[plugin.current]}

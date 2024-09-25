@@ -1,21 +1,6 @@
-import {
-  cloneElement,
-  ReactElement,
-  useCallback,
-  useEffect,
-  useRef,
-  useState
-} from 'react';
-import {
-  Carousel,
-  CarouselApi,
-  CarouselContent,
-  CarouselNext,
-  CarouselPrevious
-} from './carousel';
-
-import Autoplay from 'embla-carousel-autoplay';
-import { twMerge } from 'tailwind-merge';
+import { cloneElement, ReactElement } from 'react';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 interface AltCarouselProps {
   arrows?: boolean;
@@ -24,6 +9,8 @@ interface AltCarouselProps {
   items: any[];
   element: ReactElement;
   dot?: boolean;
+  responsive: any;
+  infinite?: boolean;
 }
 
 const AltCarousel = ({
@@ -32,50 +19,29 @@ const AltCarousel = ({
   timeSpeed = 5000,
   items = [],
   element,
+  responsive,
+  infinite = false,
   dot = false
 }: AltCarouselProps) => {
-  const [api, setApi] = useState<CarouselApi>();
-  const [current, setCurrent] = useState(1);
-  const plugin = useRef(
-    Autoplay({ delay: timeSpeed, stopOnInteraction: true })
-  );
-
-  useEffect(() => {
-    if (!api) {
-      return;
-    }
-    api.on('select', () => {
-      setCurrent(api.selectedScrollSnap() + 1);
-    });
-  }, [api]);
-
-  const onDotButtonClick = useCallback(
-    (index: number) => {
-      if (!api) return;
-      api.scrollTo(index);
-    },
-    [api]
-  );
-
   return (
     <div className='min-h-[300px] w-full'>
       <Carousel
-        setApi={setApi}
-        opts={{
-          align: 'start'
-        }}
-        plugins={autoPlay ? [plugin.current] : []}
-        className='xs:max-w-xs md:max-w-screen-xs mx-auto w-full lg:max-w-screen-2xl xl:max-w-screen-2xl'
+        className='w-full'
+        responsive={responsive}
+        autoPlay={autoPlay}
+        autoPlaySpeed={timeSpeed}
+        arrows={arrows}
+        infinite={infinite}
+        containerClass='w-full '
       >
-        <CarouselContent>
-          {items.map((item: any, key: number) =>
-            cloneElement(element, {
-              ...item,
-              dataKey: key,
-              key
-            })
-          )}
-        </CarouselContent>
+        {items.map((item: any, key: number) =>
+          cloneElement(element, {
+            ...item,
+            dataKey: key,
+            key
+          })
+        )}
+        {/*   
         {dot && (
           <div className='mx-auto flex w-full justify-center space-x-4 py-4 md:py-8'>
             {items.map((item, key) => {
@@ -90,13 +56,13 @@ const AltCarousel = ({
               );
             })}
           </div>
-        )}
-        {arrows && (
+        )} */}
+        {/* {arrows && (
           <>
             <CarouselPrevious className='hidden md:block' />
             <CarouselNext className='hidden md:block' />
           </>
-        )}
+        )} */}
       </Carousel>
     </div>
   );

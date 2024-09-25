@@ -4,7 +4,7 @@ import Other from '../offer/other';
 
 const Offers = () => {
   return (
-    <section className='py-12 '>
+    <section className='py-8 '>
       <Wrapper>
         <div className='flex w-full space-x-4 overflow-hidden'>
           <OfferDay />

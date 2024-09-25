@@ -1,15 +1,14 @@
 'use client';
-import { offerProducts } from '~/core/config/data';
+import { offerProducts, responsiveOffers } from '~/core/config/data';
 import AltCarousel from '../../ui/alt-carousel';
 import { Card, CardContent, CardHeader, CardTitle } from '../../ui/card';
-import { CarouselItem } from '../../ui/carousel';
 import CardProduct from '../products/card';
 
 const Other = () => {
   return (
-    <Card className='w-ful'>
+    <Card className='w-full overflow-hidden'>
       <CardHeader>
-        <CardTitle>Otras ofertas</CardTitle>
+        <CardTitle className='text-orange-400'>Otras ofertas</CardTitle>
       </CardHeader>
       <CardContent className='w-full '>
         <AltCarousel
@@ -17,6 +16,8 @@ const Other = () => {
           items={offerProducts}
           element={<ProductsContent />}
           timeSpeed={3000}
+          infinite
+          responsive={responsiveOffers}
         />
       </CardContent>
     </Card>
@@ -26,9 +27,5 @@ const Other = () => {
 export default Other;
 
 const ProductsContent = ({ ...src }: any) => {
-  return (
-    <CarouselItem className='basis-1/5'>
-      <CardProduct className='padding-0 border-none shadow-none' />
-    </CarouselItem>
-  );
+  return <CardProduct className='padding-0 border-none shadow-none' />;
 };

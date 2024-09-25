@@ -9,7 +9,7 @@ const Categories = () => {
       <Wrapper>
         <Card className='w-full'>
           <CardHeader>
-            <CardTitle>Categorías</CardTitle>
+            <CardTitle className='text-orange-400'>Categorías</CardTitle>
           </CardHeader>
           <CardContent className='w-full '>
             <div className='grid w-full grid-cols-6 gap-8'>

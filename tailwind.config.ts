@@ -107,7 +107,8 @@ const config = {
       },
       backgroundImage: {
         'custom-gradient':
-          'linear-gradient(0deg, rgba(255, 255, 255, 0.66) 85%, rgba(255, 255, 250, 0) 100%)'
+          'linear-gradient(0deg, rgba(255, 255, 255, 0.66) 85%, rgba(255, 255, 250, 0) 100%)',
+        orange: "url('/assets/images/back/orange.jpg')"
       }
     }
   },

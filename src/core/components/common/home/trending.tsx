@@ -1,16 +1,15 @@
 'use client';
-import { offerProducts } from '~/core/config/data';
+import { offerProducts, responsiveTrending } from '~/core/config/data';
 import AltCarousel from '../../ui/alt-carousel';
 import { Card, CardContent, CardHeader, CardTitle } from '../../ui/card';
-import { CarouselItem } from '../../ui/carousel';
 import Wrapper from '../../ui/wrapper';
 import CardProduct from '../products/card';
 
 const Trending = () => {
   return (
-    <div className='mt-12'>
+    <div className='mt-8'>
       <Wrapper>
-        <Card className='w-ful'>
+        <Card className='w-full'>
           <CardHeader>
             <CardTitle>Tendencia</CardTitle>
           </CardHeader>
@@ -20,6 +19,8 @@ const Trending = () => {
               items={offerProducts}
               element={<ProductsContent />}
               timeSpeed={3000}
+              infinite
+              responsive={responsiveTrending}
             />
           </CardContent>
         </Card>
@@ -31,9 +32,5 @@ const Trending = () => {
 export default Trending;
 
 const ProductsContent = ({ ...src }: any) => {
-  return (
-    <CarouselItem className='basis-1/5'>
-      <CardProduct className='padding-0 border-none shadow-none' />
-    </CarouselItem>
-  );
+  return <CardProduct className='padding-0 border-none shadow-none' />;
 };
