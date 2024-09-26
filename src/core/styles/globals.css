@@ -74,3 +74,14 @@
     @apply bg-background text-foreground;
   }
 }
+
+.my-carousel .react-multi-carousel-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* Espacio entre los elementos */
+}
+
+.card {
+  flex: 1 0 30%; /* Ajuste para ocupar el 30% del ancho en filas de 3 elementos */
+  margin: 10px; /* Espaciado entre elementos */
+}

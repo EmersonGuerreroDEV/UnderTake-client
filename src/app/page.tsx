@@ -19,7 +19,18 @@ const HomePage = () => {
           <p>Banner publicitario</p>
         </div>
       </Wrapper>
+
       <More />
+      <Wrapper>
+        <div className='grid w-full grid-cols-2 space-x-8'>
+          <div className='mt-8 grid min-h-52 w-full place-content-center rounded-lg bg-gray-400'>
+            <p>Banner publicitario</p>
+          </div>
+          <div className='mt-8 grid min-h-52 w-full place-content-center rounded-lg bg-gray-400'>
+            <p>Banner publicitario</p>
+          </div>
+        </div>
+      </Wrapper>
     </main>
   );
 };
