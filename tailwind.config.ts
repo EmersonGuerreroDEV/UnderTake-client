@@ -110,7 +110,9 @@ const config = {
           'linear-gradient(0deg, rgba(255, 255, 255, 0.66) 85%, rgba(255, 255, 250, 0) 100%)',
         'custom-white':
           ' background: linear-gradient(90deg, rgba(253, 253, 253, 1) 0%, rgba(249, 249, 249, 1) 29%, rgba(255, 255, 255, 0.1265) 100%)',
-        orange: "url('/assets/images/back/orange.jpg')"
+        orange: "url('/assets/images/back/orange.jpg')",
+        banner1: "url('/assets/images/banners/product1.webp')",
+        banner2: "url('/assets/images/banners/product2.webp')"
       }
     }
   },

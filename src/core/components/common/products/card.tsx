@@ -11,7 +11,7 @@ interface CardProps {
 const CardProduct = ({ className }: CardProps) => {
   return (
     <Card className={twMerge(className, '')}>
-      <CardContent className=' w-64 '>
+      <CardContent className=' lg:w-64 '>
         <div className='relative flex w-full flex-col items-center '>
           <div className='absolute right-0 top-0 flex h-12 w-12 items-center justify-center rounded-full bg-orange-400 p-4 font-bold text-white'>
             10%

@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import { bannerHome, responsiveBannerHome } from '~/core/config/data';
 import AltCarousel from '../../ui/alt-carousel';
 
@@ -21,7 +22,7 @@ export default InitialBanner;
 
 const BannerImage = ({ ...src }: any) => {
   return (
-    <img
+    <Image
       alt={src?.image}
       src={src?.image}
       style={{ objectFit: 'contain' }}

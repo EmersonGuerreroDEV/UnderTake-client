@@ -132,11 +132,6 @@ export const categories = [
     imagen: '/assets/images/products/phone.webp'
   },
   {
-    id: 13,
-    nombre: 'Fotografía',
-    imagen: '/assets/images/products/phone.webp'
-  },
-  {
     id: 14,
     nombre: 'Tecnología',
     imagen: '/assets/images/products/phone.webp'
