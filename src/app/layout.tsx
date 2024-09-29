@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import Footer from '~/core/components/common/footer';
 import Header from '~/core/components/ui/header';
 import ExampleProvider from '~/core/providers/example-provider';
 import '~/core/styles/globals.css';
@@ -23,6 +24,7 @@ export default function RootLayout({
         <ExampleProvider>
           <Header />
           <div className='w-full pt-11'>{children}</div>
+          <Footer />
         </ExampleProvider>
       </body>
     </html>

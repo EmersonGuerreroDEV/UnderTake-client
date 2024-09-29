@@ -1,3 +1,4 @@
+import Title from '../../ui/title';
 import Wrapper from '../../ui/wrapper';
 import PromotionalCard from '../products/promotional-card';
 
@@ -9,7 +10,7 @@ const More = ({ title }: MoreProps) => {
     <div className='more mt-12'>
       <Wrapper>
         <div className=' w-full space-y-4'>
-          <h2 className='font-semibold'>{title}</h2>
+          <Title title={title} size='xl' />
           <div className='grid w-full grid-cols-4 gap-8'>
             <PromotionalCard />
             <PromotionalCard />

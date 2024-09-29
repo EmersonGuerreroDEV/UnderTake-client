@@ -39,7 +39,7 @@ const Categories: React.FC = () => {
       <Card className='w-full border-x-0 shadow-none'>
         <Wrapper>
           <CardHeader>
-            <CardTitle className='text-orange-400'>Categorías</CardTitle>
+            <CardTitle className='t '>Categorías</CardTitle>
           </CardHeader>
         </Wrapper>
 

@@ -8,7 +8,7 @@ const Other = () => {
   return (
     <Card className='w-full overflow-hidden'>
       <CardHeader>
-        <CardTitle className='text-orange-400'>Otras ofertas</CardTitle>
+        <CardTitle className='text-xl'>Otras ofertas</CardTitle>
       </CardHeader>
       <CardContent className='w-full '>
         <AltCarousel

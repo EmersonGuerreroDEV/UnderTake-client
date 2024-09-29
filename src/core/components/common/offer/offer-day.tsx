@@ -5,7 +5,7 @@ function OfferDay() {
   return (
     <Card className='lg:w-72'>
       <CardHeader>
-        <CardTitle className='text-orange-400'>Oferta del dia</CardTitle>
+        <CardTitle className='text-xl'>Oferta del dia</CardTitle>
       </CardHeader>
       <CardContent>
         <CardProduct className='padding-0 border-none shadow-none' />

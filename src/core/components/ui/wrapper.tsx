@@ -8,12 +8,12 @@ interface Props {
 const Wrapper = ({
   children,
   className = '',
-  maxScreen = 'max-w-screen-xl',
+  maxScreen = 'max-w-screen-2xl ',
   paddingX = 'px-6'
 }: Props) => {
   return (
     <div
-      className={`mx-auto flex w-full overflow-y-hidden   ${maxScreen} ${className} ${paddingX}`}
+      className={`mx-auto flex w-full overflow-y-hidden px-16    ${maxScreen} ${className} ${paddingX}`}
     >
       {children}
     </div>

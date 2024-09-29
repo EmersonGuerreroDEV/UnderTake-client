@@ -1,6 +1,7 @@
 import Categories from '~/core/components/common/categories';
 import InformationItems from '~/core/components/common/home/infomation-items';
 import InitialBanner from '~/core/components/common/home/inital-banner';
+import ListProducts from '~/core/components/common/home/list-products';
 import More from '~/core/components/common/home/more';
 import Offers from '~/core/components/common/home/offers';
 import Trending from '~/core/components/common/home/trending';
@@ -9,7 +10,7 @@ import Wrapper from '~/core/components/ui/wrapper';
 
 const HomePage = () => {
   return (
-    <main className='w-full bg-slate-100'>
+    <main className='w-full bg-white'>
       <InitialBanner />
       <InformationItems />
       <Offers />
@@ -31,6 +32,7 @@ const HomePage = () => {
       </Wrapper>
       <More title='Computadores' />
       <Payments />
+      <ListProducts />
     </main>
   );
 };

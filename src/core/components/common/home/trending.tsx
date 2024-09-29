@@ -11,7 +11,7 @@ const Trending = () => {
       <Wrapper>
         <Card className='w-full'>
           <CardHeader>
-            <CardTitle className='text-orange-400'>Tendencia</CardTitle>
+            <CardTitle className='text-xl'>Tendencia</CardTitle>
           </CardHeader>
           <CardContent className='w-full '>
             <AltCarousel

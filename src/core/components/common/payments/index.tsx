@@ -1,23 +1,23 @@
 import Image from 'next/image';
+import Title from '../../ui/title';
 import Wrapper from '../../ui/wrapper';
 
 const Payments = () => {
   const visa = '/assets/images/paymethods/credit/visa.svg';
   const mastercard = '/assets/images/paymethods/credit/mastercard.svg';
-  const amex = '/assets/images/paymethods/credit/amex.svg';
   const nequi = '/assets/images/paymethods/debit/nequi.svg';
   const bancolombia = '/assets/images/paymethods/debit/bancolombia.svg';
   const pse = '/assets/images/paymethods/debit/pse.svg';
   const daviplata = '/assets/images/paymethods/debit/daviplata.svg';
   const efecty = '/assets/images/paymethods/debit/efecty.png';
-  const contraentrega = '/assets/images/paymethods/debit/contraentrega.png';
   const addi = '/assets/images/paymethods/debit/addi.png';
 
   return (
-    <div className='py-8'>
+    <div className='mt-12 py-8'>
       <Wrapper>
         <div className='w-full space-y-4'>
-          <h2 className='font-semibold'>Nuestros métodos de pago</h2>
+          <Title title='Métodos de pago' size='xl' />
+
           <div className='flex w-full justify-between'>
             <Image
               alt='visa'
