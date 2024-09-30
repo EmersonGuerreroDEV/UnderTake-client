@@ -32,7 +32,8 @@ const AltCarousel = ({
         autoPlaySpeed={timeSpeed}
         arrows={arrows}
         infinite={infinite}
-        containerClass='w-full '
+        containerClass='w-full'
+        itemClass='px-1'
       >
         {items.map((item: any, key: number) =>
           cloneElement(element, {

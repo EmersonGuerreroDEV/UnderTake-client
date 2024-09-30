@@ -63,17 +63,17 @@ const InformationItems = () => {
     }
   ];
   return (
-    <div className='relative -mt-44 bg-custom-gradient pb-12 pt-16'>
+    <div className='relative -mt-44 bg-custom-gradient pt-16 xl:pb-12'>
       <Wrapper>
         <Carousel
           plugins={[plugin.current]}
-          className='mx-auto max-w-screen-2xl'
+          className='mx-auto w-full max-w-[250px] xl:max-w-screen-xl'
         >
           <CarouselContent>
             {InformationHome.map((item) => {
               return (
                 <CarouselItem key={item.title} className='xl:basis-1/5 '>
-                  <Card className='mx-auto h-80 max-w-52'>
+                  <Card className='mx-auto w-full max-w-44 xl:h-80 xl:max-w-52'>
                     <CardHeader>
                       <CardTitle className='text-center text-lg'>
                         {item.title}
@@ -88,7 +88,7 @@ const InformationItems = () => {
                       </CardDescription>
                     </CardContent>
                     <CardFooter>
-                      <Button className=''>Mas información</Button>
+                      <Button className='w-full'>Mas información</Button>
                     </CardFooter>
                   </Card>
                 </CarouselItem>

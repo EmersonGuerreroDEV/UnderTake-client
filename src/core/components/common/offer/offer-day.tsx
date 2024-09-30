@@ -3,12 +3,12 @@ import CardProduct from '../products/card';
 
 function OfferDay() {
   return (
-    <Card className='lg:w-72'>
+    <Card className=' p-0  xl:w-96'>
       <CardHeader>
         <CardTitle className='text-xl'>Oferta del dia</CardTitle>
       </CardHeader>
-      <CardContent>
-        <CardProduct className='padding-0 border-none shadow-none' />
+      <CardContent className='p-0'>
+        <CardProduct className='border-none p-0 shadow-none' />
       </CardContent>
     </Card>
   );

@@ -28,15 +28,15 @@ const Header: React.FC = () => {
       <div
         className={`h-12 transition-transform duration-500 ease-in-out ${showBanner ? 'translate-y-0' : '-translate-y-full'}`}
       >
-        <div className='border-none bg-black p-3 text-center  font-light uppercase text-white '>
+        <div className='border-none bg-black p-3 text-center text-sm font-light  uppercase text-white lg:text-xl '>
           ¡Descuento del 20% en tu primera compra!
         </div>
       </div>
       <nav
         className={`flex items-center justify-between px-8  transition-all duration-300 ease-in-out ${isScrolled ? 'h-20 -translate-y-12 bg-white text-black' : 'h-12 translate-y-0 bg-transparent text-white'}`}
       >
-        <Wrapper className='flex justify-between'>
-          <div className='flex h-full items-center space-x-12'>
+        <Wrapper className='flex justify-between '>
+          <div className='flex hidden h-full items-center space-x-12 lg:block'>
             <div className='text-xl font-light'>Mi Tienda</div>
             <ul className='flex space-x-12 font-light uppercase '>
               <li>Inicio</li>

@@ -18,7 +18,7 @@ const Payments = () => {
         <div className='w-full space-y-4'>
           <Title title='Métodos de pago' size='xl' />
 
-          <div className='flex w-full justify-between'>
+          <div className='flex w-full flex-wrap justify-between gap-2 lg:flex-row'>
             <Image
               alt='visa'
               src={visa}

@@ -15,8 +15,8 @@ const Footer = () => {
   return (
     <div className=' bg-black'>
       <Wrapper>
-        <div className='grid w-full grid-cols-4 py-12 text-white'>
-          <div className='grid place-content-center text-sm font-extralight text-gray-50'>
+        <div className='grid w-full grid-cols-2 gap-8 py-12 text-white md:grid-cols-4 lg:gap-0'>
+          <div className='grid text-sm font-extralight text-gray-50 md:place-content-center'>
             <ul className='space-y-2'>
               <h3 className='text-base font-semibold'>Atención al cliente</h3>
               <li className='underline'>Contacto</li>
@@ -25,7 +25,7 @@ const Footer = () => {
               <li className='underline'>Políticas de seguridad</li>
             </ul>
           </div>
-          <div className='grid place-content-center text-sm font-extralight text-gray-50'>
+          <div className='grid text-sm font-extralight text-gray-50 lg:place-content-center'>
             <ul className='space-y-2'>
               <h3 className='text-base font-semibold'>Guía de compra</h3>
               <li className='underline'>Crea una cuenta</li>
@@ -33,7 +33,7 @@ const Footer = () => {
               <li className='underline'>Envío</li>
             </ul>
           </div>
-          <div className='grid  place-content-center'>
+          <div className='grid  lg:place-content-center'>
             <ul className='space-y-2'>
               <h3 className='text-base font-semibold'>Métodos de pago</h3>
               <div className='grid grid-cols-3 gap-4'>
@@ -104,7 +104,7 @@ const Footer = () => {
               </div>
             </ul>
           </div>
-          <div className='grid  place-content-center'>
+          <div className='grid  lg:place-content-center'>
             <ul className='space-y-2'>
               <h3 className='text-base font-semibold'>Redes sociales</h3>
               <div className='grid  gap-4'>

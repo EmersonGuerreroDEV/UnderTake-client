@@ -10,7 +10,7 @@ const Other = () => {
       <CardHeader>
         <CardTitle className='text-xl'>Otras ofertas</CardTitle>
       </CardHeader>
-      <CardContent className='w-full '>
+      <CardContent className='w-full  px-0'>
         <AltCarousel
           autoPlay
           items={offerProducts}
@@ -27,5 +27,5 @@ const Other = () => {
 export default Other;
 
 const ProductsContent = ({ ...src }: any) => {
-  return <CardProduct className='padding-0 border-none shadow-none' />;
+  return <CardProduct className='p-0  shadow-none' />;
 };

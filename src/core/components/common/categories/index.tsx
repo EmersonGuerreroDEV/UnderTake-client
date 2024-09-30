@@ -25,7 +25,7 @@ const Categories: React.FC = () => {
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
-      items: 1,
+      items: 2,
       slidesToSlide: 1
     }
   };
@@ -33,8 +33,8 @@ const Categories: React.FC = () => {
   return (
     <div className='relative flex w-full bg-white'>
       <div className='absolute flex h-[456px] w-full justify-between bg-white'>
-        <div className='z-10 h-full w-52 bg-gradient-to-r from-white via-gray-100 to-transparent' />
-        <div className='z-10 h-full w-52 bg-gradient-to-l from-white via-gray-100 to-transparent' />
+        <div className='z-10 h-full w-12 bg-gradient-to-r  from-white via-gray-100 to-transparent md:w-52' />
+        <div className='z-10 h-full w-12 bg-gradient-to-l from-white via-gray-100 to-transparent md:w-52' />
       </div>
       <Card className='w-full border-x-0 shadow-none'>
         <Wrapper>

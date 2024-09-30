@@ -24,10 +24,10 @@ const HomePage = () => {
 
       <More title='Celulares' />
       <Wrapper>
-        <div className='grid w-full grid-cols-2 gap-6 overflow-hidden'>
-          <div className='mt-8 min-h-64 w-full rounded-lg bg-banner1 bg-cover bg-center' />
+        <div className='mt-8 grid w-full gap-2   overflow-hidden md:grid-cols-2 md:gap-6'>
+          <div className=' min-h-64 w-full rounded-lg bg-banner1 bg-cover bg-center' />
 
-          <div className='mt-8 min-h-64 w-full rounded-lg bg-banner2 bg-cover bg-center' />
+          <div className=' min-h-64 w-full rounded-lg bg-banner2 bg-cover bg-center' />
         </div>
       </Wrapper>
       <More title='Computadores' />

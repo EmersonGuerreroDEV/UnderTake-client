@@ -26,7 +26,7 @@ const BannerImage = ({ ...src }: any) => {
       alt={src?.image}
       src={src?.image}
       style={{ objectFit: 'contain' }}
-      className='hidden w-full md:block'
+      className='w-full'
       width={1920}
       height={800}
     />
