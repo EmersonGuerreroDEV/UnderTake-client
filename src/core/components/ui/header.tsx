@@ -1,7 +1,9 @@
 'use client';
 import { ShoppingCartIcon, UserIcon } from 'lucide-react';
 // components/Header.tsx
+import { useRouter } from 'next/navigation';
 import React, { useContext, useEffect, useState } from 'react';
+import { Routes } from '~/core/config/routes';
 import { CartContext } from '~/core/providers/store-provider';
 import Wrapper from './wrapper';
 
@@ -9,6 +11,7 @@ const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showBanner, setShowBanner] = useState(true);
   const { cart } = useContext(CartContext);
+  const router = useRouter();
 
   let productQuantity = cart?.length || 0;
 
@@ -50,7 +53,10 @@ const Header: React.FC = () => {
           </div>
           <div className='flex w-24 justify-between'>
             <UserIcon strokeWidth={1} />
-            <div className='relative'>
+            <button
+              onClick={() => router.push(Routes.checkout)}
+              className='relative'
+            >
               {productQuantity > 0 && (
                 <div
                   className='absolute -right-2  flex h-4 w-4 items-center 
@@ -62,7 +68,7 @@ const Header: React.FC = () => {
                 </div>
               )}
               <ShoppingCartIcon strokeWidth={1} />
-            </div>
+            </button>
           </div>
         </Wrapper>
       </nav>
