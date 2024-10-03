@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Footer from '~/core/components/common/footer';
 import Header from '~/core/components/ui/header';
-import ExampleProvider from '~/core/providers/example-provider';
+import StoreProvider from '~/core/providers/store-provider';
 import '~/core/styles/globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -21,11 +21,11 @@ export default function RootLayout({
   return (
     <html lang='es'>
       <body className={inter.className}>
-        <ExampleProvider>
+        <StoreProvider>
           <Header />
           <div className='w-full pt-11'>{children}</div>
           <Footer />
-        </ExampleProvider>
+        </StoreProvider>
       </body>
     </html>
   );

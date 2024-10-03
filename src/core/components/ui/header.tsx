@@ -1,12 +1,16 @@
 'use client';
 import { ShoppingCartIcon, UserIcon } from 'lucide-react';
 // components/Header.tsx
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { CartContext } from '~/core/providers/store-provider';
 import Wrapper from './wrapper';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showBanner, setShowBanner] = useState(true);
+  const { cart } = useContext(CartContext);
+
+  let productQuantity = cart?.length || 0;
 
   const handleScroll = () => {
     const scrollY = window.scrollY;
@@ -46,7 +50,19 @@ const Header: React.FC = () => {
           </div>
           <div className='flex w-24 justify-between'>
             <UserIcon strokeWidth={1} />
-            <ShoppingCartIcon strokeWidth={1} />
+            <div className='relative'>
+              {productQuantity > 0 && (
+                <div
+                  className='absolute -right-2  flex h-4 w-4 items-center 
+                justify-center rounded-full bg-red-400  text-white'
+                >
+                  <span className=' text-xs font-extralight '>
+                    {productQuantity}
+                  </span>
+                </div>
+              )}
+              <ShoppingCartIcon strokeWidth={1} />
+            </div>
           </div>
         </Wrapper>
       </nav>

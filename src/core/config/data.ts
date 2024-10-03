@@ -224,3 +224,17 @@ export const responsiveTrending = {
     slidesToSlide: 1 // optional, default to 1.
   }
 };
+
+export const products = [
+  {
+    id: 1,
+    name: 'Product 1',
+    price: 100,
+    image: 'https://picsum.photos/200/300',
+    description: 'This is a description of product 1',
+    category: 'Electronics',
+    rating: 4.5,
+    stock: 10,
+    discount: 10
+  }
+];

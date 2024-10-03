@@ -1,5 +1,6 @@
 'use client';
 import { offerProducts, responsiveOffers } from '~/core/config/data';
+import { ProductProp } from '~/core/interfaces/cart';
 import AltCarousel from '../../ui/alt-carousel';
 import { Card, CardContent, CardHeader, CardTitle } from '../../ui/card';
 import CardProduct from '../products/card';
@@ -26,6 +27,6 @@ const Other = () => {
 
 export default Other;
 
-const ProductsContent = ({ ...src }: any) => {
-  return <CardProduct className='p-0  shadow-none' />;
+const ProductsContent = ({ ...resp }: ProductProp) => {
+  return <CardProduct className='p-0  shadow-none' product={resp} />;
 };
