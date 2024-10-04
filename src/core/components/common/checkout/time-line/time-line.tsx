@@ -12,7 +12,7 @@ const TimeLine = () => {
   if (!cart || cart?.length <= 0) return;
 
   return (
-    <div className='mt-28'>
+    <div className='mt-12'>
       <Wrapper>
         <div className='flex h-24 w-full items-center justify-between px-24 '>
           <Item icon={<ShoppingCart />} title='Carrito' state={true} />

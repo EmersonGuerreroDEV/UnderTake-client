@@ -1,0 +1,61 @@
+import { useContext } from 'react';
+import { Button } from '~/core/components/ui/button';
+import { Card, CardContent } from '~/core/components/ui/card';
+import { Input } from '~/core/components/ui/input';
+import { Label } from '~/core/components/ui/label';
+import { CartContext } from '~/core/providers/store-provider';
+import Helpers from '~/core/utils/helpers';
+
+const Details = () => {
+  const { cart } = useContext(CartContext);
+
+  if (!cart) return;
+  const calcularTotal = (): number => {
+    return cart.reduce((total, producto) => {
+      console.log(producto);
+      return total + producto.price * producto.quantity;
+    }, 0);
+  };
+
+  return (
+    <Card className='w-[500px]  bg-slate-100'>
+      <CardContent>
+        <div className='rounded-lg bg-white p-4'>
+          <div className='grid w-full max-w-sm items-center gap-1.5'>
+            <Label htmlFor='picture'>Ingresa cupón de descuento</Label>
+            <Input id='cupon' type='text' />
+          </div>
+        </div>
+        <div className='space-y-4 rounded-lg bg-white p-4'>
+          <div className='flex justify-between'>
+            <Label htmlFor='picture' className='text-gray-400'>
+              Subtotal:
+            </Label>
+            <Label htmlFor='picture'>
+              {Helpers.formatCurrency(calcularTotal())}
+            </Label>
+          </div>
+          <div className='flex justify-between'>
+            <Label htmlFor='picture' className='text-gray-400'>
+              Descuento:
+            </Label>
+            <Label htmlFor='picture'>{Helpers.formatCurrency(10000)}</Label>
+          </div>
+          <div className='flex justify-between bg-slate-100 py-3'>
+            <Label htmlFor='picture' className='text-gray-400'>
+              Total:
+            </Label>
+            <Label htmlFor='picture'>{Helpers.formatCurrency(10000)}</Label>
+          </div>
+          <div>
+            <Button className='bg-orange-500 font-bold text-white hover:bg-orange-700 '>
+              Continuar
+            </Button>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
+
+export default Details;
