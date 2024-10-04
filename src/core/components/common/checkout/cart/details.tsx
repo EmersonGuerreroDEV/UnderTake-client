@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Button } from '~/core/components/ui/button';
 import { Card, CardContent } from '~/core/components/ui/card';
 import { Input } from '~/core/components/ui/input';
@@ -8,13 +8,21 @@ import Helpers from '~/core/utils/helpers';
 
 const Details = () => {
   const { cart } = useContext(CartContext);
+  const [discount, setDiscount] = useState(0);
 
   if (!cart) return;
-  const calcularTotal = (): number => {
+  const SubTotalCalcule = (): number => {
     return cart.reduce((total, producto) => {
       console.log(producto);
       return total + producto.price * producto.quantity;
     }, 0);
+  };
+
+  const totalCalcule = () => {
+    const subTotal = SubTotalCalcule();
+    const discountAmount = (subTotal * discount) / 100;
+    const total = subTotal - discountAmount;
+    return total;
   };
 
   return (
@@ -32,20 +40,22 @@ const Details = () => {
               Subtotal:
             </Label>
             <Label htmlFor='picture'>
-              {Helpers.formatCurrency(calcularTotal())}
+              {Helpers.formatCurrency(SubTotalCalcule())}
             </Label>
           </div>
           <div className='flex justify-between'>
             <Label htmlFor='picture' className='text-gray-400'>
               Descuento:
             </Label>
-            <Label htmlFor='picture'>{Helpers.formatCurrency(10000)}</Label>
+            <Label htmlFor='picture'>{discount}%</Label>
           </div>
           <div className='flex justify-between bg-slate-100 py-3'>
             <Label htmlFor='picture' className='text-gray-400'>
               Total:
             </Label>
-            <Label htmlFor='picture'>{Helpers.formatCurrency(10000)}</Label>
+            <Label htmlFor='picture'>
+              {Helpers.formatCurrency(totalCalcule())}
+            </Label>
           </div>
           <div>
             <Button className='bg-orange-500 font-bold text-white hover:bg-orange-700 '>

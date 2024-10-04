@@ -5,9 +5,9 @@ import { useRouter } from 'next/navigation';
 import React, { useContext, useEffect, useState } from 'react';
 import { Routes } from '~/core/config/routes';
 import { CartContext } from '~/core/providers/store-provider';
-import Wrapper from './wrapper';
+import Wrapper from '../wrapper';
 
-const Header: React.FC = () => {
+const PrincipalHeader: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showBanner, setShowBanner] = useState(true);
   const { cart } = useContext(CartContext);
@@ -76,4 +76,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header;
+export default PrincipalHeader;

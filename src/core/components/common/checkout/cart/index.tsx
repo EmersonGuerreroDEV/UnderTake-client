@@ -8,11 +8,14 @@ import ItemCart from './item-cart';
 
 const Cart = () => {
   const { cart } = useContext(CartContext);
+  if (!cart || cart.length <= 0) return;
   return (
     <div>
       <Wrapper>
-        <div className='w-full px-24'>
-          <h1>Carro de compra</h1>
+        <div className='mt-4 w-full px-24'>
+          <h1 className='py-4 text-center text-xl font-semibold'>
+            Carro de compra
+          </h1>
           <div className='flex w-full space-x-8'>
             <Card className='w-full bg-slate-100'>
               <CardContent className='space-y-2'>

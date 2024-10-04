@@ -1,11 +1,14 @@
 'use client';
 import { ShoppingCart } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import { useContext } from 'react';
+import { Routes } from '~/core/config/routes';
 import { CartContext } from '~/core/providers/store-provider';
 import { Button } from '../../ui/button';
 
 const EmptyCart = () => {
   const { cart } = useContext(CartContext);
+  const router = useRouter();
 
   if (!cart || cart.length > 0) return;
 
@@ -19,7 +22,10 @@ const EmptyCart = () => {
         <span className='text-center font-light text-gray-400'>
           Tenemos mas de 100 productos que puedes comprar
         </span>
-        <Button className='bg-blue-500 hover:bg-blue-400'>
+        <Button
+          onClick={() => router.push(Routes.home)}
+          className='bg-blue-500 hover:bg-blue-400'
+        >
           Seguir comprando
         </Button>
       </div>
