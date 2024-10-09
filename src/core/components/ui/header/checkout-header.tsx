@@ -1,9 +1,23 @@
+import { LockIcon } from 'lucide-react';
+import Wrapper from '../wrapper';
+
 const CheckoutHeader = () => {
   return (
     <header
-      className={`fixed left-0 top-0 z-50 h-12 w-full bg-black  transition-all duration-300 ease-in-out`}
+      className={`fixed left-0 top-0 z-50 flex h-16 w-full justify-between bg-black  transition-all duration-300 ease-in-out`}
     >
-      xssccs
+      <Wrapper className='justify-between'>
+        <p className='text-white'>Logo</p>
+        <div className='flex items-center justify-center text-white'>
+          <div>
+            <LockIcon strokeWidth={1} size={30} />
+          </div>
+          <div className='flex flex-col text-sm font-light leading-4'>
+            <span>Pago</span>
+            <span>Seguro</span>
+          </div>
+        </div>
+      </Wrapper>
     </header>
   );
 };

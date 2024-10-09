@@ -1,6 +1,7 @@
 'use client';
 import { Star } from 'lucide-react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { useContext, useMemo } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { ProductProp } from '~/core/interfaces/cart';
@@ -17,6 +18,7 @@ interface CardProps {
 
 const CardProduct = ({ className, product }: CardProps) => {
   const { cart, addProduct, updateQuantity } = useContext(CartContext);
+  const router = useRouter();
 
   const handleAddProduct = () => {
     addProduct(product);
@@ -42,7 +44,10 @@ const CardProduct = ({ className, product }: CardProps) => {
 
   return (
     <Card className={twMerge(className, 'mx-auto p-0 ')}>
-      <CardContent className='lg:wp-64'>
+      <CardContent
+        onClick={() => router.push(`product/${product?.id}`)}
+        className='lg:wp-64'
+      >
         <div className='relative flex w-full flex-col items-center'>
           <div className='absolute right-0 top-0 flex h-12 w-12 items-center justify-center rounded-full bg-orange-400 p-4 font-bold text-white'>
             10%

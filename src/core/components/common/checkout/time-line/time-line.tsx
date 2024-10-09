@@ -13,10 +13,23 @@ const TimeLine = () => {
     <div className='mt-8'>
       <Wrapper>
         <div className='flex h-44 w-full items-center justify-between border-b border-slate-100  px-24'>
-          <Item icon={<ShoppingCart />} title='Carrito' state={true} />
-          <Item icon={<User2 />} title='Datos' state={false} />
-          <Item icon={<CarIcon />} title='Datos' state={false} />
-          <Item icon={<DollarSign />} title='Datos' state={false} finish />
+          <Item
+            icon={<ShoppingCart strokeWidth={1} />}
+            title='Carrito'
+            state={true}
+          />
+          <Item icon={<User2 strokeWidth={1} />} title='Datos' state={false} />
+          <Item
+            icon={<CarIcon strokeWidth={1} />}
+            title='Datos'
+            state={false}
+          />
+          <Item
+            icon={<DollarSign strokeWidth={1} />}
+            title='Datos'
+            state={false}
+            finish
+          />
         </div>
       </Wrapper>
     </div>

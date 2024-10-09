@@ -1,11 +1,12 @@
 'use client';
-import { ShoppingCartIcon, UserIcon } from 'lucide-react';
+import { ShoppingCartIcon } from 'lucide-react';
 // components/Header.tsx
 import { useRouter } from 'next/navigation';
 import React, { useContext, useEffect, useState } from 'react';
 import { Routes } from '~/core/config/routes';
 import { CartContext } from '~/core/providers/store-provider';
 import Wrapper from '../wrapper';
+import UserValidation from './user-valitation';
 
 const PrincipalHeader: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -52,7 +53,7 @@ const PrincipalHeader: React.FC = () => {
             </ul>
           </div>
           <div className='flex w-24 justify-between'>
-            <UserIcon strokeWidth={1} />
+            <UserValidation />
             <button
               onClick={() => router.push(Routes.checkout)}
               className='relative'

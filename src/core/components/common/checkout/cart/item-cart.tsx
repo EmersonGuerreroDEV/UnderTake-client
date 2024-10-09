@@ -35,7 +35,7 @@ const ItemCart = ({ ...resp }: CartProp) => {
 
   return (
     <div className='relative flex w-full justify-between rounded-lg border bg-white p-4'>
-      <div className='flex items-start space-x-2'>
+      <div className='flex w-full items-start space-x-2'>
         <Image
           src='/assets/images/products/phone.webp'
           width={100}
@@ -43,10 +43,10 @@ const ItemCart = ({ ...resp }: CartProp) => {
           alt='product'
           className=''
         />
-        <div className='space-y-2 '>
+        <div className='w-full space-y-2'>
           <span className='text-sm uppercase text-gray-400'>Samsung</span>
-          <h1 className='text-lg font-medium'>{resp.name}</h1>
-          <div className='flex flex-col'>
+          <h1 className='text-lg font-medium'>{resp?.name}</h1>
+          <div className='flex flex-col '>
             <span className='text-sm font-light text-red-300 line-through opacity-80 md:text-sm'>
               {Helpers.formatCurrency(10000)}{' '}
             </span>
