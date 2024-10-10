@@ -3,7 +3,9 @@ export interface CartProp {
   name: string;
   price: number;
   quantity: number;
-  description: string;
+  description?: string;
+  discount?: string | number;
+  discountedPrice?: number;
   image: string;
 }
 

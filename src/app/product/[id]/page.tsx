@@ -11,7 +11,15 @@ import { CartContext } from '~/core/providers/store-provider';
 import Helpers from '~/core/utils/helpers';
 
 const Product = () => {
-  const product = {};
+  const product = {
+    id: 2,
+    name: 'Xiaomi Redmi Note 13 Lite 4G Dual SIM 128 GB gris 6 GB RAM',
+    image: '/assets/images/products/phone.webp',
+    price: 700000,
+    discountedPrice: 630000,
+    discount: '10%',
+    quantity: 1
+  };
 
   const { cart, addProduct, updateQuantity } = useContext(CartContext);
   const router = useRouter();
