@@ -3,6 +3,7 @@ import { BadgeCheckIcon, Star, TruckIcon } from 'lucide-react';
 import { useContext, useMemo } from 'react';
 import Payments from '~/core/components/common/payments';
 import Counter from '~/core/components/common/products/counter';
+import Gallery from '~/core/components/common/products/gallery';
 import { Button } from '~/core/components/ui/button';
 import { Card, CardContent, CardTitle } from '~/core/components/ui/card';
 import Wrapper from '~/core/components/ui/wrapper';
@@ -44,7 +45,9 @@ const Product = () => {
     <div className='di'>
       <Wrapper className='px-32'>
         <div className='mx-auto mt-24 flex w-full gap-8 '>
-          <div className='min-h-[400px] w-full bg-blue-400'>ddsdds</div>
+          <div className='min-h-[400px] w-full '>
+            <Gallery />
+          </div>
           <div className='flex w-[400px] justify-end '>
             <Card className='w-[400px] rounded-lg border'>
               <CardContent className='space-y-2'>
