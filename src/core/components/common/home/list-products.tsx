@@ -1,3 +1,4 @@
+import { offerProducts } from '~/core/config/data';
 import Title from '../../ui/title';
 import Wrapper from '../../ui/wrapper';
 import CardProduct from '../products/card';
@@ -10,9 +11,9 @@ const ListProducts = () => {
           <Title title='Te va a gustar' size='xl' />
 
           <div className='grid grid-cols-2 md:grid-cols-5'>
-            {Array.from({ length: 20 }, (_, index) => (
-              <CardProduct key={index} />
-            ))}
+            {offerProducts.map((product) => {
+              return <CardProduct product={product} key={product.id} />;
+            })}
           </div>
         </div>
       </Wrapper>

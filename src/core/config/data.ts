@@ -1,72 +1,82 @@
+import { ProductProp } from '../interfaces/cart';
+
 export const bannerHome = [
   { image: '/assets/images/banners/promotional.jpg' },
   { image: '/assets/images/banners/promotional2.jpg' }
 ];
 
-export const offerProducts = [
+export const offerProducts: ProductProp[] = [
   {
     id: 1,
     name: 'Xiaomi Redmi Note 13 Pro 4G Dual SIM 256 GB azul 8 GB RAM',
     image: '/assets/images/products/phone.webp',
+    description:
+      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio accusamus accusantium, eius omnis dolorem quia vitae quidem vero fuga illum exercitationem.',
     price: 800000,
-    discountedPrice: 720000,
-    discount: '10%'
+    discount: 10
   },
   {
     id: 2,
     name: 'Xiaomi Redmi Note 13 Lite 4G Dual SIM 128 GB gris 6 GB RAM',
     image: '/assets/images/products/phone.webp',
+    description:
+      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio accusamus accusantium, eius omnis dolorem quia vitae quidem vero fuga illum exercitationem.',
     price: 700000,
-    discountedPrice: 630000,
-    discount: '10%'
+    discount: 10
   },
   {
     id: 3,
     name: 'Xiaomi Redmi Note 13 5G Dual SIM 256 GB verde 8 GB RAM',
     image: '/assets/images/products/phone.webp',
+    description:
+      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio accusamus accusantium, eius omnis dolorem quia vitae quidem vero fuga illum exercitationem.',
     price: 850000,
-    discountedPrice: 765000,
-    discount: '10%'
+    discount: 10
   },
   {
     id: 4,
     name: 'Xiaomi Redmi Note 13 Max 4G Dual SIM 512 GB negro 12 GB RAM',
     image: '/assets/images/products/phone.webp',
+    description:
+      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio accusamus accusantium, eius omnis dolorem quia vitae quidem vero fuga illum exercitationem.',
     price: 1000000,
-    discountedPrice: 900000,
-    discount: '10%'
+    discount: 10
   },
   {
     id: 5,
     name: 'Xiaomi Redmi Note 13 4G Dual SIM 256 GB blanco 8 GB RAM',
     image: '/assets/images/products/phone.webp',
+    description:
+      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio accusamus accusantium, eius omnis dolorem quia vitae quidem vero fuga illum exercitationem.',
     price: 750000,
-    discountedPrice: 675000,
-    discount: '10%'
+    discount: 10
   },
   {
     id: 6,
     name: 'Xiaomi Redmi Note 13 4G Dual SIM 256 GB blanco 8 GB RAM',
     image: '/assets/images/products/phone.webp',
+    description:
+      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio accusamus accusantium, eius omnis dolorem quia vitae quidem vero fuga illum exercitationem.',
     price: 750000,
-    discountedPrice: 675000,
-    discount: '10%'
+    discount: 10
   },
   {
     id: 7,
     name: 'Xiaomi Redmi Note 13 4G Dual SIM 256 GB blanco 8 GB RAM',
     image: '/assets/images/products/phone.webp',
+    description:
+      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio accusamus accusantium, eius omnis dolorem quia vitae quidem vero fuga illum exercitationem.',
     price: 750000,
-    discountedPrice: 675000,
-    discount: '10%'
+    discount: 10
   },
   {
     id: 8,
     name: 'Xiaomi Redmi Note 13 4G Dual SIM 256 GB blanco 8 GB RAM',
+    description:
+      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio accusamus accusantium, eius omnis dolorem quia vitae quidem vero fuga illum exercitationem.',
     image: '/assets/images/products/phone.webp',
     price: 750000,
-    discountedPrice: 675000,
-    discount: '10%'
+    discount: 10
   }
 ];
 

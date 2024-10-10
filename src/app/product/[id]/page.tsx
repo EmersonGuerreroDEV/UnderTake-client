@@ -1,6 +1,5 @@
 'use client';
 import { BadgeCheckIcon, Star, TruckIcon } from 'lucide-react';
-import { useRouter } from 'next/navigation';
 import { useContext, useMemo } from 'react';
 import Payments from '~/core/components/common/payments';
 import Counter from '~/core/components/common/products/counter';
@@ -15,21 +14,16 @@ const Product = () => {
     id: 2,
     name: 'Xiaomi Redmi Note 13 Lite 4G Dual SIM 128 GB gris 6 GB RAM',
     image: '/assets/images/products/phone.webp',
+    description:
+      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio accusamus accusantium, eius omnis dolorem quia vitae quidem vero fuga illum exercitationem.',
     price: 700000,
-    discountedPrice: 630000,
-    discount: '10%',
+    discount: 10,
     quantity: 1
   };
 
   const { cart, addProduct, updateQuantity } = useContext(CartContext);
-  const router = useRouter();
-
   const handleAddProduct = () => {
     addProduct(product);
-  };
-
-  const validProductCardInclude = () => {
-    return cart ? cart.some((item) => item.id === product?.id) : false;
   };
 
   const productInCart = useMemo(() => {

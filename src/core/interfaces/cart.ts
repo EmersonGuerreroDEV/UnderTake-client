@@ -2,18 +2,17 @@ export interface CartProp {
   id: number;
   name: string;
   price: number;
-  quantity: number;
-  description?: string;
-  discount?: string | number;
-  discountedPrice?: number;
+  description: string;
   image: string;
+  discount: number;
+  quantity: number;
 }
 
 export interface ProductProp {
   id: number;
   name: string;
   price: number;
-  quantity: number;
   description: string;
   image: string;
+  discount: number;
 }

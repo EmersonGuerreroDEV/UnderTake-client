@@ -21,7 +21,7 @@ const CardProduct = ({ className, product }: CardProps) => {
   const router = useRouter();
 
   const handleAddProduct = () => {
-    addProduct(product);
+    addProduct({ ...product, quantity: 1 });
   };
 
   const validProductCardInclude = () => {
