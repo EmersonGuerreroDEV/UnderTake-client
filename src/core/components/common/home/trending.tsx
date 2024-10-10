@@ -32,5 +32,7 @@ const Trending = () => {
 export default Trending;
 
 const ProductsContent = ({ ...src }: any) => {
-  return <CardProduct className='padding-0 border-none shadow-none' />;
+  return (
+    <CardProduct product={src} className='padding-0 border-none shadow-none' />
+  );
 };

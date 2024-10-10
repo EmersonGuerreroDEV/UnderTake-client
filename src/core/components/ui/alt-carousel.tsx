@@ -42,28 +42,6 @@ const AltCarousel = ({
             key
           })
         )}
-        {/*   
-        {dot && (
-          <div className='mx-auto flex w-full justify-center space-x-4 py-4 md:py-8'>
-            {items.map((item, key) => {
-              return (
-                <button
-                  onClick={() => onDotButtonClick(key)}
-                  className={twMerge(
-                    `${key === current - 1 ? 'border-gray-800 shadow-xl' : 'border-gray-400'} h-3 w-3 rounded-full border-2`
-                  )}
-                  key={key}
-                />
-              );
-            })}
-          </div>
-        )} */}
-        {/* {arrows && (
-          <>
-            <CarouselPrevious className='hidden md:block' />
-            <CarouselNext className='hidden md:block' />
-          </>
-        )} */}
       </Carousel>
     </div>
   );
