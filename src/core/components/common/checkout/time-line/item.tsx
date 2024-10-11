@@ -6,12 +6,16 @@ interface ItemProps {
   title: string;
   state: boolean;
   finish?: boolean;
+  onClick: () => void;
 }
 
-const Item = ({ icon, title, state, finish = false }: ItemProps) => {
+const Item = ({ icon, title, state, finish = false, onClick }: ItemProps) => {
   return (
     <>
-      <div className='flex w-32 items-center justify-center'>
+      <button
+        onClick={onClick}
+        className='flex w-32 items-center justify-center'
+      >
         <div className='mx-4 flex flex-col items-center space-y-1'>
           <div
             className={twMerge(
@@ -23,7 +27,7 @@ const Item = ({ icon, title, state, finish = false }: ItemProps) => {
           </div>
           <span className='text-sm font-semibold'>{title}</span>
         </div>
-      </div>
+      </button>
       {!finish && (
         <div
           className={twMerge(

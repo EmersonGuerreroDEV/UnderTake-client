@@ -6,7 +6,9 @@ import Counter from '~/core/components/common/products/counter';
 import Gallery from '~/core/components/common/products/gallery';
 import { Button } from '~/core/components/ui/button';
 import { Card, CardContent, CardTitle } from '~/core/components/ui/card';
+import LoadingPage from '~/core/components/ui/loading/page';
 import Wrapper from '~/core/components/ui/wrapper';
+import useProducts from '~/core/hooks/queries/use-products';
 import { CartContext } from '~/core/providers/store-provider';
 import Helpers from '~/core/utils/helpers';
 
@@ -26,6 +28,7 @@ const Product = () => {
   const handleAddProduct = () => {
     addProduct(product);
   };
+  const { productId, isRefetchId } = useProducts();
 
   const productInCart = useMemo(() => {
     return cart ? cart.find((item) => item.id === product?.id) : null;
@@ -41,6 +44,12 @@ const Product = () => {
     updateQuantity(product.id, productInCart.quantity - 1);
   };
 
+  console.log(productId);
+
+  if (isRefetchId!) {
+    return <LoadingPage />;
+  }
+
   return (
     <div className='di'>
       <Wrapper className='px-32'>
@@ -52,13 +61,9 @@ const Product = () => {
             <Card className='w-[400px] rounded-lg border'>
               <CardContent className='space-y-2'>
                 <CardTitle className='text-orange-400'>
-                  Nombre del producto
+                  {productId?.name}
                 </CardTitle>
-                <p className='text-gray-500'>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio
-                  accusamus accusantium, eius omnis dolorem quia vitae quidem
-                  vero fuga illum exercitationem.
-                </p>
+                <p className='text-gray-500'>{productId?.description}</p>
                 <div className='flex items-center'>
                   <span>{5}</span> <Star className='pb-1' size={20} />
                   <span className='ml-3 text-xs'>40 opiniones</span>
@@ -75,7 +80,7 @@ const Product = () => {
                   </div>
                   <div className='-mt-1 flex items-center space-x-2'>
                     <p className='text-lg font-medium text-gray-600 md:text-2xl'>
-                      {Helpers.formatCurrency(100000)}{' '}
+                      {Helpers.formatCurrency(productId?.price)}{' '}
                       {/* Asumiendo `price` en `product` */}
                     </p>
                   </div>

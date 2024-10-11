@@ -24,6 +24,7 @@ const useUser = () => {
   return {
     refetch,
     user: user,
+    setUser,
     isLoading: isLoadingUser,
     handleLogout
   };

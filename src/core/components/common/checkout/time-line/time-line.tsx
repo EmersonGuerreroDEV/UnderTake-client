@@ -5,7 +5,11 @@ import { CartContext } from '~/core/providers/store-provider';
 import Wrapper from '../../../ui/wrapper';
 import Item from './item';
 
-const TimeLine = () => {
+interface Props {
+  setStep: (step: number) => void;
+}
+
+const TimeLine = ({ setStep }: Props) => {
   const { cart } = useContext(CartContext);
   if (!cart || cart?.length <= 0) return;
 
@@ -17,18 +21,26 @@ const TimeLine = () => {
             icon={<ShoppingCart strokeWidth={1} />}
             title='Carrito'
             state={true}
+            onClick={() => setStep(1)}
           />
-          <Item icon={<User2 strokeWidth={1} />} title='Datos' state={false} />
+          <Item
+            icon={<User2 strokeWidth={1} />}
+            title='Datos'
+            state={false}
+            onClick={() => setStep(2)}
+          />
           <Item
             icon={<CarIcon strokeWidth={1} />}
             title='Datos'
             state={false}
+            onClick={() => setStep(3)}
           />
           <Item
             icon={<DollarSign strokeWidth={1} />}
             title='Datos'
             state={false}
             finish
+            onClick={() => setStep(4)}
           />
         </div>
       </Wrapper>

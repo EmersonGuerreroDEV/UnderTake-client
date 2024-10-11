@@ -14,6 +14,7 @@ interface UserContextProp {
   isLoading: boolean;
   refetch: () => void;
   handleLogout: () => void;
+  setUser: (user: UserProps) => void;
 }
 
 export const UserContext = createContext<UserContextProp>(
@@ -21,11 +22,11 @@ export const UserContext = createContext<UserContextProp>(
 );
 
 const UserProvider = ({ children }: UserProviderProps) => {
-  const { user, refetch, isLoading, handleLogout } = useUser();
+  const { user, refetch, isLoading, handleLogout, setUser } = useUser();
 
   const value = useMemo(() => {
-    return { user, refetch, isLoading, handleLogout };
-  }, [handleLogout, isLoading, refetch, user]);
+    return { user, refetch, isLoading, handleLogout, setUser };
+  }, [handleLogout, isLoading, refetch, user, setUser]);
 
   return (
     <UserContext.Provider value={value}>

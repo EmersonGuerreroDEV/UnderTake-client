@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { API_URL, IS_DEV } from './constants';
 import { removeParamsIfNull } from './utils';
 
@@ -19,12 +20,11 @@ const header = async ({
   path: string;
   withFiles?: boolean;
 }): Promise<HeaderResult> => {
-  const options = <any>{
+  const options: any = {
     method
   };
 
-  // TODO: Add your API URL
-  const apiUrl = IS_DEV ? 'your-a' : API_URL;
+  const apiUrl = IS_DEV ? 'http://192.168.1.6:3000' : API_URL;
 
   options.url = `${apiUrl}${removeParamsIfNull(path)}`;
 
@@ -34,10 +34,7 @@ const header = async ({
   };
 
   if (!withFiles) {
-    options.headers = {
-      ...options.headers,
-      'Content-Type': 'application/json'
-    };
+    options.headers['Content-Type'] = 'application/json';
   }
 
   return options;
@@ -59,23 +56,14 @@ export const call = async ({
     const options = await header({ method, path, withFiles });
     console.info(`REQUEST: ${logPath} | STATUS: pending`);
 
-    const body = data ? JSON.stringify(data) : null;
-    const bodyWithFiles = withFiles ? data : null;
-
-    const response = await fetch(options.url, {
-      method,
-      body: withFiles ? bodyWithFiles : body,
-      headers: options.headers as HeadersInit
+    // Realiza la solicitud con axios
+    const response = await axios({
+      ...options,
+      data: withFiles ? data : data ? JSON.stringify(data) : null
     });
 
-    const res = await response.json();
-
-    if (!response.ok) {
-      throw new Error(res?.info ?? 'Error al realizar la petición');
-    }
-
     console.info(`REQUEST: ${logPath} | STATUS: completed`);
-    return res;
+    return response.data;
   } catch (err) {
     console.error(`REQUEST: PATH: ${logPath} | STATUS: error`);
     console.error(err);

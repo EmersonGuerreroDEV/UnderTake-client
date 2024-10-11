@@ -15,4 +15,7 @@ export interface ProductProp {
   description: string;
   image: string;
   discount: number;
+  category: string;
+  rating: number;
+  stock: number;
 }

@@ -10,7 +10,7 @@ class AuthRepository {
   static readonly signUp = async (data: RegisterProps) => {
     const res = await call({
       method: 'POST',
-      path: '/auth',
+      path: '/users/register',
       data: data
     });
 
@@ -24,7 +24,7 @@ class AuthRepository {
   static readonly signIn = async (data: LoginProps) => {
     const res = await call({
       method: 'POST',
-      path: '/auth/login',
+      path: '/users/login',
       data: data
     });
 

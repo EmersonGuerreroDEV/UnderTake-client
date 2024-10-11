@@ -20,9 +20,6 @@ const LoginSchema = z.object({
   fullName: z.string().min(1, {
     message: 'El nombre es requerido'
   }),
-  document: z.string().min(1, {
-    message: 'Cédula es requerida'
-  }),
   email: z.string().email({
     message: 'El correo electrónico no es válido.'
   }),
@@ -44,7 +41,6 @@ const RegisterForm = () => {
       email: '',
       password: '',
       fullName: '',
-      document: '',
       phone: ''
     }
   });

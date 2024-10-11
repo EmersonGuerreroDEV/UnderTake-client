@@ -13,6 +13,7 @@ import {
 } from '~/core/interfaces/auth';
 import { UserContext } from '~/core/providers/user-provider';
 import AuthRepository from '~/core/repositories/auth-repository';
+import useUser from './use-user';
 interface TokenProps {
   [key: string]: string;
 }
@@ -20,6 +21,7 @@ interface TokenProps {
 const useAuth = () => {
   const router = useRouter();
   const { refetch, handleLogout } = useContext(UserContext);
+  const { setUser } = useUser();
 
   const { isLoading: isLoadingSignUp, mutateAsync: doSignUp } = useMutation({
     mutationKey: ['signUp'],
@@ -66,7 +68,8 @@ const useAuth = () => {
       const res = await doSignIn(form);
       if (res) {
         Cookies.set('ssid', res.access_token, { expires: 7 });
-        refetch();
+        setUser(res?.user);
+        router.push(Routes.home);
         return res;
       }
     } catch (err) {

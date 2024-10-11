@@ -6,7 +6,10 @@ import { CartContext } from '~/core/providers/store-provider';
 import Details from './details';
 import ItemCart from './item-cart';
 
-const Cart = () => {
+interface CartProps {
+  setStep: () => void;
+}
+const Cart = ({ setStep }: CartProps) => {
   const { cart } = useContext(CartContext);
   if (!cart || cart.length <= 0) return;
   return (

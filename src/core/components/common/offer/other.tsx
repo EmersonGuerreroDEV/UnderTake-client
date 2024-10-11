@@ -1,10 +1,14 @@
 'use client';
-import { offerProducts, responsiveOffers } from '~/core/config/data';
+import { responsiveOffers } from '~/core/config/data';
+import useProducts from '~/core/hooks/queries/use-products';
 import AltCarousel from '../../ui/alt-carousel';
 import { Card, CardContent, CardHeader, CardTitle } from '../../ui/card';
 import CardProduct from '../products/card';
 
 const Other = () => {
+  const { data } = useProducts();
+
+  console.log(data);
   return (
     <Card className='w-full overflow-hidden'>
       <CardHeader>
@@ -13,7 +17,7 @@ const Other = () => {
       <CardContent className='w-full  px-0'>
         <AltCarousel
           autoPlay
-          items={offerProducts}
+          items={data}
           element={<ProductsContent />}
           timeSpeed={3000}
           infinite

@@ -42,6 +42,11 @@ const CardProduct = ({ className, product }: CardProps) => {
     updateQuantity(product.id, productInCart.quantity - 1);
   };
 
+  const discountCalcule = () => {
+    const total = (product.price * product.discount) / 100 + product.price;
+    return total;
+  };
+
   return (
     <Card className={twMerge(className, 'mx-auto p-0 ')}>
       <CardContent
@@ -50,7 +55,7 @@ const CardProduct = ({ className, product }: CardProps) => {
       >
         <div className='relative flex w-full flex-col items-center'>
           <div className='absolute right-0 top-0 flex h-12 w-12 items-center justify-center rounded-full bg-orange-400 p-4 font-bold text-white'>
-            10%
+            {product.discount}%
           </div>
 
           <div className='absolute bottom-0 flex min-h-8 w-full items-center justify-center rounded-t-lg bg-orange-400/90 text-sm font-normal text-white'>
@@ -58,7 +63,7 @@ const CardProduct = ({ className, product }: CardProps) => {
           </div>
 
           <Image
-            src='/assets/images/products/phone.webp'
+            src={product.image}
             width={360}
             height={360}
             alt='product'
@@ -74,20 +79,19 @@ const CardProduct = ({ className, product }: CardProps) => {
             <div className='flex items-center space-x-2'>
               <p className='text-sm text-gray-400'>Antes</p>
               <p className='text-sm font-light text-red-300 line-through opacity-80 md:text-sm'>
-                {Helpers.formatCurrency(10000)}{' '}
+                {Helpers.formatCurrency(discountCalcule())}{' '}
                 {/* Asumiendo `oldPrice` en `product` */}
               </p>
             </div>
             <div className='-mt-1 flex items-center space-x-2'>
               <p className='text-lg font-medium text-gray-600 md:text-2xl'>
-                {Helpers.formatCurrency(100000)}{' '}
-                {/* Asumiendo `price` en `product` */}
+                {Helpers.formatCurrency(product.price)}
               </p>
             </div>
           </div>
           <div className='flex items-center space-x-2 pb-1 text-orange-400'>
             <div className='flex items-center'>
-              <span>{5}</span> <Star className='pb-1' size={20} />
+              <span>{product.rating}</span> <Star className='pb-1' size={20} />
             </div>
           </div>
         </div>

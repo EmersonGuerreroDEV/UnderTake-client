@@ -8,7 +8,6 @@ export interface RegisterProps {
   email: string;
   password: string;
   phone: string;
-  document: string;
 }
 
 export interface ForgotProps {
