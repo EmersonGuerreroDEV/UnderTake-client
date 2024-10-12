@@ -7,9 +7,10 @@ import Item from './item';
 
 interface Props {
   setStep: (step: number) => void;
+  step: number;
 }
 
-const TimeLine = ({ setStep }: Props) => {
+const TimeLine = ({ setStep, step }: Props) => {
   const { cart } = useContext(CartContext);
   if (!cart || cart?.length <= 0) return;
 
@@ -20,25 +21,25 @@ const TimeLine = ({ setStep }: Props) => {
           <Item
             icon={<ShoppingCart strokeWidth={1} />}
             title='Carrito'
-            state={true}
+            state={step >= 1}
             onClick={() => setStep(1)}
           />
           <Item
             icon={<User2 strokeWidth={1} />}
             title='Datos'
-            state={false}
+            state={step >= 2}
             onClick={() => setStep(2)}
           />
           <Item
             icon={<CarIcon strokeWidth={1} />}
             title='Datos'
-            state={false}
+            state={step >= 3}
             onClick={() => setStep(3)}
           />
           <Item
             icon={<DollarSign strokeWidth={1} />}
             title='Datos'
-            state={false}
+            state={step >= 4}
             finish
             onClick={() => setStep(4)}
           />

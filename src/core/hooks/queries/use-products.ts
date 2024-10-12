@@ -27,8 +27,8 @@ const useProducts = () => {
 
   return {
     isLoading: isLoadingUser,
-    data: productId,
-    productId: productId,
+    productId,
+    data,
     isRefetchId: isFetchingId || isLoadingId
   };
 };

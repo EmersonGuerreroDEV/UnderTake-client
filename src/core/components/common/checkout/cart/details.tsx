@@ -6,15 +6,21 @@ import { Label } from '~/core/components/ui/label';
 import { CartContext } from '~/core/providers/store-provider';
 import Helpers from '~/core/utils/helpers';
 
-const Details = () => {
+interface DetailsProps {
+  onClick: () => void;
+}
+
+const Details = ({ onClick }: DetailsProps) => {
   const { cart } = useContext(CartContext);
   const [discount, setDiscount] = useState(0);
 
   if (!cart) return;
   const SubTotalCalcule = (): number => {
-    return cart.reduce((total, producto) => {
-      console.log(producto);
-      return total + producto.price * producto.quantity;
+    return cart.reduce((total, product) => {
+      const totalDiscount = product.discount
+        ? (product.price * product.discount) / 100
+        : product.price;
+      return total + totalDiscount * product.quantity;
     }, 0);
   };
 
@@ -58,7 +64,10 @@ const Details = () => {
             </Label>
           </div>
           <div>
-            <Button className='bg-orange-500 font-bold text-white hover:bg-orange-700 '>
+            <Button
+              onClick={onClick}
+              className='bg-orange-500 font-bold text-white hover:bg-orange-700 '
+            >
               Continuar
             </Button>
           </div>

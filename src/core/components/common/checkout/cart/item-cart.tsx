@@ -32,27 +32,35 @@ const ItemCart = ({ ...resp }: CartProp) => {
   const onRemoveProduct = () => {
     removeProduct(resp?.id);
   };
+  const discountCalcule = () => {
+    if (resp.discount <= 0) return resp.price;
+    const total = (resp.price * resp.discount) / 100;
+    return total;
+  };
+  const flirtsImage = resp.variants?.[0]?.image;
 
   return (
     <div className='relative flex w-full justify-between rounded-lg border bg-white p-4'>
       <div className='flex w-full items-start space-x-2'>
         <Image
-          src='/assets/images/products/phone.webp'
+          src={flirtsImage}
           width={100}
           height={100}
           alt='product'
-          className=''
+          className='bg-center object-cover'
         />
-        <div className='w-full space-y-2'>
-          <span className='text-sm uppercase text-gray-400'>Samsung</span>
+        <div className='w-full '>
+          <span className='text-xs uppercase text-gray-400 '>Samsung</span>
           <h1 className='text-lg font-medium'>{resp?.name}</h1>
           <div className='flex flex-col '>
-            <span className='text-sm font-light text-red-300 line-through opacity-80 md:text-sm'>
-              {Helpers.formatCurrency(10000)}{' '}
-            </span>
+            {resp?.discount > 0 && (
+              <span className='text-sm font-light text-red-300 line-through opacity-80 md:text-sm'>
+                {Helpers.formatCurrency(resp.price)}{' '}
+              </span>
+            )}
             <div className='flex w-full justify-between'>
               <span className='text-lg font-medium text-gray-600 md:text-2xl'>
-                {Helpers.formatCurrency(10000)}{' '}
+                {Helpers.formatCurrency(discountCalcule())}{' '}
               </span>
               <div className='w-32'>
                 <Counter

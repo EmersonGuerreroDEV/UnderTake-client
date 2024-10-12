@@ -7,6 +7,18 @@ const nextConfig = {
         hostname: 'picsum.photos',
         port: '',
         pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.jbl.com.co',
+        port: '',
+        pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'http2.mlstatic.com',
+        port: '',
+        pathname: '/**'
       }
     ]
   }

@@ -43,46 +43,53 @@ const CardProduct = ({ className, product }: CardProps) => {
   };
 
   const discountCalcule = () => {
-    const total = (product.price * product.discount) / 100 + product.price;
+    if (product.discount <= 0) return product.price;
+    const total = (product.price * product.discount) / 100;
     return total;
   };
 
+  const flirtsImage = product.variants?.[0]?.image;
+
   return (
-    <Card className={twMerge(className, 'mx-auto p-0 ')}>
+    <Card className={twMerge(className, 'mx-auto p-0 shadow-lg')}>
       <CardContent
         onClick={() => router.push(`product/${product?.id}`)}
         className='lg:wp-64'
       >
         <div className='relative flex w-full flex-col items-center'>
-          <div className='absolute right-0 top-0 flex h-12 w-12 items-center justify-center rounded-full bg-orange-400 p-4 font-bold text-white'>
-            {product.discount}%
-          </div>
-
+          {product.discount > 0 && (
+            <div className='absolute  right-0 top-0 flex h-12 w-12 items-center justify-center rounded-full bg-orange-400/80 p-4 font-bold text-white'>
+              {product.discount}%
+            </div>
+          )}
           <div className='absolute bottom-0 flex min-h-8 w-full items-center justify-center rounded-t-lg bg-orange-400/90 text-sm font-normal text-white'>
             Tecnología
           </div>
-
-          <Image
-            src={product.image}
-            width={360}
-            height={360}
-            alt='product'
-            className=''
-          />
+          <div className='h-52'>
+            <Image
+              src={flirtsImage}
+              width={360}
+              height={460}
+              alt='product'
+              className='bg-center object-cover'
+            />
+          </div>
         </div>
-        <h2 className='mt-1 text-xs font-medium text-blue-500 md:text-sm'>
+        <h2 className='mt-1 h-12 text-xs font-medium text-blue-500'>
           {product?.name}{' '}
           {/* Asumiendo que `product` tiene una propiedad `name` */}
         </h2>
-        <div className='mt-2 flex items-end justify-between'>
+        <div className='mt-4 flex h-10 items-end justify-between'>
           <div>
-            <div className='flex items-center space-x-2'>
-              <p className='text-sm text-gray-400'>Antes</p>
-              <p className='text-sm font-light text-red-300 line-through opacity-80 md:text-sm'>
-                {Helpers.formatCurrency(discountCalcule())}{' '}
-                {/* Asumiendo `oldPrice` en `product` */}
-              </p>
-            </div>
+            {product.discount > 0 && (
+              <div className='flex items-center space-x-2'>
+                <p className='text-sm text-gray-400'>Antes</p>
+                <p className='text-sm font-light text-red-300 line-through opacity-80 md:text-sm'>
+                  {Helpers.formatCurrency(discountCalcule())}{' '}
+                  {/* Asumiendo `oldPrice` en `product` */}
+                </p>
+              </div>
+            )}
             <div className='-mt-1 flex items-center space-x-2'>
               <p className='text-lg font-medium text-gray-600 md:text-2xl'>
                 {Helpers.formatCurrency(product.price)}
@@ -91,7 +98,8 @@ const CardProduct = ({ className, product }: CardProps) => {
           </div>
           <div className='flex items-center space-x-2 pb-1 text-orange-400'>
             <div className='flex items-center'>
-              <span>{product.rating}</span> <Star className='pb-1' size={20} />
+              <span>{product.rating || 5}</span>{' '}
+              <Star className='pb-1' size={20} />
             </div>
           </div>
         </div>

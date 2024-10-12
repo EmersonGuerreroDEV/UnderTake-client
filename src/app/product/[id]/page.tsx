@@ -44,6 +44,12 @@ const Product = () => {
     updateQuantity(product.id, productInCart.quantity - 1);
   };
 
+  const discountCalcule = () => {
+    const total =
+      (productId.price * productId.discount) / 100 + productId.price;
+    return total;
+  };
+
   if (isRefetchId!) {
     return <LoadingPage />;
   }
@@ -53,7 +59,7 @@ const Product = () => {
       <Wrapper className='px-32'>
         <div className='mx-auto mt-24 flex w-full gap-8 '>
           <div className='min-h-[400px] w-full '>
-            <Gallery />
+            <Gallery variant={productId?.variants} />
           </div>
           <div className='flex w-[400px] justify-end '>
             <Card className='w-[400px] rounded-lg border'>
@@ -61,20 +67,30 @@ const Product = () => {
                 <CardTitle className='text-orange-400'>
                   {productId?.name}
                 </CardTitle>
-                <p className='text-gray-500'>{productId?.description}</p>
+                <span className='text-sm font-light text-blue-400'>
+                  {productId?.brand?.name}
+                </span>
+                <p className='text-sm font-light text-gray-500'>
+                  {productId?.description}
+                </p>
                 <div className='flex items-center'>
                   <span>{5}</span> <Star className='pb-1' size={20} />
                   <span className='ml-3 text-xs'>40 opiniones</span>
                 </div>
                 <div className='space-y-1'>
                   <div className='flex items-center space-x-2'>
-                    <div className='rounded-lg bg-orange-400 p-0.5 px-4 text-white'>
-                      <span>10%</span>
-                    </div>
-                    <p className='text-sm font-light text-red-300 line-through opacity-80 md:text-sm'>
-                      {Helpers.formatCurrency(10000)}{' '}
-                      {/* Asumiendo `oldPrice` en `product` */}
-                    </p>
+                    {productId?.discount > 0 && (
+                      <>
+                        <div className='rounded-lg bg-orange-400 p-0.5 px-4 text-white'>
+                          <span>{productId?.discount}%</span>
+                        </div>
+
+                        <p className='text-sm font-light text-red-300 line-through opacity-80 md:text-sm'>
+                          {Helpers.formatCurrency(discountCalcule())}{' '}
+                          {/* Asumiendo `oldPrice` en `product` */}
+                        </p>
+                      </>
+                    )}
                   </div>
                   <div className='-mt-1 flex items-center space-x-2'>
                     <p className='text-lg font-medium text-gray-600 md:text-2xl'>

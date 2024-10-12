@@ -54,14 +54,17 @@ const CheckoutForm = () => {
   };
 
   return (
-    <Card className='w-[500px]  bg-slate-100'>
+    <Card className='w-full rounded-lg border bg-slate-50/40 shadow-lg '>
       <CardContent>
         <Form {...form}>
-          <h1 className='text-center text-[23px] font-semibold text-primary lg:text-[35px]'>
+          <h1 className='text-center text-xl font-semibold text-primary '>
             Registra una cuenta
           </h1>
           <form onSubmit={form.handleSubmit(onSubmit)} className='mt-8'>
-            <fieldset disabled={isLoadingSignUp} className='group grid gap-3'>
+            <fieldset
+              disabled={isLoadingSignUp}
+              className='group grid grid-cols-2 gap-8'
+            >
               <FormField
                 control={form.control}
                 name='fullName'

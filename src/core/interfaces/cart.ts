@@ -1,3 +1,5 @@
+import { Variant } from './products';
+
 export interface CartProp {
   id: number;
   name: string;
@@ -6,6 +8,7 @@ export interface CartProp {
   image: string;
   discount: number;
   quantity: number;
+  variants: Variant[];
 }
 
 export interface ProductProp {
@@ -18,4 +21,5 @@ export interface ProductProp {
   category: string;
   rating: number;
   stock: number;
+  variants: Variant[];
 }

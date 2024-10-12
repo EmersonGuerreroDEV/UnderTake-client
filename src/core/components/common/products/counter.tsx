@@ -4,7 +4,7 @@ interface CounterProps {
   onDecrement: () => void;
 }
 
-const Counter = ({ count = 0, onDecrement, onIncrement }: CounterProps) => {
+const Counter = ({ count = 1, onDecrement, onIncrement }: CounterProps) => {
   return (
     <div className='flex h-9 w-full items-center justify-between rounded-lg bg-gray-200 px-2'>
       <button

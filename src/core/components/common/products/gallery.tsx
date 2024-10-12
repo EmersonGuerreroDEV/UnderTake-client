@@ -1,6 +1,7 @@
 import Autoplay from 'embla-carousel-autoplay';
 import Image from 'next/image';
 import { useCallback, useRef, useState } from 'react';
+import { Variant } from '~/core/interfaces/products';
 import {
   Carousel,
   CarouselApi,
@@ -9,7 +10,12 @@ import {
   CarouselNext,
   CarouselPrevious
 } from '../../ui/carousel';
-const Gallery = () => {
+
+interface GalleryProps {
+  variant: Variant[];
+}
+
+const Gallery = ({ variant }: GalleryProps) => {
   const plugin = useRef(Autoplay({ delay: 5000, stopOnInteraction: true }));
   const [api, setApi] = useState<CarouselApi>();
 
@@ -20,21 +26,22 @@ const Gallery = () => {
     },
     [api]
   );
+
   return (
     <div className='mx-auto flex w-[800px] space-x-8'>
       <div className='grid w-44 '>
-        {[...Array(3)].map((item, index) => {
+        {variant?.map((item, index) => {
           return (
             <button
-              key={index}
+              key={item.id}
               className=''
               onClick={() => onDotButtonClick(index)}
             >
               <Image
-                src='/assets/images/products/phone.webp'
+                src={item.image}
                 width={100}
                 height={100}
-                alt='product'
+                alt={item.image}
                 className='mx-auto'
               />
             </button>
@@ -48,14 +55,14 @@ const Gallery = () => {
           className='mx-auto w-full max-w-[450px] xl:max-w-screen-xl'
         >
           <CarouselContent>
-            {[...Array(3)].map((item, index) => {
+            {variant?.map((item) => {
               return (
-                <CarouselItem key={index} className=' '>
+                <CarouselItem key={item?.id} className=' '>
                   <Image
-                    src='/assets/images/products/phone.webp'
+                    src={item.image}
                     width={460}
                     height={460}
-                    alt='product'
+                    alt={item.image}
                     className='mx-auto'
                   />
                 </CarouselItem>

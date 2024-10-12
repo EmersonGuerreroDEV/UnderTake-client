@@ -27,7 +27,7 @@ const Cart = ({ setStep }: CartProps) => {
                 })}
               </CardContent>
             </Card>
-            <Details />
+            <Details onClick={setStep} />
           </div>
         </div>
       </Wrapper>

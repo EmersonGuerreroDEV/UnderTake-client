@@ -7,7 +7,7 @@ class ProductsRepository {
       path: '/products'
     });
 
-    if (res.success) {
+    if (res) {
       return res;
     }
 

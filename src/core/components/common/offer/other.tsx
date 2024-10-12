@@ -8,7 +8,6 @@ import CardProduct from '../products/card';
 const Other = () => {
   const { data } = useProducts();
 
-  console.log(data);
   return (
     <Card className='w-full overflow-hidden'>
       <CardHeader>
