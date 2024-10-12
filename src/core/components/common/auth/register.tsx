@@ -53,12 +53,15 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className=' w-full bg-white  px-6 py-16 font-sans md:max-w-xl lg:rounded-lg xl:px-20'>
+    <div className=' w-full bg-white  px-8 py-8 font-sans md:max-w-xl lg:rounded-lg'>
       <Form {...form}>
         <h1 className='text-center text-[23px] font-semibold text-primary lg:text-[35px]'>
           Registra una cuenta
         </h1>
-        <form onSubmit={form.handleSubmit(onSubmit)} className='mt-8'>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className='mt-8 lg:min-w-[400px]'
+        >
           <fieldset disabled={isLoadingSignUp} className='group grid gap-3'>
             <FormField
               control={form.control}

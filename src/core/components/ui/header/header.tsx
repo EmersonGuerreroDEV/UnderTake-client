@@ -44,15 +44,17 @@ const PrincipalHeader: React.FC = () => {
         className={`flex items-center justify-between px-8  transition-all duration-300 ease-in-out ${isScrolled ? 'h-20 -translate-y-12 bg-white text-black' : 'h-12 translate-y-0 bg-transparent text-white'}`}
       >
         <Wrapper className='flex justify-between '>
-          <div className='flex hidden h-full items-center space-x-12 lg:block'>
+          <div className='flex  w-full items-center space-x-12  '>
             <div className='text-xl font-light'>Mi Tienda</div>
-            <ul className='flex space-x-12 font-light uppercase '>
-              <li>Inicio</li>
-              <li>Productos</li>
-              <li>Contacto</li>
-            </ul>
+            <div className='hidden lg:block'>
+              <ul className='flex space-x-12 font-light uppercase '>
+                <li>Inicio</li>
+                <li>Productos</li>
+                <li>Contacto</li>
+              </ul>
+            </div>
           </div>
-          <div className='flex w-24 justify-between'>
+          <div className='flex w-24 items-center justify-between'>
             <UserValidation />
             <button
               onClick={() => router.push(Routes.checkout)}

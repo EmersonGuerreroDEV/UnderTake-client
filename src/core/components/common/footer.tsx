@@ -1,5 +1,8 @@
+'use client';
 import { FacebookIcon, MailIcon, PhoneIcon, TwitterIcon } from 'lucide-react';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import { pathFooterExcluded } from '~/core/config/helpers';
 import Wrapper from '../ui/wrapper';
 
 const Footer = () => {
@@ -11,6 +14,18 @@ const Footer = () => {
   const daviplata = '/assets/images/paymethods/debit/daviplata.svg';
   const efecty = '/assets/images/paymethods/debit/efecty.png';
   const addi = '/assets/images/paymethods/debit/addi.png';
+
+  const router = usePathname();
+  const pathFooterVisibility = () => {
+    if (pathFooterExcluded.includes(router)) {
+      return true;
+    }
+    return false;
+  };
+
+  if (pathFooterVisibility()) {
+    return;
+  }
 
   return (
     <div className=' bg-black'>

@@ -20,7 +20,7 @@ const UserValidation = () => {
     <div>
       <Button
         variant={'outline'}
-        className='border-none shadow-none hover:bg-transparent'
+        className='border-none bg-transparent shadow-none hover:bg-transparent'
         onClick={onUserPathValidation}
       >
         <UserIcon strokeWidth={1} />

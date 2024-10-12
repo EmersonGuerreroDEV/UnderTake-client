@@ -73,7 +73,7 @@ const InformationItems = () => {
             {InformationHome.map((item) => {
               return (
                 <CarouselItem key={item.title} className='xl:basis-1/5 '>
-                  <Card className='mx-auto w-full max-w-44 xl:h-80 xl:max-w-52'>
+                  <Card className='mx-auto w-full max-w-44 shadow-md xl:h-80 xl:max-w-52'>
                     <CardHeader>
                       <CardTitle className='text-center text-lg'>
                         {item.title}

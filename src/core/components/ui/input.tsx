@@ -24,7 +24,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         <input
           type={inputType}
           className={cn(
-            'peer h-12 w-full rounded-none border-b border-gray-300 outline-none transition-colors duration-200 focus:border-blue-500',
+            'peer h-12 w-full rounded-none border-b border-gray-300 bg-transparent outline-none transition-colors duration-200 focus:border-blue-500',
             className
           )}
           ref={ref}

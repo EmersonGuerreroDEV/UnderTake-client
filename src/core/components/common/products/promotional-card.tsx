@@ -3,7 +3,7 @@ import { Card, CardContent } from '../../ui/card';
 
 const PromotionalCard = () => {
   return (
-    <Card className='w-full rounded-lg bg-opacity-5 bg-orange bg-no-repeat object-cover px-4 py-8'>
+    <Card className='w-full rounded-lg bg-opacity-5 bg-orange bg-no-repeat object-cover px-4 py-8 shadow-lg'>
       <CardContent className='grid w-full grid-cols-2 gap-4 p-0'>
         <div className='w-full'>
           <h2 className=' text-center text-lg font-medium text-gray-500'>

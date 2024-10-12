@@ -13,7 +13,8 @@ export const offerProducts: ProductProp[] = [
     description:
       'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio accusamus accusantium, eius omnis dolorem quia vitae quidem vero fuga illum exercitationem.',
     price: 800000,
-    discount: 10
+    discount: 10,
+    stock: 10
   },
   {
     id: 2,

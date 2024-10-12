@@ -44,8 +44,6 @@ const Product = () => {
     updateQuantity(product.id, productInCart.quantity - 1);
   };
 
-  console.log(productId);
-
   if (isRefetchId!) {
     return <LoadingPage />;
   }

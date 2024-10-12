@@ -24,7 +24,7 @@ const header = async ({
     method
   };
 
-  const apiUrl = IS_DEV ? 'http://192.168.1.6:3000' : API_URL;
+  const apiUrl = IS_DEV ? 'https://d393-186-159-79-18.ngrok-free.app' : API_URL;
 
   options.url = `${apiUrl}${removeParamsIfNull(path)}`;
 
