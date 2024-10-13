@@ -49,9 +49,9 @@ const ItemCart = ({ ...resp }: CartProp) => {
           alt='product'
           className='bg-center object-cover'
         />
-        <div className='w-full '>
+        <div className='w-full space-y-4'>
           <span className='text-xs uppercase text-gray-400 '>Samsung</span>
-          <h1 className='text-lg font-medium'>{resp?.name}</h1>
+          <h1 className='text-sm font-medium lg:text-lg '>{resp?.name}</h1>
           <div className='flex flex-col '>
             {resp?.discount > 0 && (
               <span className='text-sm font-light text-red-300 line-through opacity-80 md:text-sm'>

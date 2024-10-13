@@ -65,13 +65,13 @@ const CardProduct = ({ className, product }: CardProps) => {
           <div className='absolute bottom-0 flex min-h-8 w-full items-center justify-center rounded-t-lg bg-orange-400/90 text-sm font-normal text-white'>
             Tecnología
           </div>
-          <div className='h-52'>
+          <div className='h-52 overflow-hidden'>
             <Image
               src={flirtsImage}
               width={360}
-              height={460}
+              height={360}
               alt='product'
-              className='bg-center object-cover'
+              className='bg-center object-contain'
             />
           </div>
         </div>

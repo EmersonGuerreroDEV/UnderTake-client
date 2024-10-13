@@ -32,7 +32,7 @@ const Details = ({ onClick }: DetailsProps) => {
   };
 
   return (
-    <Card className='w-[500px]  bg-slate-100'>
+    <Card className='bg-slate-100  lg:w-[500px]'>
       <CardContent>
         <div className='rounded-lg bg-white p-4'>
           <div className='grid w-full max-w-sm items-center gap-1.5'>

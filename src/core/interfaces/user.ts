@@ -8,4 +8,12 @@ export interface UserProps {
   status: boolean;
   subscription: string;
   phone: string;
+  password: string;
+}
+
+export interface AddressUser {
+  address: string;
+  postal: string;
+  neighborhood: string;
+  city: string;
 }

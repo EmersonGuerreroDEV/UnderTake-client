@@ -1,5 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
+import { useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { Card, CardContent } from '~/core/components/ui/card';
@@ -12,6 +13,9 @@ import {
 } from '~/core/components/ui/form';
 import { Input } from '~/core/components/ui/input';
 import useAuth from '~/core/hooks/queries/use-auth';
+import useUser from '~/core/hooks/queries/use-user';
+import eventBus from '~/core/hooks/use-event-bust';
+import { UserContext } from '~/core/providers/user-provider';
 
 const RegisterSchema = z.object({
   fullName: z.string().min(1, {
@@ -24,41 +28,75 @@ const RegisterSchema = z.object({
     message: 'El correo electrónico no es válido.'
   }),
   phone: z.string().min(1, {
-    message: 'El numero de teléfono no es valido'
+    message: 'El número de teléfono no es válido'
   }),
-  password: z.string().min(1, {
-    message: 'La contraseña debe tener al menos 8 caracteres.'
-  })
+  password: z
+    .string()
+    .min(8, {
+      message: 'La contraseña debe tener al menos 8 caracteres.'
+    })
+    .optional() // Cambiamos a optional para que no sea requerido si ya existe un usuario
 });
 
-const CheckoutForm = () => {
+interface CheckoutFormProps {
+  setStep: () => void;
+}
+
+const CheckoutForm = ({ setStep }: CheckoutFormProps) => {
   const { handleSignUp, isLoadingSignUp } = useAuth();
+  const { handleUserUpdate } = useUser();
   const router = useRouter();
+  const { user } = useContext(UserContext);
 
   const form = useForm<z.infer<typeof RegisterSchema>>({
     resolver: zodResolver(RegisterSchema),
     defaultValues: {
-      email: '',
-      password: '',
-      fullName: '',
-      document: '',
-      phone: ''
+      email: user?.email || '',
+      password: user?.password,
+      fullName: user?.fullName || '',
+      document: user?.document || '',
+      phone: user?.phone || ''
     }
   });
 
-  const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
+  const onSubmit = async (values: z.infer<typeof RegisterSchema>) => {
     const payload = {
       ...values
     };
-    handleSignUp(payload);
+
+    if (user) {
+      const res = await handleUserUpdate(payload);
+      if (res) {
+        setStep();
+      }
+    } else {
+      const res = await handleSignUp(payload);
+      if (res) {
+        setStep();
+      }
+    }
   };
 
+  useEffect(() => {
+    const manejarEvento = async () => {
+      const isValid = await form.trigger();
+      if (isValid) {
+        const values = form.getValues(); // Obtener los valores del formulario
+        onSubmit(values); // Pasar los valores a onSubmit
+      }
+    };
+    eventBus.on('sendUserData', manejarEvento);
+    return () => {
+      eventBus.off('sendUserData', manejarEvento);
+    };
+  }, [form]);
+
   return (
-    <Card className='w-full rounded-lg border bg-slate-50/40 shadow-lg '>
+    <Card className='w-full rounded-lg border bg-slate-50/40 shadow-lg'>
       <CardContent>
         <Form {...form}>
-          <h1 className='text-center text-xl font-semibold text-primary '>
-            Registra una cuenta
+          <h1 className='text-center text-xl font-semibold text-primary'>
+            {user ? `Tus datos` : 'Registra una cuenta'}
           </h1>
           <form onSubmit={form.handleSubmit(onSubmit)} className='mt-8'>
             <fieldset
@@ -74,7 +112,23 @@ const CheckoutForm = () => {
                       <Input
                         label='Nombre completo'
                         type='text'
-                        className=''
+                        {...field}
+                        required
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name='document'
+                render={({ field }) => (
+                  <FormItem className='text-start'>
+                    <FormControl>
+                      <Input
+                        label='N documento'
+                        type='number'
                         {...field}
                         required
                       />
@@ -92,7 +146,6 @@ const CheckoutForm = () => {
                       <Input
                         label='Correo electrónico'
                         type='email'
-                        className=''
                         {...field}
                         required
                       />
@@ -109,9 +162,8 @@ const CheckoutForm = () => {
                   <FormItem className='text-start'>
                     <FormControl>
                       <Input
-                        label='Numero telefónico'
-                        type='number'
-                        className=''
+                        label='Número telefónico'
+                        type='tel'
                         {...field}
                         required
                       />
@@ -120,24 +172,25 @@ const CheckoutForm = () => {
                   </FormItem>
                 )}
               />
-              <FormField
-                control={form.control}
-                name='password'
-                render={({ field }) => (
-                  <FormItem className='text-start'>
-                    <FormControl>
-                      <Input
-                        label='Contraseña'
-                        type='password'
-                        {...field}
-                        className=''
-                        required
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+              {!user && (
+                <FormField
+                  control={form.control}
+                  name='password'
+                  render={({ field }) => (
+                    <FormItem className='text-start'>
+                      <FormControl>
+                        <Input
+                          label='Contraseña'
+                          type='password'
+                          {...field}
+                          required
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              )}
             </fieldset>
           </form>
         </Form>

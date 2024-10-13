@@ -46,10 +46,12 @@ const useAuth = () => {
       // toast.success('Registro exitoso', {
       //   description: 'Bienvenido, ya eres parte de nuestra comunidad'
       // });
+      if (!form.password) return;
       const payload = {
         email: form.email,
         password: form.password
       };
+
       if (res) {
         handleSignIn(payload);
         return res;

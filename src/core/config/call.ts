@@ -1,4 +1,7 @@
 import axios from 'axios';
+//@ts-ignore
+import Cookies from 'js-cookie';
+
 import { API_URL, IS_DEV } from './constants';
 import { removeParamsIfNull } from './utils';
 
@@ -24,15 +27,15 @@ const header = async ({
     method
   };
 
-  const apiUrl = IS_DEV ? 'http://192.168.1.6:3000' : API_URL;
+  const apiUrl = IS_DEV ? 'https://e0f3-186-159-79-18.ngrok-free.app' : API_URL;
 
+  let ssId = Cookies.get('ssid');
   options.url = `${apiUrl}${removeParamsIfNull(path)}`;
 
   options.headers = {
-    ssid: 'your-ssid-token',
-    'X-Developed-By': 'Emerson'
+    Authorization: `Bearer ${ssId}`,
+    'X-Developed-By': 'Miguel Vega | (atleugim)'
   };
-
   if (!withFiles) {
     options.headers['Content-Type'] = 'application/json';
   }

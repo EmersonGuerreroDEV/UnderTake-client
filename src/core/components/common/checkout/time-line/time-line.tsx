@@ -32,13 +32,13 @@ const TimeLine = ({ setStep, step }: Props) => {
           />
           <Item
             icon={<CarIcon strokeWidth={1} />}
-            title='Datos'
+            title='Envío'
             state={step >= 3}
             onClick={() => setStep(3)}
           />
           <Item
             icon={<DollarSign strokeWidth={1} />}
-            title='Datos'
+            title='Compra'
             state={step >= 4}
             finish
             onClick={() => setStep(4)}

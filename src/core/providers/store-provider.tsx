@@ -8,6 +8,7 @@ import { Toaster } from 'sonner';
 import TailwindIndicator from '~/components/common/tailwind-indicator';
 import useCart from '../components/hooks/use-cart';
 import { CartProp } from '../interfaces/cart';
+import UserProvider from './user-provider';
 
 setDefaultOptions({
   locale: es
@@ -45,9 +46,11 @@ const StoreProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <TailwindIndicator />
-        <Toaster position='top-center' richColors />
-        <CartContext.Provider value={value}>{children}</CartContext.Provider>
+        <UserProvider>
+          <TailwindIndicator />
+          <Toaster position='top-center' richColors />
+          <CartContext.Provider value={value}>{children}</CartContext.Provider>
+        </UserProvider>
       </QueryClientProvider>
     </>
   );

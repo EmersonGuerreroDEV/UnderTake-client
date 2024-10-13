@@ -15,13 +15,13 @@ const Cart = ({ setStep }: CartProps) => {
   return (
     <div>
       <Wrapper>
-        <div className='mt-4 w-full px-24'>
+        <div className='mt-4 w-full lg:px-24'>
           <h1 className='py-4 text-center text-xl font-semibold'>
             Carro de compra
           </h1>
-          <div className='flex w-full space-x-8'>
+          <div className='flex w-full flex-col space-x-0 lg:flex-row lg:space-x-8'>
             <Card className='w-full bg-slate-100'>
-              <CardContent className='space-y-2'>
+              <CardContent className='space-y-4'>
                 {cart?.map((product) => {
                   return <ItemCart key={product.id} {...product} />;
                 })}
