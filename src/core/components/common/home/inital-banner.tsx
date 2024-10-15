@@ -5,7 +5,7 @@ import AltCarousel from '../../ui/alt-carousel';
 
 const InitialBanner = () => {
   return (
-    <div className=' w-full lg:min-h-[758px]'>
+    <div className=' w-full  lg:min-h-[758px]'>
       <AltCarousel
         autoPlay
         timeSpeed={5000}

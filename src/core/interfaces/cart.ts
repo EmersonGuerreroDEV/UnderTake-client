@@ -10,6 +10,7 @@ export interface CartProp {
   quantity: number;
   variantId: number;
   variants?: Variant[];
+  product?: ProductProp;
 }
 
 export interface ProductProp {

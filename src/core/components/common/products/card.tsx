@@ -104,11 +104,11 @@ const CardProduct = ({ className, product }: CardProps) => {
           </div>
         </div>
       </CardContent>
-      <CardFooter>
+      <CardFooter className='w-full  px-1'>
         {!validProductCardInclude() ? (
           <Button
             onClick={handleAddProduct}
-            className='bg-blue-500 hover:bg-blue-400'
+            className='w-full bg-blue-500  hover:bg-blue-400'
           >
             Agregar al carrito
           </Button>

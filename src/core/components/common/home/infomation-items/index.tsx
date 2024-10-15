@@ -63,17 +63,20 @@ const InformationItems = () => {
     }
   ];
   return (
-    <div className='relative -mt-44 bg-custom-gradient pt-16 xl:pb-12'>
+    <div className='relative -mt-24 bg-custom-gradient pt-16 lg:-mt-44 xl:pb-12'>
       <Wrapper>
         <Carousel
           plugins={[plugin.current]}
-          className='mx-auto w-full max-w-[250px] xl:max-w-screen-xl'
+          className='mx-auto w-full max-w-[250px] md:max-w-screen-sm lg:max-w-screen-md xl:max-w-screen-xl'
         >
           <CarouselContent>
             {InformationHome.map((item) => {
               return (
-                <CarouselItem key={item.title} className='xl:basis-1/5 '>
-                  <Card className='mx-auto w-full max-w-44 shadow-md xl:h-80 xl:max-w-52'>
+                <CarouselItem
+                  key={item.title}
+                  className='w-full md:basis-1/2 lg:basis-1/3 xl:basis-1/5 '
+                >
+                  <Card className='mx-auto w-full shadow-md lg:max-w-44 xl:h-80 xl:max-w-52'>
                     <CardHeader>
                       <CardTitle className='text-center text-lg'>
                         {item.title}

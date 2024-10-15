@@ -68,7 +68,7 @@ const OrderPurchase = () => {
                 <tbody>
                   {data?.orderDetails?.map((product: CartProp) => (
                     <tr key={product.id} className='border-b'>
-                      <td className='px-4 py-2'>{product.name}</td>
+                      <td className='px-4 py-2'>{product?.product?.name}</td>
                       <td className='px-4 py-2'>{product.quantity}</td>
                       <td className='px-4 py-2 text-right'>
                         {Helpers.formatCurrency(product.price)}

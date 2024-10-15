@@ -55,8 +55,8 @@ const SendAddressForm = ({ onSend }: SendAddressFormProps) => {
   const form = useForm<z.infer<typeof AddressSchema>>({
     resolver: zodResolver(AddressSchema),
     defaultValues: {
-      address: user?.addresses[0]?.address || '',
-      city: user?.addresses[0]?.city?.id || '',
+      address: user?.addresses?.[0]?.address || '',
+      city: user?.addresses?.[0]?.city?.id || '',
       postal: user?.addresses[0]?.postalCode || '',
       neighborhood: user?.addresses[0]?.neighborhood || ''
     }

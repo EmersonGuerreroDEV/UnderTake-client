@@ -20,7 +20,7 @@ const Categories: React.FC = () => {
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
-      items: 2,
+      items: 3,
       slidesToSlide: 1
     },
     mobile: {
