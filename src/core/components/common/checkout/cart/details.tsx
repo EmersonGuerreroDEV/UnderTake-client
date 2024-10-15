@@ -11,21 +11,13 @@ interface DetailsProps {
 }
 
 const Details = ({ onClick }: DetailsProps) => {
-  const { cart } = useContext(CartContext);
+  const { cart, subTotalCalcule } = useContext(CartContext);
   const [discount, setDiscount] = useState(0);
 
   if (!cart) return;
-  const SubTotalCalcule = (): number => {
-    return cart.reduce((total, product) => {
-      const totalDiscount = product.discount
-        ? (product.price * product.discount) / 100
-        : product.price;
-      return total + totalDiscount * product.quantity;
-    }, 0);
-  };
 
   const totalCalcule = () => {
-    const subTotal = SubTotalCalcule();
+    const subTotal = subTotalCalcule();
     const discountAmount = (subTotal * discount) / 100;
     const total = subTotal - discountAmount;
     return total;
@@ -40,13 +32,13 @@ const Details = ({ onClick }: DetailsProps) => {
             <Input id='cupon' type='text' />
           </div>
         </div>
-        <div className='space-y-4 rounded-lg bg-white p-4'>
+        <div className='mt-4 space-y-4 rounded-lg bg-white p-4'>
           <div className='flex justify-between'>
             <Label htmlFor='picture' className='text-gray-400'>
               Subtotal:
             </Label>
             <Label htmlFor='picture'>
-              {Helpers.formatCurrency(SubTotalCalcule())}
+              {Helpers.formatCurrency(subTotalCalcule())}
             </Label>
           </div>
           <div className='flex justify-between'>
@@ -69,6 +61,12 @@ const Details = ({ onClick }: DetailsProps) => {
               className='bg-orange-500 font-bold text-white hover:bg-orange-700 '
             >
               Continuar
+            </Button>
+            <Button
+              onClick={onClick}
+              className='mt-4 border border-blue-400 bg-white font-light  text-blue-400 hover:bg-white'
+            >
+              Seguir comprando
             </Button>
           </div>
         </div>

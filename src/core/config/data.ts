@@ -1,11 +1,9 @@
-import { ProductProp } from '../interfaces/cart';
-
 export const bannerHome = [
   { image: '/assets/images/banners/promotional.jpg' },
   { image: '/assets/images/banners/promotional2.jpg' }
 ];
 
-export const offerProducts: ProductProp[] = [
+export const offerProducts = [
   {
     id: 1,
     name: 'Xiaomi Redmi Note 13 Pro 4G Dual SIM 256 GB azul 8 GB RAM',

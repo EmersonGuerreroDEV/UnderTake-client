@@ -1,6 +1,6 @@
 import Autoplay from 'embla-carousel-autoplay';
 import Image from 'next/image';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Variant } from '~/core/interfaces/products';
 import {
   Carousel,
@@ -13,19 +13,25 @@ import {
 
 interface GalleryProps {
   variant: Variant[];
+  setVariant: (variant: Variant) => void;
 }
 
-const Gallery = ({ variant }: GalleryProps) => {
+const Gallery = ({ variant, setVariant }: GalleryProps) => {
   const plugin = useRef(Autoplay({ delay: 5000, stopOnInteraction: true }));
   const [api, setApi] = useState<CarouselApi>();
 
   const onDotButtonClick = useCallback(
-    (index: number) => {
+    (index: number, variant: Variant) => {
       if (!api) return;
       api.scrollTo(index);
+      setVariant(variant);
     },
     [api]
   );
+
+  useEffect(() => {
+    setVariant(variant[0]);
+  }, [variant]);
 
   return (
     <div className='mx-auto flex w-[800px] space-x-8'>
@@ -35,7 +41,7 @@ const Gallery = ({ variant }: GalleryProps) => {
             <button
               key={item.id}
               className=''
-              onClick={() => onDotButtonClick(index)}
+              onClick={() => onDotButtonClick(index, item)}
             >
               <Image
                 src={item.image}

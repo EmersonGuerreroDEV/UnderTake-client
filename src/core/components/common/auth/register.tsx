@@ -23,6 +23,9 @@ const LoginSchema = z.object({
   email: z.string().email({
     message: 'El correo electrónico no es válido.'
   }),
+  document: z.string().min(1, {
+    message: 'El numero de teléfono no es valido'
+  }),
   phone: z.string().min(1, {
     message: 'El numero de teléfono no es valido'
   }),
@@ -39,6 +42,7 @@ const RegisterForm = () => {
     resolver: zodResolver(LoginSchema),
     defaultValues: {
       email: '',
+      document: '',
       password: '',
       fullName: '',
       phone: ''

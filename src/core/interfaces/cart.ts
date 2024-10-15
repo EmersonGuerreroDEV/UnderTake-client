@@ -8,7 +8,8 @@ export interface CartProp {
   image: string;
   discount: number;
   quantity: number;
-  variants: Variant[];
+  variantId: number;
+  variants?: Variant[];
 }
 
 export interface ProductProp {

@@ -1,6 +1,6 @@
 'use client';
 import { BadgeCheckIcon, Star, TruckIcon } from 'lucide-react';
-import { useContext, useMemo } from 'react';
+import { useContext, useMemo, useState } from 'react';
 import Payments from '~/core/components/common/payments';
 import Counter from '~/core/components/common/products/counter';
 import Gallery from '~/core/components/common/products/gallery';
@@ -9,6 +9,7 @@ import { Card, CardContent, CardTitle } from '~/core/components/ui/card';
 import LoadingPage from '~/core/components/ui/loading/page';
 import Wrapper from '~/core/components/ui/wrapper';
 import useProducts from '~/core/hooks/queries/use-products';
+import { Variant } from '~/core/interfaces/products';
 import { CartContext } from '~/core/providers/store-provider';
 import Helpers from '~/core/utils/helpers';
 
@@ -25,8 +26,14 @@ const Product = () => {
   };
 
   const { cart, addProduct, updateQuantity } = useContext(CartContext);
+  const [variantSelected, setVariantSelected] = useState<Variant | null>(null);
   const handleAddProduct = () => {
-    addProduct(product);
+    if (!variantSelected) return;
+    addProduct({
+      ...product,
+      quantity: 1,
+      variantId: variantSelected?.id
+    });
   };
   const { productId, isRefetchId } = useProducts();
 
@@ -59,7 +66,10 @@ const Product = () => {
       <Wrapper className='px-32'>
         <div className='mx-auto mt-24 flex w-full gap-8 '>
           <div className='min-h-[400px] w-full '>
-            <Gallery variant={productId?.variants} />
+            <Gallery
+              setVariant={(variant) => setVariantSelected(variant)}
+              variant={productId?.variants}
+            />
           </div>
           <div className='flex w-[400px] justify-end '>
             <Card className='w-[400px] rounded-lg border'>

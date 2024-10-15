@@ -2,6 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
+import { Button } from '~/core/components/ui/button';
 import { Card, CardContent } from '~/core/components/ui/card';
 import {
   Form,
@@ -16,6 +17,7 @@ import SelectAlt from '~/core/components/ui/select-alt';
 
 import useAddress from '~/core/hooks/queries/use-address';
 import UseLocation from '~/core/hooks/queries/use-location';
+import useCheckout from '~/core/hooks/use-checkout';
 import eventBus from '~/core/hooks/use-event-bust';
 import { CityProps, DepartmentsProps } from '~/core/interfaces/location';
 import { UserContext } from '~/core/providers/user-provider';
@@ -24,7 +26,9 @@ const AddressSchema = z.object({
   address: z.string().min(4, {
     message: 'La dirección no valida'
   }),
-  postal: z.string().min(0, {}),
+  postal: z.string().min(4, {
+    message: 'Código postal requerido'
+  }),
 
   city: z.string().min(4, {
     message: 'La ciudad requerida'
@@ -40,25 +44,40 @@ interface SendAddressFormProps {
 
 const SendAddressForm = ({ onSend }: SendAddressFormProps) => {
   const { user } = useContext(UserContext);
+  const { checkout, setCheckout } = useCheckout();
   const { city: cities } = UseLocation();
   const [departmentState, setDepartmentState] =
     useState<DepartmentsProps | null>(null);
   const [cityState, setCitySate] = useState<CityProps | null>(null);
   const { handleSendAddress, isLoadingSendAddress } = useAddress();
+  const [clean, setClean] = useState(false);
 
   const form = useForm<z.infer<typeof AddressSchema>>({
     resolver: zodResolver(AddressSchema),
     defaultValues: {
-      address: '',
-      city: '',
-      postal: '',
-      neighborhood: ''
+      address: user?.addresses[0]?.address || '',
+      city: user?.addresses[0]?.city?.id || '',
+      postal: user?.addresses[0]?.postalCode || '',
+      neighborhood: user?.addresses[0]?.neighborhood || ''
     }
   });
 
   const onSubmit = async (values: z.infer<typeof AddressSchema>) => {
-    const res = await handleSendAddress(values);
-    if (res) {
+    if (!user?.addresses) return;
+    if (user?.addresses?.length <= 0) {
+      const res = await handleSendAddress(values);
+      if (res) {
+        onSend();
+        setCheckout({
+          ...checkout,
+          sendAddress: values
+        });
+      }
+    } else {
+      setCheckout({
+        ...checkout,
+        sendAddress: values
+      });
       onSend();
     }
   };
@@ -82,6 +101,13 @@ const SendAddressForm = ({ onSend }: SendAddressFormProps) => {
       eventBus.off('sendUserAddress', manejarEvento);
     };
   }, [form]);
+
+  if (!user) return;
+
+  const onCleanForm = () => {
+    form.reset();
+    setClean(true);
+  };
 
   return (
     <Card className='w-full rounded-lg border bg-slate-50/40 shadow-lg'>
@@ -160,8 +186,19 @@ const SendAddressForm = ({ onSend }: SendAddressFormProps) => {
                   </FormItem>
                 )}
               />
+              {clean && <Button>Guardar dirección</Button>}
             </fieldset>
           </form>
+          <div className='mt-8 grid grid-cols-2 gap-8'>
+            {user?.addresses.length >= 0 && !clean && (
+              <button
+                className='px-0 text-start text-sm font-extralight text-blue-400 underline'
+                onClick={onCleanForm}
+              >
+                Nueva dirección
+              </button>
+            )}
+          </div>
         </Form>
       </CardContent>
     </Card>

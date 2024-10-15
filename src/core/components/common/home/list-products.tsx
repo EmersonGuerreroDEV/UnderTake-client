@@ -1,7 +1,5 @@
-import { offerProducts } from '~/core/config/data';
 import Title from '../../ui/title';
 import Wrapper from '../../ui/wrapper';
-import CardProduct from '../products/card';
 
 const ListProducts = () => {
   return (
@@ -10,11 +8,11 @@ const ListProducts = () => {
         <div className='w-full space-y-4'>
           <Title title='Te va a gustar' size='xl' />
 
-          <div className='grid grid-cols-2 md:grid-cols-5'>
+          {/* <div className='grid grid-cols-2 md:grid-cols-5'>
             {offerProducts.map((product) => {
               return <CardProduct product={product} key={product.id} />;
             })}
-          </div>
+          </div> */}
         </div>
       </Wrapper>
     </div>

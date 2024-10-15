@@ -20,7 +20,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const inputType = showPassword ? 'text' : type || 'text';
 
     return (
-      <div className='relative overflow-hidden py-2'>
+      <div className='relative  py-2'>
         <input
           type={inputType}
           className={cn(

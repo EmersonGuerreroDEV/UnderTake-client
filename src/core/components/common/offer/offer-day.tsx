@@ -1,5 +1,4 @@
 import { Card, CardContent, CardHeader, CardTitle } from '../../ui/card';
-import CardProduct from '../products/card';
 
 function OfferDay() {
   const product = {
@@ -18,10 +17,10 @@ function OfferDay() {
         <CardTitle className='text-xl'>Oferta del dia</CardTitle>
       </CardHeader>
       <CardContent className='p-0'>
-        <CardProduct
+        {/* <CardProduct
           product={product}
           className='border-none p-0 shadow-none'
-        />
+        /> */}
       </CardContent>
     </Card>
   );

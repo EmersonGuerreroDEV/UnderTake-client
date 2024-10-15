@@ -1,10 +1,10 @@
 import { call } from '../config/call';
 
 class ProductsRepository {
-  static readonly getProducts = async () => {
+  static readonly getProducts = async (filter: string, search: string) => {
     const res = await call({
       method: 'GET',
-      path: '/products'
+      path: `/products?filter=${filter ? filter : null}&search=${search ? search : null}`
     });
 
     if (res) {

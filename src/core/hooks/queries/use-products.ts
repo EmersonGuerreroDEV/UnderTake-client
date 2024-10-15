@@ -2,16 +2,16 @@ import { useParams } from 'next/navigation';
 import { useQuery } from 'react-query';
 import ProductsRepository from '~/core/repositories/produtcs-repositorio';
 
-const useProducts = () => {
+const useProducts = (filter = '', search = '') => {
   const { id } = useParams();
 
   const {
     isLoading: isLoadingUser,
     refetch,
-    data
+    data: allProducts
   } = useQuery({
     queryKey: ['products'],
-    queryFn: () => ProductsRepository.getProducts(),
+    queryFn: () => ProductsRepository.getProducts(filter, search),
     onError: (err) => console.error(err)
   });
 
@@ -25,10 +25,16 @@ const useProducts = () => {
     enabled: !!id
   });
 
+  // Filtrar productos si el filtro es "onSale"
+  const filteredProducts =
+    filter === 'onSale'
+      ? allProducts?.filter((product: any) => product.onSale)
+      : allProducts;
+
   return {
     isLoading: isLoadingUser,
     productId,
-    data,
+    data: filteredProducts, // Devolver productos filtrados
     isRefetchId: isFetchingId || isLoadingId
   };
 };

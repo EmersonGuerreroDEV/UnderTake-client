@@ -3,6 +3,7 @@ import { useContext, useState } from 'react';
 import Cart from '~/core/components/common/checkout/cart';
 import CheckoutStep from '~/core/components/common/checkout/checkout-form';
 import EmptyCart from '~/core/components/common/checkout/empty-cart';
+import PaymentsStep from '~/core/components/common/checkout/payments';
 import SendAddressStep from '~/core/components/common/checkout/send-address';
 import TimeLine from '~/core/components/common/checkout/time-line/time-line';
 import { UserContext } from '~/core/providers/user-provider';
@@ -17,6 +18,7 @@ const CheckoutPage = () => {
       {step === 1 && <Cart setStep={() => setStep(2)} />}
       {step === 2 && <CheckoutStep setStep={() => setStep(3)} />}
       {step === 3 && <SendAddressStep setStep={() => setStep(4)} />}
+      {step === 4 && <PaymentsStep />}
     </div>
   );
 };

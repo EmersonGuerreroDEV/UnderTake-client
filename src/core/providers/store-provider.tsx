@@ -19,6 +19,7 @@ interface CartContextProp {
   addProduct: (product: CartProp) => void;
   updateQuantity: (id: number, number: number) => void;
   removeProduct: (id: number) => void;
+  subTotalCalcule: () => number;
 }
 
 export const CartContext = createContext<CartContextProp>(
@@ -37,10 +38,11 @@ const queryClient = new QueryClient({
 });
 
 const StoreProvider = ({ children }: { children: React.ReactNode }) => {
-  const { cart, addProduct, removeProduct, updateQuantity } = useCart();
+  const { cart, addProduct, removeProduct, updateQuantity, subTotalCalcule } =
+    useCart();
 
   const value = useMemo(() => {
-    return { cart, addProduct, removeProduct, updateQuantity };
+    return { cart, addProduct, removeProduct, updateQuantity, subTotalCalcule };
   }, [cart]);
 
   return (

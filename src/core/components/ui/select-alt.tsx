@@ -23,7 +23,7 @@ const SelectAlt = ({
   defaultValue
 }: Props) => {
   return (
-    <div className='rounded-full bg-white  text-gray-800'>
+    <div className='rounded-full bg-white  text-gray-400'>
       <Label className='text-xs text-blue-500' htmlFor='terms'>
         {label}
       </Label>

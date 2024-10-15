@@ -1,7 +1,6 @@
 import Categories from '~/core/components/common/categories';
 import InformationItems from '~/core/components/common/home/infomation-items';
 import InitialBanner from '~/core/components/common/home/inital-banner';
-import ListProducts from '~/core/components/common/home/list-products';
 import More from '~/core/components/common/home/more';
 import Offers from '~/core/components/common/home/offers';
 import Trending from '~/core/components/common/home/trending';
@@ -32,7 +31,7 @@ const HomePage = () => {
       </Wrapper>
       <More title='Computadores' />
       <Payments />
-      <ListProducts />
+      {/* <ListProducts /> */}
     </main>
   );
 };

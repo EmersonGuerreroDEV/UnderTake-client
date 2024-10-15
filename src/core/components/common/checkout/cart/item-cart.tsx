@@ -40,10 +40,10 @@ const ItemCart = ({ ...resp }: CartProp) => {
   const flirtsImage = resp.variants?.[0]?.image;
 
   return (
-    <div className='relative flex w-full justify-between rounded-lg border bg-white p-4'>
+    <div className='relative flex w-full justify-between rounded-lg border border-gray-300 bg-white p-4'>
       <div className='flex w-full items-start space-x-2'>
         <Image
-          src={flirtsImage}
+          src={flirtsImage!}
           width={100}
           height={100}
           alt='product'
@@ -51,7 +51,7 @@ const ItemCart = ({ ...resp }: CartProp) => {
         />
         <div className='w-full space-y-4'>
           <span className='text-xs uppercase text-gray-400 '>Samsung</span>
-          <h1 className='text-sm font-medium lg:text-lg '>{resp?.name}</h1>
+          <h1 className='lg:text-bse text-sm font-medium '>{resp?.name}</h1>
           <div className='flex flex-col '>
             {resp?.discount > 0 && (
               <span className='text-sm font-light text-red-300 line-through opacity-80 md:text-sm'>
@@ -59,10 +59,10 @@ const ItemCart = ({ ...resp }: CartProp) => {
               </span>
             )}
             <div className='flex w-full justify-between'>
-              <span className='text-lg font-medium text-gray-600 md:text-2xl'>
+              <span className='font-sans text-lg font-medium text-gray-600 md:text-2xl'>
                 {Helpers.formatCurrency(discountCalcule())}{' '}
               </span>
-              <div className='w-32'>
+              <div className='w-44'>
                 <Counter
                   onDecrement={handleDecrement}
                   onIncrement={handleIncrement}

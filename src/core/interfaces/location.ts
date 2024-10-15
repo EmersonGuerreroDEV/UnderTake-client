@@ -19,3 +19,8 @@ export interface CityProps {
   __v: number;
   id: string;
 }
+
+export interface CityUser {
+  name: string;
+  id: string;
+}

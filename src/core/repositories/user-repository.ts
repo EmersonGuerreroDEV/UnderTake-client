@@ -1,6 +1,6 @@
 import { call } from '../config/call';
 import { RegisterProps } from '../interfaces/auth';
-import { AddressUser } from '../interfaces/user';
+import { sendAddressUser } from '../interfaces/user';
 
 class UserRepository {
   static readonly getMe = async () => {
@@ -29,10 +29,10 @@ class UserRepository {
     throw new Error('Error fetching users');
   };
 
-  static readonly sendAddress = async (data: AddressUser) => {
+  static readonly sendAddress = async (data: sendAddressUser) => {
     const res = await call({
       method: 'PATCH',
-      path: ' /users/add-address',
+      path: '/users/add-address',
       data: data
     });
     if (res) {

@@ -34,7 +34,23 @@ const useCart = () => {
     setCart(updatedCart);
   };
 
-  return { cart, setCart, addProduct, removeProduct, updateQuantity };
+  const subTotalCalcule = (): number => {
+    return cart.reduce((total, product) => {
+      const totalDiscount = product.discount
+        ? (product.price * product.discount) / 100
+        : product.price;
+      return total + totalDiscount * product.quantity;
+    }, 0);
+  };
+
+  return {
+    cart,
+    setCart,
+    addProduct,
+    removeProduct,
+    updateQuantity,
+    subTotalCalcule
+  };
 };
 
 export default useCart;
