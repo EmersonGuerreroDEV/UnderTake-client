@@ -70,7 +70,7 @@ const useAuth = () => {
       const res = await doSignIn(form);
       if (res) {
         Cookies.set('ssid', res.access_token, { expires: 7 });
-        setUser(res?.user);
+        refetch();
         router.push(Routes.home);
         return res;
       }

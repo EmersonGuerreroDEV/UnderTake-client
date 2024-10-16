@@ -27,7 +27,11 @@ const useCart = () => {
   };
 
   const updateQuantity = (productId: number, quantity: number) => {
-    console.log(productId, quantity);
+    if (quantity <= 0) {
+      removeProduct(productId);
+      return;
+    }
+
     const updatedCart = cart.map((item) =>
       item.id === productId ? { ...item, quantity } : item
     );

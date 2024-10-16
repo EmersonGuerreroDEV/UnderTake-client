@@ -16,7 +16,7 @@ const SendAddressStep = ({ setStep }: SendAddressProps) => {
     <div className='mt-8'>
       <Wrapper>
         <div className='flex w-full space-x-8 '>
-          <div>
+          <div className='w-full'>
             <SendAddressForm onSend={setStep} />
             <MyAddresses />
           </div>

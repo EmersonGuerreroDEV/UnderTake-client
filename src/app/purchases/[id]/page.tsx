@@ -38,7 +38,8 @@ const OrderPurchase = () => {
                 Información del Pedido
               </h2>
               <p className='mb-1 text-sm font-extralight'>
-                <strong className='font-medium'>ID de Pedido:</strong> {data.id}
+                <strong className='font-medium'>ID de Pedido:</strong>{' '}
+                {data?.id}
               </p>
               <p className='mb-1 font-extralight'>
                 <strong className='font-medium'>Estado:</strong>{' '}
@@ -46,7 +47,7 @@ const OrderPurchase = () => {
               </p>
               <p className='font-extralight'>
                 <strong className='font-medium'>Fecha de Creación:</strong>{' '}
-                {new Date(data.createdAt).toLocaleDateString()}
+                {new Date(data?.createdAt).toLocaleDateString()}
               </p>
             </div>
 
@@ -69,13 +70,13 @@ const OrderPurchase = () => {
                   {data?.orderDetails?.map((product: CartProp) => (
                     <tr key={product.id} className='border-b'>
                       <td className='px-4 py-2'>{product?.product?.name}</td>
-                      <td className='px-4 py-2'>{product.quantity}</td>
+                      <td className='px-4 py-2'>{product?.quantity}</td>
                       <td className='px-4 py-2 text-right'>
-                        {Helpers.formatCurrency(product.price)}
+                        {Helpers.formatCurrency(product?.price)}
                       </td>
                       <td className='px-4 py-2 text-right'>
                         {Helpers.formatCurrency(
-                          product.price * product.quantity
+                          product?.price * product?.quantity
                         )}
                       </td>
                     </tr>
@@ -87,7 +88,7 @@ const OrderPurchase = () => {
             <div className='mt-4'>
               <h2 className='text-xl font-semibold'>Total de la Compra</h2>
               <p className='text-2xl font-bold text-gray-800'>
-                {Helpers.formatCurrency(data.total)}
+                {Helpers.formatCurrency(data?.total)}
               </p>
             </div>
           </CardContent>

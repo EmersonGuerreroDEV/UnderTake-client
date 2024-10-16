@@ -27,7 +27,7 @@ const header = async ({
     method
   };
 
-  const apiUrl = IS_DEV ? 'https://1e57-186-159-64-82.ngrok-free.app' : API_URL;
+  const apiUrl = IS_DEV ? 'http://192.168.1.6:3000' : API_URL;
 
   let ssId = Cookies.get('ssid');
   options.url = `${apiUrl}${removeParamsIfNull(path)}`;

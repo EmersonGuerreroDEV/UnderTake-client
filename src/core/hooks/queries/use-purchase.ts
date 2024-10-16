@@ -1,11 +1,15 @@
 import { useRouter } from 'next/navigation';
 import { useMutation } from 'react-query';
 import { toast } from 'sonner';
+import useCart from '~/core/components/hooks/use-cart';
 import { PurchaseProps } from '~/core/interfaces/purchase';
 import PurchaseRepository from '~/core/repositories/purchase-repository';
+import useCheckout from '../use-checkout';
 
 const usePurchase = () => {
   const router = useRouter();
+  const { setCart } = useCart();
+  const { setCheckout } = useCheckout();
   const { isLoading, mutateAsync } = useMutation(
     (data: PurchaseProps) => PurchaseRepository.sendPurchase(data),
     {
@@ -24,7 +28,14 @@ const usePurchase = () => {
   const handleSendPurchase = async (data: PurchaseProps) => {
     const res = await mutateAsync(data);
     if (res) {
-      return router.push(res?.urlRedirect);
+      setCart([]);
+      setCheckout({});
+      if (res?.noRedirect) {
+        window.open(res?.urlRedirect, '_blank');
+        return router.push(`purchases/${res?.order}`);
+      }
+
+      console.log(res);
     }
     return res;
   };
