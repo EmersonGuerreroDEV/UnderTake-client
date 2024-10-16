@@ -3,5 +3,6 @@ export const Routes = {
   checkout: '/checkout',
   login: '/auth/sign-in',
   register: '/auth/sign-up',
-  profile: '/profile'
+  profile: '/profile?tab=account',
+  profileAccount: '/profile/account'
 };
