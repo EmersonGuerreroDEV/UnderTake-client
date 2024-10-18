@@ -1,5 +1,5 @@
 'use client';
-import { Star } from 'lucide-react';
+import { ShoppingCartIcon, Star } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useContext, useMemo } from 'react';
@@ -48,7 +48,9 @@ const CardProduct = ({ className, product }: CardProps) => {
     return total;
   };
 
-  const flirtsImage = product.variants?.[0]?.image;
+  const flirtsImage = product?.variants?.[0]?.image;
+
+  if (!product) return;
 
   return (
     <Card className={twMerge(className, 'mx-auto p-0 shadow-lg')}>
@@ -75,10 +77,14 @@ const CardProduct = ({ className, product }: CardProps) => {
             />
           </div>
         </div>
-        <h2 className='mt-1 h-12 text-xs font-medium text-blue-500'>
+        <span className=' mt-1 text-xs font-light uppercase text-gray-400'>
+          {product?.brand?.name}
+        </span>
+        <h2 className='hideLine2 mt-1 h-10 text-sm font-medium uppercase text-blue-500'>
           {product?.name}{' '}
           {/* Asumiendo que `product` tiene una propiedad `name` */}
         </h2>
+
         <div className='mt-4 flex h-10 items-end justify-between'>
           <div>
             {product.discount > 0 && (
@@ -110,7 +116,8 @@ const CardProduct = ({ className, product }: CardProps) => {
             onClick={handleAddProduct}
             className='w-full bg-blue-500  hover:bg-blue-400'
           >
-            Agregar al carrito
+            Agregar al carrito{' '}
+            <ShoppingCartIcon className='pl-2' size={30} strokeWidth={1} />
           </Button>
         ) : (
           <Counter

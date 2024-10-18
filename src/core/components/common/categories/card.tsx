@@ -7,12 +7,12 @@ const CardCategories = ({ ...props }: any) => {
         <Image
           width={200}
           height={200}
-          src={props?.imagen}
-          alt={props?.nombre}
+          src={props?.image}
+          alt={props?.name}
           objectFit='contain'
         />
       </div>
-      <h2 className='mt-2 text-center text-sm '>{props?.nombre}</h2>
+      <h2 className='mt-2 text-center text-sm '>{props?.name}</h2>
     </div>
   );
 };

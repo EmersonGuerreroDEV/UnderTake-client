@@ -24,4 +24,10 @@ export interface ProductProp {
   rating: number;
   stock: number;
   variants: Variant[];
+  brand: Brand;
+}
+
+interface Brand {
+  id: string;
+  name: string;
 }

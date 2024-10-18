@@ -91,7 +91,9 @@ const InformationItems = () => {
                       </CardDescription>
                     </CardContent>
                     <CardFooter>
-                      <Button className='w-full'>Mas información</Button>
+                      <Button className='w-full bg-orange-400'>
+                        Mas información
+                      </Button>
                     </CardFooter>
                   </Card>
                 </CarouselItem>

@@ -1,7 +1,7 @@
 'use client';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { categories } from '~/core/config/data';
+import useCategory from '~/core/hooks/queries/use-category';
 import { Card, CardContent, CardHeader, CardTitle } from '../../ui/card';
 import Wrapper from '../../ui/wrapper';
 import CardCategories from './card';
@@ -9,9 +9,12 @@ import CardCategories from './card';
 interface Category {
   id: string;
   nombre: string;
+  imagen: string;
 }
 
 const Categories: React.FC = () => {
+  const { allCategories, isLoadingCategory } = useCategory();
+
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -29,6 +32,8 @@ const Categories: React.FC = () => {
       slidesToSlide: 1
     }
   };
+
+  if (!allCategories) return;
 
   return (
     <div className='relative flex w-full bg-white'>
@@ -54,7 +59,7 @@ const Categories: React.FC = () => {
             autoPlaySpeed={3000}
             showDots
           >
-            {categories
+            {allCategories
               .reduce<Category[][]>((acc, category, index) => {
                 if (index % 2 === 0) {
                   //@ts-ignore
@@ -71,7 +76,7 @@ const Categories: React.FC = () => {
                   className='mx-auto flex w-full flex-col items-center space-y-8'
                 >
                   {pair.map((category) => (
-                    <div key={category.id} className='flex flex-col'>
+                    <div key={category.id} className='mx-auto flex flex-col'>
                       <CardCategories {...category} />
                     </div>
                   ))}

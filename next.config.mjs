@@ -19,6 +19,12 @@ const nextConfig = {
         hostname: 'http2.mlstatic.com',
         port: '',
         pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'sorfin.org',
+        port: '',
+        pathname: '/**'
       }
     ]
   }

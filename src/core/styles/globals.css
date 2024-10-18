@@ -85,3 +85,14 @@
   flex: 1 0 30%; /* Ajuste para ocupar el 30% del ancho en filas de 3 elementos */
   margin: 10px; /* Espaciado entre elementos */
 }
+
+.hideLine2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+
+  * {
+    display: inline;
+  }
+}

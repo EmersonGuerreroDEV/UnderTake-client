@@ -55,9 +55,9 @@ const ProfileForm = () => {
   };
 
   return (
-    <div className=' w-full bg-white  px-8 py-8 font-sans md:max-w-xl lg:rounded-lg'>
+    <div className=' w-full bg-white  px-8  font-sans md:max-w-xl lg:rounded-lg'>
       <Form {...form}>
-        <h1 className='text-center text-[23px] font-semibold text-primary lg:text-[35px]'>
+        <h1 className='text-start text-xl font-semibold text-primary '>
           Datos del usuario
         </h1>
         <form

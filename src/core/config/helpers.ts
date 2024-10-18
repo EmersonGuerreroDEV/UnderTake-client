@@ -5,3 +5,10 @@ export const pathFooterExcluded = [
   '/auth-password-reset-done',
   '/checkout'
 ];
+
+export const pathPrincipalHeaderIncluded = [
+  '/',
+  '/profile',
+  '/products',
+  '/purchases'
+];

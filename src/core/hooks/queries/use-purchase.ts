@@ -1,5 +1,5 @@
 import { useRouter } from 'next/navigation';
-import { useMutation } from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 import { toast } from 'sonner';
 import useCart from '~/core/components/hooks/use-cart';
 import { PurchaseProps } from '~/core/interfaces/purchase';
@@ -40,9 +40,21 @@ const usePurchase = () => {
     return res;
   };
 
+  const {
+    isLoading: isLoadingPurchase,
+    refetch,
+    data: allPurchase
+  } = useQuery({
+    queryKey: ['purchases'],
+    queryFn: () => PurchaseRepository.getPurchase(),
+    onError: (err) => console.error(err)
+  });
+
   return {
     handleSendPurchase,
-    isLoading
+    isLoading,
+    allPurchase,
+    isLoadingPurchase
   };
 };
 

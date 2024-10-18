@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import {
   Card,
   CardContent,
@@ -23,7 +24,7 @@ const OrderPurchase = () => {
   return (
     <div className='min-h-screen bg-gray-100 py-24'>
       <Wrapper>
-        <Card className='mx-auto w-full max-w-xl rounded-xl border border-gray-300 bg-white p-6 shadow-lg'>
+        <Card className='mx-auto w-full max-w-2xl rounded-xl border border-gray-300 bg-white p-6 shadow-lg'>
           <CardHeader>
             <CardTitle className='text-2xl font-bold text-gray-800'>
               Detalle de Compra
@@ -59,6 +60,7 @@ const OrderPurchase = () => {
                 <thead>
                   <tr className='bg-gray-200'>
                     <th className='border-b px-4 py-2 text-left'>Producto</th>
+                    <th className='border-b px-4 py-2 text-left'>Image</th>
                     <th className='border-b px-4 py-2 text-left'>Cantidad</th>
                     <th className='border-b px-4 py-2 text-right'>
                       Precio Unitario
@@ -70,6 +72,17 @@ const OrderPurchase = () => {
                   {data?.orderDetails?.map((product: CartProp) => (
                     <tr key={product.id} className='border-b'>
                       <td className='px-4 py-2'>{product?.product?.name}</td>
+                      <td className='px-4 py-2'>
+                        <Image
+                          alt={product?.name}
+                          src={product?.product?.variants?.[0].image || ''}
+                          style={{ objectFit: 'contain' }}
+                          className='bg-center object-cover'
+                          width={100}
+                          height={100}
+                        />
+                      </td>
+
                       <td className='px-4 py-2'>{product?.quantity}</td>
                       <td className='px-4 py-2 text-right'>
                         {Helpers.formatCurrency(product?.price)}
