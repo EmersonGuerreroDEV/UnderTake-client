@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Footer from '~/core/components/common/footer';
+import CommandMenuProvider from '~/core/components/common/header/commandMenu/CommandMenuProvider';
 import Header from '~/core/components/ui/header';
 import StoreProvider from '~/core/providers/store-provider';
 import '~/core/styles/globals.css';
@@ -21,11 +22,13 @@ export default function RootLayout({
   return (
     <html lang='es'>
       <body className={inter.className}>
-        <StoreProvider>
-          <Header />
-          <div className='w-full'>{children}</div>
-          <Footer />
-        </StoreProvider>
+        <CommandMenuProvider>
+          <StoreProvider>
+            <Header />
+            <div className='w-full'>{children}</div>
+            <Footer />
+          </StoreProvider>
+        </CommandMenuProvider>
       </body>
     </html>
   );

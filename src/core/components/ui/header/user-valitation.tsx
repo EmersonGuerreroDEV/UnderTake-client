@@ -35,7 +35,9 @@ const UserValidation = () => {
               width={100}
               height={100}
             />
-            <span className='text-xs font-light'>{user?.fullName}</span>
+            <span className='text-xs font-light capitalize'>
+              {user?.fullName}
+            </span>
           </div>
         )}
       </Button>

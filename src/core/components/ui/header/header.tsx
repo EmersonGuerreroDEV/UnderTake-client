@@ -6,6 +6,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Routes } from '~/core/config/routes';
 import { CartContext } from '~/core/providers/store-provider';
 import Wrapper from '../wrapper';
+import SearchComponent from './search';
 import UserValidation from './user-valitation';
 
 const PrincipalHeader: React.FC = () => {
@@ -41,17 +42,20 @@ const PrincipalHeader: React.FC = () => {
         </div>
       </div>
       <nav
-        className={`flex items-center justify-between px-8  transition-all duration-300 ease-in-out ${isScrolled ? 'h-20 -translate-y-12 bg-white text-black' : 'h-12 translate-y-0 bg-transparent text-white'}`}
+        className={`flex items-center justify-between px-8  transition-all duration-300 ease-in-out ${isScrolled ? 'h-24 -translate-y-12 bg-orange-400/95 text-white' : 'h-20 translate-y-0 bg-white text-black'}`}
       >
         <Wrapper className='flex justify-between '>
           <div className='flex  w-full items-center space-x-12  '>
             <div className='text-xl font-light'>Mi Tienda</div>
-            <div className='hidden lg:block'>
-              <ul className='flex space-x-12 font-light uppercase '>
-                <li>Inicio</li>
-                <li>Productos</li>
-                <li>Contacto</li>
-              </ul>
+            <div className='flex w-[600px] items-center space-x-12'>
+              <SearchComponent />
+              <div className='hidden lg:block'>
+                <ul className='flex space-x-12 text-sm font-light capitalize'>
+                  <li>Inicio</li>
+                  <li>Productos</li>
+                  <li>Contacto</li>
+                </ul>
+              </div>
             </div>
           </div>
           <div className='flex w-24 items-center justify-between'>

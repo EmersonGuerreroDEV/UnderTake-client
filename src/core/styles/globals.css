@@ -96,3 +96,80 @@
     display: inline;
   }
 }
+
+[cmdk-overlay] {
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(36 28 87 / var(--tw-bg-opacity));
+  --tw-bg-opacity: 0.1;
+}
+
+[cmdk-dialog],
+[cmdk-overlay] {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+}
+
+[cmdk-dialog] {
+  left: 50%;
+  width: 93%;
+  --tw-translate-x: -50%;
+  --tw-translate-y: 6rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  animation: fadeIn 0.3s ease-in-out;
+  overflow-y: scroll;
+  border-radius: 0.5rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color),
+    0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  max-height: 500px;
+}
+
+[cmdk-dialog]::-webkit-scrollbar {
+  display: none;
+}
+@media (min-width: 768px) {
+  [cmdk-dialog] {
+    max-width: 36rem;
+  }
+}
+
+[cmdk-list] {
+  height: var(--cmdk-list-height);
+  transition: height 0.1s ease;
+  padding: 0 0.75rem;
+  min-height: 5rem;
+}
+
+[cmdk-input] {
+  width: 100%;
+  padding: 1rem;
+  border-bottom: rgba(211, 211, 211, 0.582) solid 1px;
+  padding-left: 2.7rem;
+  padding-right: 2.7rem;
+  flex: 1;
+  @apply tracking-wide outline-none ring-0 placeholder:tracking-wide;
+}
+
+[cmdk-empty] {
+  @apply flex items-center justify-center;
+}
+
+[cmdk-item] {
+  @apply my-3 rounded-lg duration-200 hover:bg-gray-50;
+}
+
+[cmdk-group] {
+  @apply pb-[0.075rem];
+}
