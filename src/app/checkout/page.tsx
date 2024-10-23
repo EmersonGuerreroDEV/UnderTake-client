@@ -11,13 +11,14 @@ import { UserContext } from '~/core/providers/user-provider';
 const CheckoutPage = () => {
   const { user } = useContext(UserContext);
   const [step, setStep] = useState<number>(1);
+  const [isLoading, setIsLoading] = useState(false)
   return (
     <div className='pb-12'>
       <TimeLine step={step} setStep={(step: number) => setStep(step)} />
       <EmptyCart />
       {step === 1 && <Cart setStep={() => setStep(2)} />}
-      {step === 2 && <CheckoutStep setStep={() => setStep(3)} />}
-      {step === 3 && <SendAddressStep setStep={() => setStep(4)} />}
+      {step === 2 && <CheckoutStep isLoading={isLoading} setIsLoading={(state)=>setIsLoading(state)} setStep={() => setStep(3)} />}
+      {step === 3 && <SendAddressStep isLoading={isLoading} setIsLoading={(state)=>setIsLoading(state)}  setStep={() => setStep(4)} />}
       {step === 4 && <PaymentsStep />}
     </div>
   );

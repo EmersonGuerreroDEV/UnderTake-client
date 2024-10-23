@@ -40,9 +40,11 @@ const AddressSchema = z.object({
 
 interface SendAddressFormProps {
   onSend: () => void;
+  setIsLoading: (state:boolean)=>void,
+  isLoading:boolean
 }
 
-const SendAddressForm = ({ onSend }: SendAddressFormProps) => {
+const SendAddressForm = ({ onSend, isLoading, setIsLoading }: SendAddressFormProps) => {
   const { user } = useContext(UserContext);
   const { checkout, setCheckout } = useCheckout();
   const { city: cities } = UseLocation();
@@ -63,8 +65,10 @@ const SendAddressForm = ({ onSend }: SendAddressFormProps) => {
   });
 
   const onSubmit = async (values: z.infer<typeof AddressSchema>) => {
+
     if (!user?.addresses) return;
     if (user?.addresses?.length <= 0) {
+      setIsLoading(true)
       const res = await handleSendAddress(values);
       if (res) {
         onSend();
@@ -72,6 +76,7 @@ const SendAddressForm = ({ onSend }: SendAddressFormProps) => {
           ...checkout,
           sendAddress: values
         });
+        setIsLoading(false)
       }
     } else {
       setCheckout({
@@ -186,7 +191,9 @@ const SendAddressForm = ({ onSend }: SendAddressFormProps) => {
                   </FormItem>
                 )}
               />
-              {clean && <Button>Guardar dirección</Button>}
+              {clean && <Button disabled={isLoading}>
+              {isLoading ? 'Guardando información' : 'Guardar dirección'}  
+                </Button>}
             </fieldset>
           </form>
           <div className='mt-8 grid grid-cols-2 gap-8'>

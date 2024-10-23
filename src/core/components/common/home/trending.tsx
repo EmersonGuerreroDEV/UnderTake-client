@@ -1,11 +1,17 @@
 'use client';
-import { offerProducts, responsiveTrending } from '~/core/config/data';
+import { responsiveTrending } from '~/core/config/data';
+import useProducts from '~/core/hooks/queries/use-products';
 import AltCarousel from '../../ui/alt-carousel';
 import { Card, CardContent, CardHeader, CardTitle } from '../../ui/card';
 import Wrapper from '../../ui/wrapper';
 import CardProduct from '../products/card';
 
 const Trending = () => {
+
+  const { data, isLoading } = useProducts('trending')
+
+  if (isLoading) return
+
   return (
     <div className='mt-8'>
       <Wrapper>
@@ -16,7 +22,7 @@ const Trending = () => {
           <CardContent className='w-full '>
             <AltCarousel
               autoPlay
-              items={offerProducts}
+              items={data}
               element={<ProductsContent />}
               timeSpeed={3000}
               infinite

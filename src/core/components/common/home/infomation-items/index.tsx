@@ -91,7 +91,7 @@ const InformationItems = () => {
                       </CardDescription>
                     </CardContent>
                     <CardFooter>
-                      <Button className='w-full bg-orange-400'>
+                      <Button className='w-full bg-secondary'>
                         Mas información
                       </Button>
                     </CardFooter>

@@ -9,7 +9,7 @@ import Wrapper from '~/core/components/ui/wrapper';
 
 const HomePage = () => {
   return (
-    <main className='w-full bg-white'>
+    <main className='w-full '>
       <InitialBanner />
       <InformationItems />
       <Offers />

@@ -28,7 +28,7 @@ const Footer = () => {
   }
 
   return (
-    <div className=' bg-black'>
+    <div className=' bg-[#343A40]'>
       <Wrapper>
         <div className='grid w-full grid-cols-2 gap-8 py-12 text-white md:grid-cols-4 lg:gap-0'>
           <div className='grid text-sm font-extralight text-gray-50 md:place-content-center'>

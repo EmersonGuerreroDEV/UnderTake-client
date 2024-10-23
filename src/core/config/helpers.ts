@@ -10,5 +10,6 @@ export const pathPrincipalHeaderIncluded = [
   '/',
   '/profile',
   '/products',
-  '/purchases'
+  '/purchases',
+  '/search'
 ];

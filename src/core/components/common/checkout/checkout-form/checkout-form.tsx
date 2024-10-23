@@ -40,9 +40,10 @@ const RegisterSchema = z.object({
 
 interface CheckoutFormProps {
   setStep: () => void;
+  isLoading:(state:boolean)=>void
 }
 
-const CheckoutForm = ({ setStep }: CheckoutFormProps) => {
+const CheckoutForm = ({ setStep , isLoading}: CheckoutFormProps) => {
   const { handleSignUp, isLoadingSignUp } = useAuth();
   const { handleUserUpdate } = useUser();
   const router = useRouter();
@@ -60,6 +61,7 @@ const CheckoutForm = ({ setStep }: CheckoutFormProps) => {
   });
 
   const onSubmit = async (values: z.infer<typeof RegisterSchema>) => {
+    isLoading(true)
     const payload = {
       ...values
     };
@@ -68,11 +70,13 @@ const CheckoutForm = ({ setStep }: CheckoutFormProps) => {
       const res = await handleUserUpdate(payload);
       if (res) {
         setStep();
+        isLoading(false)
       }
     } else {
       const res = await handleSignUp(payload);
       if (res) {
         setStep();
+        isLoading(false)
       }
     }
   };

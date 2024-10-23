@@ -25,7 +25,7 @@ export default function RootLayout({
         <CommandMenuProvider>
           <StoreProvider>
             <Header />
-            <div className='w-full'>{children}</div>
+            <div className='w-full text-[#343A40] bg-[ #F8F9FA ]'>{children}</div>
             <Footer />
           </StoreProvider>
         </CommandMenuProvider>

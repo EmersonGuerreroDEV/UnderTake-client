@@ -1,3 +1,4 @@
+import { Loader } from 'lucide-react';
 import { useContext, useState } from 'react';
 import { Button } from '~/core/components/ui/button';
 import { Card, CardContent } from '~/core/components/ui/card';
@@ -8,9 +9,10 @@ import Helpers from '~/core/utils/helpers';
 
 interface DetailsProps {
   onClick: () => void;
+  isLoading?:boolean
 }
 
-const Details = ({ onClick }: DetailsProps) => {
+const Details = ({ onClick, isLoading }: DetailsProps) => {
   const { cart, subTotalCalcule } = useContext(CartContext);
   const [discount, setDiscount] = useState(0);
 
@@ -63,10 +65,11 @@ const Details = ({ onClick }: DetailsProps) => {
               Continuar
             </Button>
             <Button
+            disabled={isLoading}
               onClick={onClick}
               className='mt-4 border border-blue-400 bg-white font-light  text-blue-400 hover:bg-white'
             >
-              Seguir comprando
+             { isLoading ? <Loader className='animate-spin'/> :'Seguir comprando'  }
             </Button>
           </div>
         </div>

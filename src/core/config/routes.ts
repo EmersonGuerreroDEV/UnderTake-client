@@ -5,5 +5,6 @@ export const Routes = {
   register: '/auth/sign-up',
   profile: '/profile',
   profileAccount: '/profile/account',
-  purchase: '/purchases'
+  purchase: '/purchases',
+  products: '/search'
 };

@@ -11,7 +11,7 @@ const useProducts = (filter = '', search = '') => {
     data: allProducts
   } = useQuery({
     queryKey: ['products'],
-    queryFn: () => ProductsRepository.getProducts(filter, search),
+    queryFn: () => ProductsRepository.getProducts({filter,search}),
     onError: (err) => console.error(err)
   });
 
@@ -25,7 +25,7 @@ const useProducts = (filter = '', search = '') => {
     enabled: !!id
   });
 
-  // Filtrar productos si el filtro es "onSale"
+
   const filteredProducts =
     filter === 'onSale'
       ? allProducts?.filter((product: any) => product.onSale)
@@ -34,7 +34,7 @@ const useProducts = (filter = '', search = '') => {
   return {
     isLoading: isLoadingUser,
     productId,
-    data: filteredProducts, // Devolver productos filtrados
+    data: filteredProducts, 
     isRefetchId: isFetchingId || isLoadingId
   };
 };

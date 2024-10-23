@@ -37,12 +37,12 @@ const PrincipalHeader: React.FC = () => {
       <div
         className={`h-12 transition-transform duration-500 ease-in-out ${showBanner ? 'translate-y-0' : '-translate-y-full'}`}
       >
-        <div className='border-none bg-black p-3 text-center text-sm font-light  uppercase text-white lg:text-xl '>
+        <div className='border-none bg-[#343A40]/95 p-3 text-center text-sm font-light  uppercase text-white lg:text-xl '>
           ¡Descuento del 20% en tu primera compra!
         </div>
       </div>
       <nav
-        className={`flex items-center justify-between px-8  transition-all duration-300 ease-in-out ${isScrolled ? 'h-24 -translate-y-12 bg-orange-400/95 text-white' : 'h-20 translate-y-0 bg-white text-black'}`}
+        className={`flex items-center justify-between px-8  transition-all duration-300 ease-in-out ${isScrolled ? 'h-24 -translate-y-12 bg-[#343A40]/95 text-white' : 'h-20 translate-y-0 bg-white text-black'}`}
       >
         <Wrapper className='flex justify-between '>
           <div className='flex  w-full items-center space-x-12  '>
@@ -51,9 +51,15 @@ const PrincipalHeader: React.FC = () => {
               <SearchComponent />
               <div className='hidden lg:block'>
                 <ul className='flex space-x-12 text-sm font-light capitalize'>
-                  <li>Inicio</li>
-                  <li>Productos</li>
-                  <li>Contacto</li>
+                  <li >
+                    <a role='button' onClick={()=>router.push(Routes.home)}>Inicio</a>
+                  </li>
+                  <li >
+                    <a role='button' onClick={()=>router.push(Routes.products)}>Productos</a>
+                    </li>
+                  <li >
+                  <a role='button' onClick={()=>router.push(Routes.home)}>Contacto</a>  
+                    </li>
                 </ul>
               </div>
             </div>

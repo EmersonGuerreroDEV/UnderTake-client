@@ -114,7 +114,7 @@ const CardProduct = ({ className, product }: CardProps) => {
         {!validProductCardInclude() ? (
           <Button
             onClick={handleAddProduct}
-            className='w-full bg-blue-500  hover:bg-blue-400'
+            className='w-full'
           >
             Agregar al carrito{' '}
             <ShoppingCartIcon className='pl-2' size={30} strokeWidth={1} />

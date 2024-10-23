@@ -8,6 +8,9 @@ interface UsePaginationParamsReturn {
   dateInit: string | undefined;
   dateEnd: string | undefined;
   filter: string | undefined;
+  category: string | undefined;
+  priceInit: string | undefined;
+  priceEnd: string | undefined;
 }
 
 const usePaginationParams = (): UsePaginationParamsReturn => {
@@ -21,14 +24,19 @@ const usePaginationParams = (): UsePaginationParamsReturn => {
   const dateInit = params.get('dateInit');
   const dateEnd = params.get('dateEnd');
   const filter = params.get('filter');
-
+  const category = params.get('category');
+  const priceInit = params.get('priceInit')
+  const priceEnd = params.get('priceEnd')
   return {
     page,
     limit,
     search,
     dateInit,
     dateEnd,
-    filter
+    filter,
+    category,
+    priceInit,
+    priceEnd
   };
 };
 
