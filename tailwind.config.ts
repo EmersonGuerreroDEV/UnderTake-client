@@ -114,6 +114,9 @@ const config = {
         orange: "url('/assets/images/back/orange.jpg')",
         banner1: "url('/assets/images/banners/product1.webp')",
         banner2: "url('/assets/images/banners/product2.webp')"
+      },
+      fontFamily: {
+        poppins: ['var(--font-poppins)']
       }
     }
   },

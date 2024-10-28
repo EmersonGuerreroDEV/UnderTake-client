@@ -1,7 +1,21 @@
 import { ChevronRightIcon } from 'lucide-react';
-import Helpers from '../../../utils/helpers';
+import Helpers from '~/core/utils/helpers';
 
-const CommandItemCard = ({ picture, name, color, category, price }) => {
+interface CommandItemCard {
+  picture: string;
+  name: string;
+  color: string;
+  category: string;
+  price: number;
+}
+
+const CommandItemCard = ({
+  picture,
+  name,
+  color,
+  category,
+  price
+}: CommandItemCard) => {
   return (
     <div className='group grid cursor-pointer grid-cols-3 p-3 md:grid-cols-5'>
       <div className='col-span-1 flex h-20 w-20 items-center overflow-hidden rounded-md'>

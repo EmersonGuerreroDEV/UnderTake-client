@@ -6,8 +6,6 @@ import CardAddresses from './card';
 const Addresses = () => {
   const { user } = useContext(UserContext);
 
-  const deleteAddress = () => {};
-
   return (
     <div className='p-6 lg:p-8'>
       <h1 className='text-start text-xl font-semibold text-primary '>

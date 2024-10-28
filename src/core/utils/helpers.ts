@@ -14,6 +14,7 @@ class Helpers {
       style: 'currency',
       currency: 'COP'
     };
+    //@ts-ignore
     const numberFormat = new Intl.NumberFormat('es-CO', options);
     return numberFormat.format(value).split(',')[0];
   };

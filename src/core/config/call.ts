@@ -27,7 +27,7 @@ const header = async ({
     method
   };
 
-  const apiUrl = IS_DEV ? 'https://4c4f-186-159-64-82.ngrok-free.app' : API_URL;
+  const apiUrl = IS_DEV ? 'http://undertake.sorfin.com.co' : API_URL;
 
   let ssId = Cookies.get('ssid');
   options.url = `${apiUrl}${removeParamsIfNull(path)}`;

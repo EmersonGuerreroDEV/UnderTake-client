@@ -1,3 +1,4 @@
+'use client';
 import { User } from 'lucide-react';
 import { useContext } from 'react';
 import { UserContext } from '~/core/providers/user-provider';
