@@ -7,10 +7,9 @@ import Wrapper from '../../ui/wrapper';
 import CardProduct from '../products/card';
 
 const Trending = () => {
+  const { data, isLoading } = useProducts('trending');
 
-  const { data, isLoading } = useProducts('trending')
-
-  if (isLoading) return
+  if (isLoading) return;
 
   return (
     <div className='mt-8'>

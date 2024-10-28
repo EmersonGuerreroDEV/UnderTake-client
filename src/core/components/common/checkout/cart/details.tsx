@@ -9,7 +9,7 @@ import Helpers from '~/core/utils/helpers';
 
 interface DetailsProps {
   onClick: () => void;
-  isLoading?:boolean
+  isLoading?: boolean;
 }
 
 const Details = ({ onClick, isLoading }: DetailsProps) => {
@@ -65,11 +65,15 @@ const Details = ({ onClick, isLoading }: DetailsProps) => {
               Continuar
             </Button>
             <Button
-            disabled={isLoading}
+              disabled={isLoading}
               onClick={onClick}
               className='mt-4 border border-blue-400 bg-white font-light  text-blue-400 hover:bg-white'
             >
-             { isLoading ? <Loader className='animate-spin'/> :'Seguir comprando'  }
+              {isLoading ? (
+                <Loader className='animate-spin' />
+              ) : (
+                'Seguir comprando'
+              )}
             </Button>
           </div>
         </div>

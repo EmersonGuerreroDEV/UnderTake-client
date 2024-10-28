@@ -33,11 +33,9 @@ const usePurchase = () => {
       if (res?.noRedirect) {
         window.open(res?.urlRedirect, '_blank');
         return router.push(`purchases/${res?.order}`);
-      }else{
-          return router.push(`purchases/${res?.urlRedirect}`);
+      } else {
+        return router.push(`purchases/${res?.urlRedirect}`);
       }
-
-  
     }
     return res;
   };

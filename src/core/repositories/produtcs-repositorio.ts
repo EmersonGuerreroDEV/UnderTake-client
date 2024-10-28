@@ -4,12 +4,18 @@ interface ParamsProps {
   filter?: string | undefined;
   search?: string | undefined;
   category?: string | undefined | null;
-  priceInit?: string | undefined; 
-  priceEnd?: string | undefined; 
+  priceInit?: string | undefined;
+  priceEnd?: string | undefined;
 }
 
 class ProductsRepository {
-  static readonly getProducts = async ({ filter, search, category, priceInit, priceEnd }: ParamsProps) => {
+  static readonly getProducts = async ({
+    filter,
+    search,
+    category,
+    priceInit,
+    priceEnd
+  }: ParamsProps) => {
     // Construcción de las query params
     const queryParams = new URLSearchParams();
 

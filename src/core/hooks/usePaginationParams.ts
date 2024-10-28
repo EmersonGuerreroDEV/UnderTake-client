@@ -25,8 +25,8 @@ const usePaginationParams = (): UsePaginationParamsReturn => {
   const dateEnd = params.get('dateEnd');
   const filter = params.get('filter');
   const category = params.get('category');
-  const priceInit = params.get('priceInit')
-  const priceEnd = params.get('priceEnd')
+  const priceInit = params.get('priceInit');
+  const priceEnd = params.get('priceEnd');
   return {
     page,
     limit,

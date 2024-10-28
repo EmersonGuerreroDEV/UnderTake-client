@@ -5,7 +5,7 @@ import { Card, CardContent } from '../../ui/card';
 interface CardProps {
   className?: string;
   product: ProductProp;
-  title: string
+  title: string;
 }
 
 const PromotionalCard = ({ product, className, title }: CardProps) => {
@@ -20,12 +20,15 @@ const PromotionalCard = ({ product, className, title }: CardProps) => {
             {title}
           </h2>
 
-          {product?.discount > 0 && <div className='flex h-24 w-full flex-col items-center justify-center  rounded-sm bg-orange-400/70 text-3xl text-white'>
-            <> <p className='font-bold'> {product.discount}%</p>
-              <p className='font-extralight'>Dcto</p> </>
-
-          </div>
-          }
+          {product?.discount > 0 && (
+            <div className='flex h-24 w-full flex-col items-center justify-center  rounded-sm bg-orange-400/70 text-3xl text-white'>
+              <>
+                {' '}
+                <p className='font-bold'> {product.discount}%</p>
+                <p className='font-extralight'>Dcto</p>{' '}
+              </>
+            </div>
+          )}
         </div>
         <div>
           <Image
@@ -35,7 +38,6 @@ const PromotionalCard = ({ product, className, title }: CardProps) => {
             alt={product.name}
             className='w-full'
           />
-
         </div>
       </CardContent>
     </Card>

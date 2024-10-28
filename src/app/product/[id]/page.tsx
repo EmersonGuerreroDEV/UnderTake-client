@@ -61,7 +61,6 @@ const Product = () => {
     return <LoadingPage />;
   }
 
-
   return (
     <div className='di'>
       <Wrapper className='px-32'>
@@ -121,21 +120,21 @@ const Product = () => {
                     <span>Envío hasta la puerta de tu casa</span>
                   </div>
                 </div>
-                {productInCart && productInCart?.quantity >= 1 &&
-                <Counter
-                  onIncrement={handleIncrement}
-                  onDecrement={handleDecrement}
-                  count={productInCart?.quantity!}
-                />
-}
-                { !productInCart?.quantity &&
+                {productInCart && productInCart?.quantity >= 1 && (
+                  <Counter
+                    onIncrement={handleIncrement}
+                    onDecrement={handleDecrement}
+                    count={productInCart?.quantity!}
+                  />
+                )}
+                {!productInCart?.quantity && (
                   <Button
                     onClick={handleAddProduct}
                     className='bg-blue-500 hover:bg-blue-400'
                   >
                     Agregar al carrito
                   </Button>
-                }
+                )}
 
                 <Payments />
               </CardContent>

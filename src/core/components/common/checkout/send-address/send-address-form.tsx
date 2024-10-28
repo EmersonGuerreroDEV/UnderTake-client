@@ -40,11 +40,15 @@ const AddressSchema = z.object({
 
 interface SendAddressFormProps {
   onSend: () => void;
-  setIsLoading: (state:boolean)=>void,
-  isLoading:boolean
+  setIsLoading: (state: boolean) => void;
+  isLoading: boolean;
 }
 
-const SendAddressForm = ({ onSend, isLoading, setIsLoading }: SendAddressFormProps) => {
+const SendAddressForm = ({
+  onSend,
+  isLoading,
+  setIsLoading
+}: SendAddressFormProps) => {
   const { user } = useContext(UserContext);
   const { checkout, setCheckout } = useCheckout();
   const { city: cities } = UseLocation();
@@ -65,10 +69,9 @@ const SendAddressForm = ({ onSend, isLoading, setIsLoading }: SendAddressFormPro
   });
 
   const onSubmit = async (values: z.infer<typeof AddressSchema>) => {
-
     if (!user?.addresses) return;
     if (user?.addresses?.length <= 0) {
-      setIsLoading(true)
+      setIsLoading(true);
       const res = await handleSendAddress(values);
       if (res) {
         onSend();
@@ -76,7 +79,7 @@ const SendAddressForm = ({ onSend, isLoading, setIsLoading }: SendAddressFormPro
           ...checkout,
           sendAddress: values
         });
-        setIsLoading(false)
+        setIsLoading(false);
       }
     } else {
       setCheckout({
@@ -191,9 +194,11 @@ const SendAddressForm = ({ onSend, isLoading, setIsLoading }: SendAddressFormPro
                   </FormItem>
                 )}
               />
-              {clean && <Button disabled={isLoading}>
-              {isLoading ? 'Guardando información' : 'Guardar dirección'}  
-                </Button>}
+              {clean && (
+                <Button disabled={isLoading}>
+                  {isLoading ? 'Guardando información' : 'Guardar dirección'}
+                </Button>
+              )}
             </fieldset>
           </form>
           <div className='mt-8 grid grid-cols-2 gap-8'>

@@ -51,15 +51,24 @@ const PrincipalHeader: React.FC = () => {
               <SearchComponent />
               <div className='hidden lg:block'>
                 <ul className='flex space-x-12 text-sm font-light capitalize'>
-                  <li >
-                    <a role='button' onClick={()=>router.push(Routes.home)}>Inicio</a>
+                  <li>
+                    <a role='button' onClick={() => router.push(Routes.home)}>
+                      Inicio
+                    </a>
                   </li>
-                  <li >
-                    <a role='button' onClick={()=>router.push(Routes.products)}>Productos</a>
-                    </li>
-                  <li >
-                  <a role='button' onClick={()=>router.push(Routes.home)}>Contacto</a>  
-                    </li>
+                  <li>
+                    <a
+                      role='button'
+                      onClick={() => router.push(Routes.products)}
+                    >
+                      Productos
+                    </a>
+                  </li>
+                  <li>
+                    <a role='button' onClick={() => router.push(Routes.home)}>
+                      Contacto
+                    </a>
+                  </li>
                 </ul>
               </div>
             </div>

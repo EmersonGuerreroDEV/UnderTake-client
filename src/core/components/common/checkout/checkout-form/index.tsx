@@ -6,15 +6,18 @@ import CheckoutForm from './checkout-form';
 interface CheckoutStep {
   setStep: () => void;
   isLoading: boolean;
-  setIsLoading: (e:boolean)=>void
-} 
+  setIsLoading: (e: boolean) => void;
+}
 
-const CheckoutStep = ({ setStep , isLoading, setIsLoading}: CheckoutStep) => {
+const CheckoutStep = ({ setStep, isLoading, setIsLoading }: CheckoutStep) => {
   return (
     <div className='mt-8'>
       <Wrapper>
         <div className='flex w-full space-x-8 '>
-          <CheckoutForm isLoading={(state)=>setIsLoading(state)} setStep={setStep} />
+          <CheckoutForm
+            isLoading={(state) => setIsLoading(state)}
+            setStep={setStep}
+          />
           <Details onClick={() => eventBus.emit('sendUserData')} />
         </div>
       </Wrapper>

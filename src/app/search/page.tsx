@@ -11,15 +11,11 @@ const Search = () => {
   const { params } = useQueryParams();
   const { page, limit, search, category, filter } = usePaginationParams();
 
-  const {
-    isLoading,
-    refetch,
-    data } = useQuery({
-      queryKey: [`product_all_search`],
-      queryFn: () => ProductsRepository.getProducts({ filter, search, category }),
-      onError: (err) => console.error(err)
-    });
-
+  const { isLoading, refetch, data } = useQuery({
+    queryKey: [`product_all_search`],
+    queryFn: () => ProductsRepository.getProducts({ filter, search, category }),
+    onError: (err) => console.error(err)
+  });
 
   return (
     <div className='mt-24 w-full bg-slate-50'>
