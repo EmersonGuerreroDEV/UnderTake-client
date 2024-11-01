@@ -31,6 +31,12 @@ const nextConfig = {
         hostname: 'ae-pic-a1.aliexpress-media.com',
         port: '',
         pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        port: '',
+        pathname: '/**'
       }
     ]
   },

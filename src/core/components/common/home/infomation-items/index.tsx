@@ -8,12 +8,10 @@ import {
   UserIcon
 } from 'lucide-react';
 import { useRef } from 'react';
-import { Button } from '~/core/components/ui/button';
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle
 } from '~/core/components/ui/card';
@@ -76,7 +74,7 @@ const InformationItems = () => {
                   key={item.title}
                   className='w-full md:basis-1/2 lg:basis-1/3 xl:basis-1/5 '
                 >
-                  <Card className='mx-auto w-full shadow-md lg:max-w-44 xl:h-80 xl:max-w-52'>
+                  <Card className='mx-auto w-full shadow-md lg:max-w-44 xl:h-72 xl:max-w-52'>
                     <CardHeader>
                       <CardTitle className='text-center text-lg'>
                         {item.title}
@@ -90,11 +88,6 @@ const InformationItems = () => {
                         {item.description}
                       </CardDescription>
                     </CardContent>
-                    <CardFooter>
-                      <Button className='w-full bg-secondary'>
-                        Mas información
-                      </Button>
-                    </CardFooter>
                   </Card>
                 </CarouselItem>
               );
