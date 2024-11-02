@@ -53,14 +53,19 @@ const CardProduct = ({ className, product }: CardProps) => {
   if (!product) return;
 
   return (
-    <Card className={twMerge(className, 'mx-auto p-0 shadow-lg')}>
+    <Card
+      className={twMerge(
+        className,
+        'mx-auto my-2 border border-gray-100 bg-white p-0 shadow-lg'
+      )}
+    >
       <CardContent
         onClick={() => router.push(`product/${product?.id}`)}
         className='lg:wp-64'
       >
         <div className='relative flex w-full flex-col items-center'>
           {product.discount > 0 && (
-            <div className='absolute  right-0 top-0 flex h-12 w-12 items-center justify-center rounded-full bg-orange-400/80 p-4 font-bold text-white'>
+            <div className='absolute  right-0 top-0 flex h-12 w-12 items-center justify-center rounded-full bg-orange-400/80 px-4 font-bold text-white'>
               {product.discount}%
             </div>
           )}
@@ -110,9 +115,9 @@ const CardProduct = ({ className, product }: CardProps) => {
           </div>
         </div>
       </CardContent>
-      <CardFooter className='w-full  px-1'>
+      <CardFooter className='w-full  px-4'>
         {!validProductCardInclude() ? (
-          <Button onClick={handleAddProduct} className='w-full'>
+          <Button onClick={handleAddProduct} className='w-full rounded-none'>
             Agregar al carrito{' '}
             <ShoppingCartIcon className='pl-2' size={30} strokeWidth={1} />
           </Button>
