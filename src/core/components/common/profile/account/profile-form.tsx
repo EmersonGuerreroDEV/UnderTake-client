@@ -52,7 +52,7 @@ const ProfileForm = () => {
     handleSignUp(payload);
   };
 
-  console.log(user);
+  if (!user) return;
 
   return (
     <div className=' w-full bg-white  px-8  font-sans md:max-w-xl lg:rounded-lg'>
