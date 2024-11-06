@@ -16,7 +16,9 @@ const Trending = () => {
       <Wrapper>
         <Card className='w-full'>
           <CardHeader>
-            <CardTitle className='text-xl'>Tendencia</CardTitle>
+            <CardTitle className='text-xl font-medium uppercase text-gray-500'>
+              Tendencia
+            </CardTitle>
           </CardHeader>
           <CardContent className='w-full '>
             <AltCarousel
@@ -37,7 +39,5 @@ const Trending = () => {
 export default Trending;
 
 const ProductsContent = ({ ...src }: any) => {
-  return (
-    <CardProduct product={src} className='padding-0 border-none shadow-none' />
-  );
+  return <CardProduct product={src} className='padding-0 ' />;
 };

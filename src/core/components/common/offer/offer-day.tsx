@@ -8,9 +8,11 @@ function OfferDay() {
   return (
     <Card className=' p-0  xl:w-96'>
       <CardHeader>
-        <CardTitle className='text-xl'>Oferta del dia</CardTitle>
+        <CardTitle className='text-xl font-medium uppercase text-gray-500'>
+          Oferta del dia
+        </CardTitle>
       </CardHeader>
-      <CardContent className='p-0'>
+      <CardContent className=' p-0'>
         <CardProduct
           product={data?.[0]}
           className='border-none p-0 shadow-none'

@@ -76,7 +76,7 @@ const InformationItems = () => {
                 >
                   <Card className='mx-auto w-full shadow-md lg:max-w-44 xl:h-72 xl:max-w-52'>
                     <CardHeader>
-                      <CardTitle className='text-center text-lg'>
+                      <CardTitle className='text-center text-lg font-medium text-gray-600'>
                         {item.title}
                       </CardTitle>
                     </CardHeader>

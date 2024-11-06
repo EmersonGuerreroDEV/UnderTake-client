@@ -42,7 +42,7 @@ const PrincipalHeader: React.FC = () => {
         </div>
       </div>
       <nav
-        className={`flex items-center justify-between px-8  transition-all duration-300 ease-in-out ${isScrolled ? 'h-24 -translate-y-12 bg-[#343A40]/95 text-white' : 'h-20 translate-y-0 bg-white text-black'}`}
+        className={`flex items-center justify-between px-8  transition-all duration-300 ease-in-out ${isScrolled ? 'h-24 -translate-y-12 border-b-2 border-red-400 bg-[#343A40]/95 text-white' : 'h-20 translate-y-0 bg-white text-black'}`}
       >
         <Wrapper className='flex justify-between '>
           <div className='flex  w-full items-center space-x-12  '>

@@ -11,7 +11,9 @@ const Other = () => {
   return (
     <Card className='w-full overflow-hidden'>
       <CardHeader>
-        <CardTitle className='text-xl'>Otras ofertas</CardTitle>
+        <CardTitle className='text-xl font-medium uppercase text-gray-500'>
+          Otras ofertas
+        </CardTitle>
       </CardHeader>
       <CardContent className='w-full  px-0'>
         <AltCarousel

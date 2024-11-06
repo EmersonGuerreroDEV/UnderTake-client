@@ -1,4 +1,6 @@
+import BlackFridayBanner from '~/core/components/common/banner';
 import Categories from '~/core/components/common/categories';
+import FirstPurchaseBanner from '~/core/components/common/firts-purchase';
 import InformationItems from '~/core/components/common/home/infomation-items';
 import InitialBanner from '~/core/components/common/home/inital-banner';
 import More from '~/core/components/common/home/more';
@@ -16,15 +18,13 @@ const HomePage = () => {
       <Categories />
       <Trending />
       <Wrapper>
-        <div className='mt-8 grid min-h-64 w-full place-content-center rounded-lg bg-gray-400'>
-          <p>Banner publicitario</p>
-        </div>
+        <BlackFridayBanner />
       </Wrapper>
 
       <More title='Celulares' />
       <Wrapper>
         <div className='mt-8 grid w-full gap-2   overflow-hidden md:grid-cols-2 md:gap-6'>
-          <div className=' min-h-64 w-full rounded-lg bg-banner1 bg-cover bg-center' />
+          <FirstPurchaseBanner />
 
           <div className=' min-h-64 w-full rounded-lg bg-banner2 bg-cover bg-center' />
         </div>

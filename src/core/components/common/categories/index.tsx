@@ -17,8 +17,8 @@ const Categories: React.FC = () => {
 
   const responsive = {
     desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 6,
+      breakpoint: { max: 1920, min: 1024 },
+      items: 5,
       slidesToSlide: 1
     },
     tablet: {
@@ -36,52 +36,31 @@ const Categories: React.FC = () => {
   if (!allCategories) return;
 
   return (
-    <div className='relative flex w-full bg-white'>
-      <div className='absolute flex h-[456px] w-full justify-between bg-white'>
-        <div className='z-10 h-full w-12 bg-gradient-to-r  from-white via-gray-100 to-transparent md:w-52' />
-        <div className='z-10 h-full w-12 bg-gradient-to-l from-white via-gray-100 to-transparent md:w-52' />
-      </div>
+    <div className=' flex w-full flex-col bg-white'>
+      <Wrapper maxScreen='w-screen-xl'>
+        <CardHeader>
+          <CardTitle className='text-xl font-medium uppercase text-gray-600'>
+            Categorías
+          </CardTitle>
+        </CardHeader>
+      </Wrapper>
       <Card className='w-full border-x-0 shadow-none'>
-        <Wrapper>
-          <CardHeader>
-            <CardTitle className='t '>Categorías</CardTitle>
-          </CardHeader>
-        </Wrapper>
-
         <CardContent className='w-full'>
           <Carousel
             responsive={responsive}
             infinite={true}
-            containerClass='w-full overflow-hidden pb-12'
+            containerClass='w-full  pb-12'
             itemClass=''
             autoPlay
             arrows={false}
             autoPlaySpeed={3000}
             showDots
           >
-            {allCategories
-              .reduce<Category[][]>((acc, category, index) => {
-                if (index % 2 === 0) {
-                  //@ts-ignore
-                  acc.push([category]);
-                } else {
-                  //@ts-ignore
-                  acc[acc.length - 1].push(category);
-                }
-                return acc;
-              }, [])
-              .map((pair, index) => (
-                <div
-                  key={index}
-                  className='mx-auto flex w-full flex-col items-center space-y-8'
-                >
-                  {pair.map((category) => (
-                    <div key={category.id} className='mx-auto flex flex-col'>
-                      <CardCategories {...category} />
-                    </div>
-                  ))}
-                </div>
-              ))}
+            {allCategories.map((category) => (
+              <div key={category.id} className='mx-auto flex justify-center'>
+                <CardCategories {...category} />
+              </div>
+            ))}
           </Carousel>
         </CardContent>
       </Card>

@@ -1,7 +1,6 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useRouter } from 'next/navigation';
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
@@ -34,7 +33,6 @@ const LoginSchema = z.object({
 
 const ProfileForm = () => {
   const { handleSignUp, isLoadingSignUp } = useAuth();
-  const router = useRouter();
   const { user } = useContext(UserContext);
 
   const form = useForm<z.infer<typeof LoginSchema>>({
@@ -54,10 +52,12 @@ const ProfileForm = () => {
     handleSignUp(payload);
   };
 
+  console.log(user);
+
   return (
     <div className=' w-full bg-white  px-8  font-sans md:max-w-xl lg:rounded-lg'>
       <Form {...form}>
-        <h1 className='text-start text-xl font-semibold text-primary '>
+        <h1 className='text-start text-xl font-semibold uppercase text-gray-500 '>
           Datos del usuario
         </h1>
         <form
