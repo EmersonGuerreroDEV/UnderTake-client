@@ -27,7 +27,7 @@ const header = async ({
     method
   };
 
-  const apiUrl = IS_DEV ? 'https://ee4e-186-159-74-25.ngrok-free.app' : API_URL;
+  const apiUrl = IS_DEV ? 'https://undertake.hiboxco.store' : API_URL;
 
   let ssId = Cookies.get('ssid');
   options.url = `${apiUrl}${removeParamsIfNull(path)}`;
