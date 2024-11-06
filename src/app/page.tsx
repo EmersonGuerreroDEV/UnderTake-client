@@ -7,6 +7,7 @@ import More from '~/core/components/common/home/more';
 import Offers from '~/core/components/common/home/offers';
 import Trending from '~/core/components/common/home/trending';
 import Payments from '~/core/components/common/payments';
+import SelectedProducts from '~/core/components/common/profile/account/selected-products';
 import Wrapper from '~/core/components/ui/wrapper';
 
 const HomePage = () => {
@@ -25,7 +26,7 @@ const HomePage = () => {
       <Wrapper>
         <div className='mt-8 grid w-full gap-2   overflow-hidden md:grid-cols-2 md:gap-6'>
           <FirstPurchaseBanner />
-
+          <SelectedProducts />
           <div className=' min-h-64 w-full rounded-lg bg-banner2 bg-cover bg-center' />
         </div>
       </Wrapper>
