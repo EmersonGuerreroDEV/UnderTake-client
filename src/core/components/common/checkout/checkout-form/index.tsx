@@ -18,7 +18,10 @@ const CheckoutStep = ({ setStep, isLoading, setIsLoading }: CheckoutStep) => {
             isLoading={(state) => setIsLoading(state)}
             setStep={setStep}
           />
-          <Details onClick={() => eventBus.emit('sendUserData')} />
+          <Details
+            isLoading={isLoading}
+            onClick={() => eventBus.emit('sendUserData')}
+          />
         </div>
       </Wrapper>
     </div>

@@ -87,6 +87,24 @@ const RegisterForm = () => {
             />
             <FormField
               control={form.control}
+              name='document'
+              render={({ field }) => (
+                <FormItem className='text-start'>
+                  <FormControl>
+                    <Input
+                      label='Numero de documento'
+                      type='number'
+                      className=''
+                      {...field}
+                      required
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
               name='email'
               render={({ field }) => (
                 <FormItem className='text-start'>

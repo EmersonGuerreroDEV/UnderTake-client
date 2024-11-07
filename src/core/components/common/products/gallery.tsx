@@ -35,7 +35,7 @@ const Gallery = ({ variant, setVariant }: GalleryProps) => {
 
   return (
     <div className='mx-auto flex w-[800px] space-x-8'>
-      <div className='grid w-44 '>
+      <div className=' w-44 space-y-4'>
         {variant?.map((item, index) => {
           return (
             <button
@@ -48,7 +48,7 @@ const Gallery = ({ variant, setVariant }: GalleryProps) => {
                 width={100}
                 height={100}
                 alt={item.image}
-                className='mx-auto'
+                className='mx-auto h-24  object-contain'
               />
             </button>
           );
@@ -66,10 +66,10 @@ const Gallery = ({ variant, setVariant }: GalleryProps) => {
                 <CarouselItem key={item?.id} className=' '>
                   <Image
                     src={item.image}
-                    width={460}
-                    height={460}
+                    width={260}
+                    height={260}
                     alt={item.image}
-                    className='mx-auto'
+                    className='mx-auto h-[400px] w-auto bg-center object-cover'
                   />
                 </CarouselItem>
               );

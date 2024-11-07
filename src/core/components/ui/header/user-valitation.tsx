@@ -1,7 +1,7 @@
 import { UserIcon } from 'lucide-react';
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useContext } from 'react';
+import { getInitials } from '~/core/config/helpers';
 import { Routes } from '~/core/config/routes';
 import { UserContext } from '~/core/providers/user-provider';
 import { Button } from '../button';
@@ -17,6 +17,9 @@ const UserValidation = () => {
       router.push(Routes.profile + `?tab=account`);
     }
   };
+
+  const initialName = getInitials(user?.fullName!);
+
   return (
     <div>
       <Button
@@ -27,17 +30,8 @@ const UserValidation = () => {
         {!user ? (
           <UserIcon strokeWidth={1} />
         ) : (
-          <div className='items-centers flex flex-col justify-center'>
-            <Image
-              src='/assets/images/avatar.webp'
-              className='mx-auto h-5 w-5 scale-125 transform bg-center object-cover sm:scale-100 md:h-6 md:w-6'
-              alt='user avatar'
-              width={100}
-              height={100}
-            />
-            <span className='text-xs font-light capitalize'>
-              {user?.fullName}
-            </span>
+          <div className='items-centers flex  h-8 w-8 flex-col justify-center rounded-full border-2 border-green-400 bg-white text-black'>
+            <span>{initialName}</span>
           </div>
         )}
       </Button>

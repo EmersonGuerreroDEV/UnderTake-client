@@ -18,9 +18,7 @@ import {
 import {
   Carousel,
   CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious
+  CarouselItem
 } from '~/core/components/ui/carousel';
 import Wrapper from '~/core/components/ui/wrapper';
 
@@ -74,14 +72,14 @@ const InformationItems = () => {
                   key={item.title}
                   className='w-full md:basis-1/2 lg:basis-1/3 xl:basis-1/5 '
                 >
-                  <Card className='mx-auto w-full shadow-md lg:max-w-44 xl:h-72 xl:max-w-52'>
+                  <Card className='mx-auto w-full border border-slate-100 shadow-md lg:max-w-44 xl:h-72 xl:max-w-52'>
                     <CardHeader>
                       <CardTitle className='text-center text-lg font-medium text-gray-600'>
                         {item.title}
                       </CardTitle>
                     </CardHeader>
                     <CardContent className='flex flex-col items-center justify-start'>
-                      <div className='rounded-full bg-slate-50 p-6'>
+                      <div className='rounded-full bg-slate-50 p-6  '>
                         {item.icon}
                       </div>
                       <CardDescription className='mt-1 h-14 text-center text-xs'>
@@ -93,8 +91,6 @@ const InformationItems = () => {
               );
             })}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
         </Carousel>
       </Wrapper>
     </div>

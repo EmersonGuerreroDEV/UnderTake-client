@@ -40,7 +40,10 @@ const useAuth = () => {
     mutationFn: (data: LoginProps) => AuthRepository.signIn(data)
   });
 
-  const handleSignUp = async (form: RegisterProps) => {
+  const handleSignUp = async (
+    form: RegisterProps,
+    isRedirect: boolean = true
+  ) => {
     try {
       const res = await doSignUp(form);
       // toast.success('Registro exitoso', {
@@ -53,7 +56,7 @@ const useAuth = () => {
       };
 
       if (res) {
-        handleSignIn(payload);
+        handleSignIn(payload, isRedirect);
         return res;
       }
     } catch (err) {
@@ -65,13 +68,13 @@ const useAuth = () => {
     }
   };
 
-  const handleSignIn = async (form: LoginProps) => {
+  const handleSignIn = async (form: LoginProps, isRedirect: boolean) => {
     try {
       const res = await doSignIn(form);
       if (res) {
         Cookies.set('ssid', res.access_token, { expires: 7 });
         refetch();
-        router.push(Routes.home);
+        isRedirect && router.push(Routes.home);
         return res;
       }
     } catch (err) {

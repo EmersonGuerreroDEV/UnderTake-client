@@ -53,7 +53,8 @@ const useUser = () => {
     setUser,
     isLoading: isLoadingUser,
     handleLogout,
-    handleUserUpdate
+    handleUserUpdate,
+    isLoadingUpdate
   };
 };
 

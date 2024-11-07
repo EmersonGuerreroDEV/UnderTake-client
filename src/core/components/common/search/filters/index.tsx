@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Card, CardContent } from '~/core/components/ui/card';
+import Title from '~/core/components/ui/title';
+import useCategory from '~/core/hooks/queries/use-category';
 import useQueryParams from '~/core/hooks/use-query-params';
 
 const Filters: React.FC = () => {
@@ -7,21 +9,29 @@ const Filters: React.FC = () => {
   const [selectedCategories, setSelectedCategories] = useState<number[]>([]);
   const [priceInit, setPriceInit] = useState<number | null>(null);
   const [priceEnd, setPriceEnd] = useState<number | null>(null);
+  const { allCategories, isLoadingCategory } = useCategory();
 
   interface CategoryChangeProps {
-    categoryId: number;
+    id: number;
   }
 
-  const handleCategoryChange = ({ categoryId }: CategoryChangeProps) => {
+  const handleCategoryChange = (id: number) => {
     setSelectedCategories((prev) => {
-      if (prev.includes(categoryId)) {
-        //@ts-ignore
-        removeParam('categories', categoryId?.toString());
-        return prev.filter((id) => id !== categoryId);
+      let updatedCategories;
+      if (prev.includes(id)) {
+        updatedCategories = prev.filter((catId) => catId !== id);
       } else {
-        addParam('categories', categoryId.toString());
-        return [...prev, categoryId];
+        updatedCategories = [...prev, id];
       }
+      const categoriesParam = updatedCategories.join(',');
+
+      if (categoriesParam) {
+        addParam('categories', categoriesParam);
+      } else {
+        removeParam('categories');
+      }
+
+      return updatedCategories;
     });
   };
 
@@ -52,23 +62,23 @@ const Filters: React.FC = () => {
   };
 
   return (
-    <Card className='mt-4 w-[300px] rounded-lg border border-gray-200 bg-white py-4 shadow-lg'>
+    <Card className=' w-[400px] rounded-lg border border-gray-200 bg-white py-4 shadow-lg'>
       <CardContent className='p-4'>
-        <h2 className='mb-4 text-lg font-semibold text-gray-800'>Filtros</h2>
+        <Title title='Filtro' size='xl' />
 
-        <div className='mb-4'>
+        <div className='mb-4 mt-8'>
           <h3 className='text-md mb-2 font-semibold text-gray-700'>
             Categorías:
           </h3>
-          {[1, 2, 3, 45].map((categoryId: any) => (
-            <div key={categoryId} className='mb-2 flex items-center'>
+          {allCategories?.map((categoryId) => (
+            <div key={categoryId.id} className='mb-2 flex items-center'>
               <input
                 type='checkbox'
-                checked={selectedCategories.includes(categoryId)}
-                onChange={() => handleCategoryChange(categoryId)}
+                checked={selectedCategories.includes(categoryId.id)}
+                onChange={() => handleCategoryChange(categoryId.id)}
                 className='mr-2 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500'
               />
-              <label className='text-gray-600'>Categoría {categoryId}</label>
+              <label className='text-sm text-gray-600'>{categoryId.name}</label>
             </div>
           ))}
         </div>
@@ -84,7 +94,7 @@ const Filters: React.FC = () => {
               onChange={() => handlePriceRangeChange('20-100')}
               className='mr-2 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500'
             />
-            <label className='text-gray-600'>$20 - $100</label>
+            <label className='text-sm text-gray-600'>$20 - $100</label>
           </div>
           <div className='mb-2 flex items-center'>
             <input
@@ -93,7 +103,7 @@ const Filters: React.FC = () => {
               onChange={() => handlePriceRangeChange('100-500')}
               className='mr-2 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500'
             />
-            <label className='text-gray-600'>$100 - $500</label>
+            <label className='text-sm text-gray-600'>$100 - $500</label>
           </div>
           <div className='mb-2 flex items-center'>
             <input
@@ -102,7 +112,7 @@ const Filters: React.FC = () => {
               onChange={() => handlePriceRangeChange('more-500')}
               className='mr-2 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500'
             />
-            <label className='text-gray-600'>Más de $500</label>
+            <label className='text-sm text-gray-600'>Más de $500</label>
           </div>
           <button
             onClick={handlePriceReset}

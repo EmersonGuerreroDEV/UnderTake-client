@@ -74,7 +74,7 @@ const Product = () => {
           <div className='flex w-[400px] justify-end '>
             <Card className='w-[400px] rounded-lg border'>
               <CardContent className='space-y-2'>
-                <CardTitle className='text-orange-400'>
+                <CardTitle className='uppercase text-orange-400'>
                   {productId?.name}
                 </CardTitle>
                 <span className='text-sm font-light text-blue-400'>

@@ -7,7 +7,7 @@ const UserCard = () => {
   const { user } = useContext(UserContext);
   return (
     <div className='w-full'>
-      <div className='mx-auto flex  h-28 w-28 items-center justify-center rounded-full bg-slate-100 p-8 shadow-md'>
+      <div className='mx-auto flex  h-36 w-36 items-center justify-center rounded-full bg-slate-100 p-8 shadow-md'>
         <User strokeWidth={1} size={50} />
       </div>
       <p className='mt-2 w-full text-center font-semibold'>

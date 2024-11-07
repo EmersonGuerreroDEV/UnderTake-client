@@ -1,5 +1,4 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useRouter } from 'next/navigation';
 import { useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -46,7 +45,6 @@ interface CheckoutFormProps {
 const CheckoutForm = ({ setStep, isLoading }: CheckoutFormProps) => {
   const { handleSignUp, isLoadingSignUp } = useAuth();
   const { handleUserUpdate } = useUser();
-  const router = useRouter();
   const { user } = useContext(UserContext);
 
   const form = useForm<z.infer<typeof RegisterSchema>>({
@@ -73,7 +71,7 @@ const CheckoutForm = ({ setStep, isLoading }: CheckoutFormProps) => {
         isLoading(false);
       }
     } else {
-      const res = await handleSignUp(payload);
+      const res = await handleSignUp(payload, false);
       if (res) {
         setStep();
         isLoading(false);

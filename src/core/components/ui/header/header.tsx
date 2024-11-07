@@ -1,7 +1,7 @@
 'use client';
 import { ShoppingCartIcon } from 'lucide-react';
 // components/Header.tsx
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import React, { useContext, useEffect, useState } from 'react';
 import { Routes } from '~/core/config/routes';
 import { CartContext } from '~/core/providers/store-provider';
@@ -14,7 +14,7 @@ const PrincipalHeader: React.FC = () => {
   const [showBanner, setShowBanner] = useState(true);
   const { cart } = useContext(CartContext);
   const router = useRouter();
-
+  const pathName = usePathname();
   let productQuantity = cart?.length || 0;
 
   const handleScroll = () => {
@@ -32,25 +32,24 @@ const PrincipalHeader: React.FC = () => {
 
   return (
     <header
-      className={`fixed left-0 top-0 z-50 w-full transition-all duration-300 ease-in-out ${isScrolled ? ' h-20   shadow' : 'h-12 bg-transparent'}`}
+      className={`fixed left-0 top-0 z-50 w-full transition-all duration-300 ease-in-out ${isScrolled || pathName !== '/' ? ' h-20   shadow' : 'h-12 bg-transparent'}`}
     >
       <div
-        className={`h-12 transition-transform duration-500 ease-in-out ${showBanner ? 'translate-y-0' : '-translate-y-full'}`}
+        className={`h-12 transition-transform duration-500 ease-in-out ${showBanner || pathName !== '/' ? 'translate-y-0' : '-translate-y-full'}`}
       >
         <div className='border-none bg-[#343A40]/95 p-3 text-center text-sm font-light  uppercase text-white lg:text-xl '>
           ¡Descuento del 20% en tu primera compra!
         </div>
       </div>
       <nav
-        className={`flex items-center justify-between px-8  transition-all duration-300 ease-in-out ${isScrolled ? 'h-24 -translate-y-12 border-b-2 border-red-400 bg-[#343A40]/95 text-white' : 'h-20 translate-y-0 bg-white text-black'}`}
+        className={`flex items-center justify-between px-8  transition-all duration-300 ease-in-out ${isScrolled || pathName !== '/' ? 'h-24 -translate-y-12 border-b-2 border-red-400 bg-[#343A40]/95 text-white' : 'h-20 translate-y-0 bg-white text-black'}`}
       >
         <Wrapper className='flex justify-between '>
           <div className='flex  w-full items-center space-x-12  '>
             <div className='text-xl font-light'>Mi Tienda</div>
             <div className='flex w-[600px] items-center space-x-12'>
-              <SearchComponent />
               <div className='hidden lg:block'>
-                <ul className='flex space-x-12 text-sm font-light capitalize'>
+                <ul className='flex space-x-12 text-base font-light capitalize'>
                   <li>
                     <a role='button' onClick={() => router.push(Routes.home)}>
                       Inicio
@@ -73,6 +72,9 @@ const PrincipalHeader: React.FC = () => {
               </div>
             </div>
           </div>
+          <SearchComponent
+            className={`${showBanner || pathName !== '/' ? 'border border-gray-400' : 'bg-white text-black'} `}
+          />
           <div className='flex w-24 items-center justify-between'>
             <UserValidation />
             <button

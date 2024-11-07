@@ -19,7 +19,7 @@ const Search = () => {
 
   return (
     <div className='mt-24 w-full bg-slate-50'>
-      <Wrapper>
+      <Wrapper className='mt-32 space-x-4'>
         <Filters />
         <ResultProducts product={data} isLoading={isLoading} />
       </Wrapper>

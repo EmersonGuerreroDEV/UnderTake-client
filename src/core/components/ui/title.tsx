@@ -20,7 +20,11 @@ const Title: React.FC<TitleProps> = ({
   };
 
   return (
-    <div className={`${sizeClasses[size]} text-${color} font-semibold`}>
+    <div
+      className={`${sizeClasses[size]} text-${color} text-xl font-medium
+          uppercase
+        text-gray-500`}
+    >
       {title}
     </div>
   );

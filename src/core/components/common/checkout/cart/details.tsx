@@ -62,8 +62,9 @@ const Details = ({ onClick, isLoading }: DetailsProps) => {
               onClick={onClick}
               className='bg-orange-500 font-bold text-white hover:bg-orange-700 '
             >
-              Continuar
+              {isLoading ? <Loader className='animate-spin' /> : 'Continuar'}
             </Button>
+
             <Button
               disabled={isLoading}
               onClick={onClick}

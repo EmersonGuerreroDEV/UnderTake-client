@@ -13,7 +13,7 @@ import {
   FormMessage
 } from '~/core/components/ui/form';
 import { Input } from '~/core/components/ui/input';
-import useAuth from '~/core/hooks/queries/use-auth';
+import useUser from '~/core/hooks/queries/use-user';
 import { UserContext } from '~/core/providers/user-provider';
 
 const LoginSchema = z.object({
@@ -32,7 +32,7 @@ const LoginSchema = z.object({
 });
 
 const ProfileForm = () => {
-  const { handleSignUp, isLoadingSignUp } = useAuth();
+  const { handleUserUpdate, isLoadingUpdate } = useUser();
   const { user } = useContext(UserContext);
 
   const form = useForm<z.infer<typeof LoginSchema>>({
@@ -49,7 +49,7 @@ const ProfileForm = () => {
     const payload = {
       ...values
     };
-    handleSignUp(payload);
+    handleUserUpdate(payload);
   };
 
   if (!user) return;
@@ -65,7 +65,7 @@ const ProfileForm = () => {
           className='mt-8 lg:min-w-[400px]'
         >
           <fieldset
-            disabled={isLoadingSignUp}
+            disabled={isLoadingUpdate}
             className='group grid w-full grid-cols-2 gap-8'
           >
             <FormField
@@ -144,11 +144,11 @@ const ProfileForm = () => {
 
             <div className='flex w-full justify-center pt-4'>
               <Button
-                disabled={isLoadingSignUp}
+                disabled={isLoadingUpdate}
                 type='submit'
                 className='h-11 w-full rounded-lg '
               >
-                {isLoadingSignUp ? 'Validando...' : 'Actualizar'}
+                {isLoadingUpdate ? 'Validando...' : 'Actualizar'}
               </Button>
             </div>
           </fieldset>

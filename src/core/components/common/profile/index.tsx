@@ -12,12 +12,12 @@ const ProfileContent = () => {
   const tab = params.get('tab') || 'account';
 
   return (
-    <div className='mt-12 flex flex-col space-y-4 lg:flex-row lg:space-x-4 lg:space-y-4'>
-      <div className='flex flex-col items-center border border-slate-50 py-8 shadow lg:w-80'>
+    <div className='mt-12 flex w-full flex-col lg:flex-row lg:space-x-4 '>
+      <div className='flex flex-col items-center border border-slate-100 py-8 shadow lg:w-96'>
         <UserCard />
         <ProfileMenu tab={tab} />
       </div>
-      <div className='w-full border border-slate-50 shadow-xl'>
+      <div className='w-full border border-slate-100 shadow-xl '>
         {tab === 'account' && <Account />}
         {tab === 'addresses' && <Addresses />}
         {tab === 'purchases' && <Purchases />}

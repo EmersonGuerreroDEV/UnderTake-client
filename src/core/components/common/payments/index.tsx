@@ -15,7 +15,7 @@ const Payments = () => {
   return (
     <div className='mt-12 py-8'>
       <Wrapper>
-        <div className='w-full space-y-4'>
+        <div className='w-full space-y-8'>
           <Title title='Métodos de pago' size='xl' />
 
           <div className='flex w-full flex-wrap justify-between gap-2 lg:flex-row'>

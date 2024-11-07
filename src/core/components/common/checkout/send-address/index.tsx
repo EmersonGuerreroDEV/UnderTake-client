@@ -1,7 +1,5 @@
-import { useContext } from 'react';
 import Wrapper from '~/core/components/ui/wrapper';
 import eventBus from '~/core/hooks/use-event-bust';
-import { UserContext } from '~/core/providers/user-provider';
 import Details from '../cart/details';
 import MyAddresses from './my-addresses';
 import SendAddressForm from './send-address-form';
@@ -17,7 +15,6 @@ const SendAddressStep = ({
   setIsLoading,
   isLoading
 }: SendAddressProps) => {
-  const { user } = useContext(UserContext);
   return (
     <div className='mt-8'>
       <Wrapper>

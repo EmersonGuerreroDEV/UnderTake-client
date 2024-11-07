@@ -19,18 +19,18 @@ import useAddress from '~/core/hooks/queries/use-address';
 import UseLocation from '~/core/hooks/queries/use-location';
 import useCheckout from '~/core/hooks/use-checkout';
 import eventBus from '~/core/hooks/use-event-bust';
-import { CityProps, DepartmentsProps } from '~/core/interfaces/location';
+import { CityProps } from '~/core/interfaces/location';
 import { UserContext } from '~/core/providers/user-provider';
 
 const AddressSchema = z.object({
-  address: z.string().min(4, {
+  address: z.string().min(1, {
     message: 'La dirección no valida'
   }),
-  postal: z.string().min(4, {
+  postal: z.string().min(1, {
     message: 'Código postal requerido'
   }),
 
-  city: z.string().min(4, {
+  city: z.string().min(1, {
     message: 'La ciudad requerida'
   }),
   neighborhood: z.string().min(1, {
@@ -52,9 +52,6 @@ const SendAddressForm = ({
   const { user } = useContext(UserContext);
   const { checkout, setCheckout } = useCheckout();
   const { city: cities } = UseLocation();
-  const [departmentState, setDepartmentState] =
-    useState<DepartmentsProps | null>(null);
-  const [cityState, setCitySate] = useState<CityProps | null>(null);
   const { handleSendAddress, isLoadingSendAddress } = useAddress();
   const [clean, setClean] = useState(false);
 
