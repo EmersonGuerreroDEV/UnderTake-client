@@ -14,24 +14,26 @@ const Item = ({ icon, title, state, finish = false, onClick }: ItemProps) => {
     <>
       <button
         onClick={onClick}
-        className='flex w-32 items-center justify-center'
+        className='flex h-32 w-32 items-center justify-center'
       >
         <div className='mx-4 flex flex-col items-center space-y-1'>
           <div
             className={twMerge(
-              'flex h-10 w-10 items-center justify-center rounded-full text-white',
-              state ? 'bg-green-700' : 'bg-gray-300'
+              'flex h-16 w-16 items-center justify-center rounded-full text-xl text-white',
+              state ? 'bg-green-600' : 'bg-gray-300'
             )}
           >
             {icon}
           </div>
-          <span className='text-sm font-semibold'>{title}</span>
+          <span className='text-sm font-semibold uppercase text-gray-500'>
+            {title}
+          </span>
         </div>
       </button>
       {!finish && (
         <div
           className={twMerge(
-            '-mt-5 h-1 w-full',
+            '-mt-5 h-1 w-full rounded-full',
             state ? 'bg-green-400' : 'bg-gray-300'
           )}
         />

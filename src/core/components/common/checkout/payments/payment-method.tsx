@@ -33,7 +33,7 @@ const PaymentMethods = () => {
                     'h-14 w-full rounded-lg capitalize text-black hover:bg-slate-100 hover:opacity-80',
                     checkout?.paymentMethod?.id === item.id
                       ? 'border border-blue-400 bg-slate-200 opacity-80'
-                      : 'border-gray-400 bg-white text-black'
+                      : 'border border-gray-200 bg-white text-black'
                   )}
                 >
                   {item.name}

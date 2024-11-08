@@ -38,7 +38,7 @@ const TimeLine = ({ setStep, step }: Props) => {
           />
           <Item
             icon={<DollarSign strokeWidth={1} />}
-            title='Compra'
+            title='Pago'
             state={step >= 4}
             finish
             onClick={() => setStep(4)}

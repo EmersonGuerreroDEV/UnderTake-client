@@ -11,7 +11,7 @@ interface ItemCart {
   product: CartProp;
 }
 
-const ItemCart = ({ ...resp }: CartProp) => {
+const ItemCartDetail = ({ ...resp }: CartProp) => {
   const { updateQuantity, cart, removeProduct } = useContext(CartContext);
 
   const productInCart = useMemo(() => {
@@ -40,37 +40,36 @@ const ItemCart = ({ ...resp }: CartProp) => {
   const flirtsImage = resp.variants?.[0]?.image;
 
   return (
-    <div className='relative flex w-full justify-between rounded-lg border border-gray-300 bg-white p-4'>
+    <div className='relative flex w-full flex-col justify-between rounded-lg border border-gray-300 bg-white p-2'>
       <div className='flex w-full items-start space-x-2'>
         <Image
           src={flirtsImage!}
-          width={100}
-          height={100}
+          width={50}
+          height={50}
           alt='product'
           className='bg-center object-cover'
         />
-        <div className='w-full space-y-4'>
+        <div className='w-full space-y-2'>
           <span className='text-xs uppercase text-gray-400 '>Samsung</span>
-          <h1 className='lg:text-bse text-sm font-medium '>{resp?.name}</h1>
-          <div className='flex flex-col '>
-            {resp?.discount > 0 && (
-              <span className='text-sm font-light text-red-300 line-through opacity-80 md:text-sm'>
-                {Helpers.formatCurrency(resp.price)}{' '}
-              </span>
-            )}
-            <div className='flex w-full justify-between'>
-              <span className='font-sans text-lg font-medium text-gray-600 md:text-2xl'>
-                {Helpers.formatCurrency(discountCalcule())}{' '}
-              </span>
-              <div className='w-44'>
-                <p className='w-full text-center text-gray-500'>Cant.</p>
-                <Counter
-                  onDecrement={handleDecrement}
-                  onIncrement={handleIncrement}
-                  count={resp.quantity}
-                />
-              </div>
-            </div>
+          <h1 className='text-xs  font-medium '>{resp?.name}</h1>
+        </div>
+      </div>
+      <div className='mt-2 flex flex-col'>
+        {resp?.discount > 0 && (
+          <span className='text-sm font-light text-red-300 line-through opacity-80 md:text-sm'>
+            {Helpers.formatCurrency(resp.price)}{' '}
+          </span>
+        )}
+        <div className='flex w-full justify-between'>
+          <span className='font-sans text-lg font-medium text-gray-600 md:text-2xl'>
+            {Helpers.formatCurrency(discountCalcule())}{' '}
+          </span>
+          <div className='w-44'>
+            <Counter
+              onDecrement={handleDecrement}
+              onIncrement={handleIncrement}
+              count={resp.quantity}
+            />
           </div>
         </div>
       </div>
@@ -78,10 +77,10 @@ const ItemCart = ({ ...resp }: CartProp) => {
         onClick={onRemoveProduct}
         className='absolute -right-2 -top-2 flex items-start justify-center rounded-full bg-gray-300 p-1 hover:bg-red-400 hover:text-white'
       >
-        <X size={15} />
+        <X size={10} />
       </button>
     </div>
   );
 };
 
-export default ItemCart;
+export default ItemCartDetail;

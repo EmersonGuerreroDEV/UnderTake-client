@@ -40,9 +40,14 @@ const RegisterSchema = z.object({
 interface CheckoutFormProps {
   setStep: () => void;
   isLoading: (state: boolean) => void;
+  widthTitle?: boolean;
 }
 
-const CheckoutForm = ({ setStep, isLoading }: CheckoutFormProps) => {
+const CheckoutForm = ({
+  setStep,
+  isLoading,
+  widthTitle = true
+}: CheckoutFormProps) => {
   const { handleSignUp, isLoadingSignUp } = useAuth();
   const { handleUserUpdate } = useUser();
   const { user } = useContext(UserContext);
@@ -97,9 +102,11 @@ const CheckoutForm = ({ setStep, isLoading }: CheckoutFormProps) => {
     <Card className='w-full rounded-lg border bg-slate-50/40 shadow-lg'>
       <CardContent>
         <Form {...form}>
-          <h1 className='text-center text-xl font-semibold text-primary'>
-            {user ? `Tus datos` : 'Registra una cuenta'}
-          </h1>
+          {widthTitle && (
+            <h1 className='text-center text-xl font-semibold text-primary'>
+              {user ? `Tus datos` : 'Registra una cuenta'}
+            </h1>
+          )}
           <form onSubmit={form.handleSubmit(onSubmit)} className='mt-8'>
             <fieldset
               disabled={isLoadingSignUp}

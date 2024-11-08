@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import useCart from '~/core/components/hooks/use-cart';
 import { Card } from '~/core/components/ui/card';
-import Wrapper from '~/core/components/ui/wrapper';
+import Title from '~/core/components/ui/title';
 import usePurchase from '~/core/hooks/queries/use-purchase';
 import useCheckout from '~/core/hooks/use-checkout';
 import { UserContext } from '~/core/providers/user-provider';
@@ -33,21 +33,16 @@ const PaymentsStep = () => {
   };
 
   return (
-    <div>
-      <Wrapper>
-        <div className='mt-4 w-full lg:px-24'>
-          <h1 className='py-4 text-center text-xl font-semibold'>
-            Carro de compra
-          </h1>
-          <div className='flex w-full flex-col space-x-0 lg:flex-row lg:space-x-8'>
-            <Card className='w-full bg-slate-100 px-8'>
-              <PaymentMethods />
-            </Card>
+    <div className='mt-4 w-full space-y-4'>
+      <Title title='pago' />
+      <div className='flex w-full space-x-8 '></div>
+      <div className='flex w-full flex-col space-x-0 lg:flex-row lg:space-x-8'>
+        <Card className='w-full border px-8'>
+          <PaymentMethods />
+        </Card>
 
-            <Details onClick={onPurchase} />
-          </div>
-        </div>
-      </Wrapper>
+        <Details onClick={onPurchase} />
+      </div>
     </div>
   );
 };

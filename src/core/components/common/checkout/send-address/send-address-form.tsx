@@ -2,7 +2,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-import { Button } from '~/core/components/ui/button';
 import { Card, CardContent } from '~/core/components/ui/card';
 import {
   Form,
@@ -42,12 +41,14 @@ interface SendAddressFormProps {
   onSend: () => void;
   setIsLoading: (state: boolean) => void;
   isLoading: boolean;
+  widthTitle?: boolean;
 }
 
 const SendAddressForm = ({
   onSend,
   isLoading,
-  setIsLoading
+  setIsLoading,
+  widthTitle = true
 }: SendAddressFormProps) => {
   const { user } = useContext(UserContext);
   const { checkout, setCheckout } = useCheckout();
@@ -118,9 +119,11 @@ const SendAddressForm = ({
     <Card className='w-full rounded-lg border bg-slate-50/40 shadow-lg'>
       <CardContent>
         <Form {...form}>
-          <h1 className='text-center text-xl font-semibold text-primary'>
-            Datos de envío
-          </h1>
+          {widthTitle && (
+            <h1 className='text-center text-xl font-semibold text-primary'>
+              Datos de envío
+            </h1>
+          )}
           <form onSubmit={form.handleSubmit(onSubmit)} className='w-full'>
             <fieldset
               disabled={isLoadingSendAddress}
@@ -191,14 +194,14 @@ const SendAddressForm = ({
                   </FormItem>
                 )}
               />
-              {clean && (
+              {/* {clean && (
                 <Button disabled={isLoading}>
                   {isLoading ? 'Guardando información' : 'Guardar dirección'}
                 </Button>
-              )}
+              )} */}
             </fieldset>
           </form>
-          <div className='mt-8 grid grid-cols-2 gap-8'>
+          {/* <div className='mt-8 grid grid-cols-2 gap-8'>
             {user?.addresses.length >= 0 && !clean && (
               <button
                 className='px-0 text-start text-sm font-extralight text-blue-400 underline'
@@ -207,7 +210,7 @@ const SendAddressForm = ({
                 Nueva dirección
               </button>
             )}
-          </div>
+          </div> */}
         </Form>
       </CardContent>
     </Card>

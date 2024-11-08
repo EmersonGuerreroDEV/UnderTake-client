@@ -1,5 +1,7 @@
-import Wrapper from '~/core/components/ui/wrapper';
+import { useContext } from 'react';
+import Title from '~/core/components/ui/title';
 import eventBus from '~/core/hooks/use-event-bust';
+import { UserContext } from '~/core/providers/user-provider';
 import Details from '../cart/details';
 import CheckoutForm from './checkout-form';
 
@@ -10,20 +12,21 @@ interface CheckoutStep {
 }
 
 const CheckoutStep = ({ setStep, isLoading, setIsLoading }: CheckoutStep) => {
+  const { user } = useContext(UserContext);
   return (
-    <div className='mt-8'>
-      <Wrapper>
-        <div className='flex w-full space-x-8 '>
-          <CheckoutForm
-            isLoading={(state) => setIsLoading(state)}
-            setStep={setStep}
-          />
-          <Details
-            isLoading={isLoading}
-            onClick={() => eventBus.emit('sendUserData')}
-          />
-        </div>
-      </Wrapper>
+    <div className='mt-4 w-full space-y-4'>
+      <Title title={user ? 'Actualiza tus datos' : 'Registra una cuenta'} />
+      <div className='flex w-full space-x-8 '>
+        <CheckoutForm
+          isLoading={(state) => setIsLoading(state)}
+          setStep={setStep}
+          widthTitle={false}
+        />
+        <Details
+          isLoading={isLoading}
+          onClick={() => eventBus.emit('sendUserData')}
+        />
+      </div>
     </div>
   );
 };
