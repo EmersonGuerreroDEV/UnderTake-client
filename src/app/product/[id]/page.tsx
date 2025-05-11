@@ -33,6 +33,7 @@ const Product = () => {
       ...product,
       quantity: 1,
       variantId: variantSelected?.id
+      productId: product.id,
     });
   };
   const { productId, isRefetchId } = useProducts();
