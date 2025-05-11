@@ -41,7 +41,7 @@ const LoginForm = () => {
   });
 
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
-    doSignIn(values);
+  doSignIn(values, "/dashboard");
   };
 
   return (
