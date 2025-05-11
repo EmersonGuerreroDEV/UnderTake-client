@@ -29,12 +29,16 @@ const Product = () => {
   const [variantSelected, setVariantSelected] = useState<Variant | null>(null);
   const handleAddProduct = () => {
     if (!variantSelected) return;
-    addProduct({
-      ...product,
-      quantity: 1,
-      variantId: variantSelected?.id,
-      productId: product.id,
-    });
+   addProduct({
+    productId: product.id,
+    name: product.name,
+    image: product.image,
+    description: product.description,
+    price: product.price,
+    discount: product.discount,
+    quantity: 1,
+    variantId: variantSelected?.id,
+  });
   };
   const { productId, isRefetchId } = useProducts();
 
