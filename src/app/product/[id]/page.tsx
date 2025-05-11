@@ -32,7 +32,7 @@ const Product = () => {
     addProduct({
       ...product,
       quantity: 1,
-      variantId: variantSelected?.id
+      variantId: variantSelected?.id,
       productId: product.id,
     });
   };
